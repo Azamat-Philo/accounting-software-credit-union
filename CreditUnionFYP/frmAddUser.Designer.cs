@@ -42,12 +42,12 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gbAddPermission = new System.Windows.Forms.GroupBox();
+            this.lbPermission = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.lbForm = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lbPermissionList = new System.Windows.Forms.Label();
-            this.lbForm = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.lbPermission = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gbAddPermission.SuspendLayout();
             this.SuspendLayout();
@@ -173,6 +173,32 @@
             this.gbAddPermission.TabStop = false;
             this.gbAddPermission.Text = "Add Permission";
             // 
+            // lbPermission
+            // 
+            this.lbPermission.AutoSize = true;
+            this.lbPermission.Location = new System.Drawing.Point(6, 57);
+            this.lbPermission.Name = "lbPermission";
+            this.lbPermission.Size = new System.Drawing.Size(67, 13);
+            this.lbPermission.TabIndex = 7;
+            this.lbPermission.Text = "Permission";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(82, 53);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(128, 79);
+            this.checkedListBox1.TabIndex = 6;
+            // 
+            // lbForm
+            // 
+            this.lbForm.AutoSize = true;
+            this.lbForm.Location = new System.Drawing.Point(6, 23);
+            this.lbForm.Name = "lbForm";
+            this.lbForm.Size = new System.Drawing.Size(70, 13);
+            this.lbForm.TabIndex = 5;
+            this.lbForm.Text = "Form Name";
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -200,32 +226,6 @@
             this.lbPermissionList.TabIndex = 14;
             this.lbPermissionList.Text = "List of permissions";
             // 
-            // lbForm
-            // 
-            this.lbForm.AutoSize = true;
-            this.lbForm.Location = new System.Drawing.Point(6, 23);
-            this.lbForm.Name = "lbForm";
-            this.lbForm.Size = new System.Drawing.Size(70, 13);
-            this.lbForm.TabIndex = 5;
-            this.lbForm.Text = "Form Name";
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(82, 53);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(128, 79);
-            this.checkedListBox1.TabIndex = 6;
-            // 
-            // lbPermission
-            // 
-            this.lbPermission.AutoSize = true;
-            this.lbPermission.Location = new System.Drawing.Point(6, 57);
-            this.lbPermission.Name = "lbPermission";
-            this.lbPermission.Size = new System.Drawing.Size(67, 13);
-            this.lbPermission.TabIndex = 7;
-            this.lbPermission.Text = "Permission";
-            // 
             // frmAddUser
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -252,6 +252,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add User";
+            this.Load += new System.EventHandler(this.frmAddUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.gbAddPermission.ResumeLayout(false);
             this.gbAddPermission.PerformLayout();

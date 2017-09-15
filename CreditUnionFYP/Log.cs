@@ -15,7 +15,6 @@ namespace CreditUnionFYP
 {
     public partial class Log : Form
     {
-        private DBClass dbCon = new DBClass();
 
         public Log()
         {
@@ -49,7 +48,7 @@ namespace CreditUnionFYP
                 {
                     string pwd = txtPwd.Text.Trim().ToString();
                     string userName = txtLogin.Text.Trim().ToString();
-                    dbCon.DBConnect();
+                    DBClass.DBConnect();
                     //SqlDataReader drUser = new SqlDataReader();
                     SqlCommand drCommand = new SqlCommand("SELECT TOP 1 WHERE userName=" + userName + " and pwd=");
                     this.Hide();

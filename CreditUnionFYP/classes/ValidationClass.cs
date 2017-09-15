@@ -28,13 +28,13 @@ namespace CreditUnionFYP.classes
                     }
                     i++;
                 }
-
                 if (valid.Contains(true)) {
-                    result= false;
+                    result= true;
                 }
             }
-            catch (Exception ex) { 
-                  result=false;
+            catch (Exception ex) {
+                ex.ToString();
+                result=false;
             }
             return result;
           

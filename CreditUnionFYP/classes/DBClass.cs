@@ -10,8 +10,8 @@ namespace CreditUnionFYP.classes
 {
     public class DBClass
     {
-        private string strConString;
-        public void DBConnect(){
+        private static string strConString;
+        public static void DBConnect(){
             SqlConnection connection = new SqlConnection();
             try
             {
@@ -22,8 +22,9 @@ namespace CreditUnionFYP.classes
                 Console.Write("Connect"); 
             }
             catch (Exception e) {
-               
-               connection.Close();
+                LogFile lg = new LogFile("Database connection error", e.ToString(), 0);
+                lg.WriteLog();
+                connection.Close();
             }
         }
 

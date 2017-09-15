@@ -32,5 +32,9 @@ namespace CreditUnionFYP
             MessageBox.Show(result.ToString());
         }
 
+        private void frmAddUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
