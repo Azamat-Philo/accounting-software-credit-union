@@ -43,9 +43,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gbAddPermission = new System.Windows.Forms.GroupBox();
             this.lbPermission = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.chkPermission = new System.Windows.Forms.CheckedListBox();
             this.lbForm = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbFormName = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lbPermissionList = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -161,9 +161,9 @@
             // gbAddPermission
             // 
             this.gbAddPermission.Controls.Add(this.lbPermission);
-            this.gbAddPermission.Controls.Add(this.checkedListBox1);
+            this.gbAddPermission.Controls.Add(this.chkPermission);
             this.gbAddPermission.Controls.Add(this.lbForm);
-            this.gbAddPermission.Controls.Add(this.comboBox1);
+            this.gbAddPermission.Controls.Add(this.cbFormName);
             this.gbAddPermission.Controls.Add(this.button1);
             this.gbAddPermission.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAddPermission.Location = new System.Drawing.Point(296, 46);
@@ -182,13 +182,13 @@
             this.lbPermission.TabIndex = 7;
             this.lbPermission.Text = "Permission";
             // 
-            // checkedListBox1
+            // chkPermission
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(82, 53);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(128, 79);
-            this.checkedListBox1.TabIndex = 6;
+            this.chkPermission.FormattingEnabled = true;
+            this.chkPermission.Location = new System.Drawing.Point(82, 53);
+            this.chkPermission.Name = "chkPermission";
+            this.chkPermission.Size = new System.Drawing.Size(128, 79);
+            this.chkPermission.TabIndex = 6;
             // 
             // lbForm
             // 
@@ -199,13 +199,14 @@
             this.lbForm.TabIndex = 5;
             this.lbForm.Text = "Form Name";
             // 
-            // comboBox1
+            // cbFormName
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(82, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(130, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cbFormName.FormattingEnabled = true;
+            this.cbFormName.Location = new System.Drawing.Point(82, 20);
+            this.cbFormName.Name = "cbFormName";
+            this.cbFormName.Size = new System.Drawing.Size(130, 21);
+            this.cbFormName.TabIndex = 4;
+            this.cbFormName.SelectedIndexChanged += new System.EventHandler(this.cbFormName_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -276,11 +277,11 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox gbAddPermission;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbFormName;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbPermissionList;
         private System.Windows.Forms.Label lbPermission;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox chkPermission;
         private System.Windows.Forms.Label lbForm;
     }
 }

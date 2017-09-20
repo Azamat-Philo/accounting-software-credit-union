@@ -24,5 +24,10 @@ namespace CreditUnionFYP.classes
         public void WriteLog() {
         
         }
+
+        public static void LogData(string logError, string genericMsg, int userId) {
+            LogFile lg = new LogFile(logError, genericMsg, userId);
+            lg.WriteLog();
+        }
     }
 }

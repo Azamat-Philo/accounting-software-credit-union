@@ -49,8 +49,9 @@ namespace CreditUnionFYP
                     string pwd = txtPwd.Text.Trim().ToString();
                     string userName = txtLogin.Text.Trim().ToString();
                     DBClass.DBConnect();
+                    string selectSt = "SELECT TOP 1 WHERE userName=" + userName + " and pwd=";
                     //SqlDataReader drUser = new SqlDataReader();
-                    SqlCommand drCommand = new SqlCommand("SELECT TOP 1 WHERE userName=" + userName + " and pwd=");
+                    
                     this.Hide();
                     DashBoardMDI myDashBoard = new DashBoardMDI();
                     myDashBoard.Show();

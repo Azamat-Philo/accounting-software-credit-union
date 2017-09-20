@@ -61,7 +61,7 @@ namespace CreditUnionFYP
             }
             catch (Exception ex)
             {
-
+                LogFile.LogData("", ex.ToString(), 0);
             }
         }
 

@@ -54,6 +54,7 @@
     <Compile Include="AccountType.Designer.cs">
       <DependentUpon>AccountType.cs</DependentUpon>
     </Compile>
+    <Compile Include="classes\LogFile.cs" />
     <Compile Include="frmAddUser.cs">
       <SubType>Form</SubType>
     </Compile>
