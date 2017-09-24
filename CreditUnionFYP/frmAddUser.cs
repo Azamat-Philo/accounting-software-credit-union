@@ -36,41 +36,53 @@ namespace CreditUnionFYP
 
         private void frmAddUser_Load(object sender, EventArgs e)
         {
+            this.cbFormName.SelectedValueChanged -= new System.EventHandler(this.cbFormName_SelectedValueChanged);
             DBClass.DBConnect();
             SqlCommand drCommand = null;
             SqlDataAdapter da = new SqlDataAdapter();
-            DataSet ds = new DataSet();
+            DataTable ds = new DataTable();
             drCommand = new SqlCommand("SELECT * FROM tblForm where active=1", DBClass.connection);
             da.SelectCommand = drCommand;
             da.Fill(ds);
-            cbFormName.DataSource = ds.Tables[0];
+
+            cbFormName.DataSource = ds;
             cbFormName.ValueMember = "formId";
             cbFormName.DisplayMember = "formName";
+            this.cbFormName.SelectedValueChanged += new System.EventHandler(this.cbFormName_SelectedValueChanged);
+
         }
 
        
 
         private void cbFormName_SelectedValueChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void cbFormName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbFormName.SelectedIndex != 0)
-            {
+            if (cbFormName.SelectedIndex != -1) {
                 DBClass.DBConnect();
                 SqlCommand drCommand = null;
-                DataTable dt = new DataTable();
-                drCommand = new SqlCommand("SELECT * FROM tblPermission where formId=" + cbFormName.SelectedValue.ToString() + " and active=1 and uDelete=0", DBClass.connection);
+                drCommand = new SqlCommand("SELECT * FROM tblPermission where formId="+ cbFormName.SelectedValue + " and active=1 and uDelete=0", DBClass.connection);
                 SqlDataAdapter da = new SqlDataAdapter(drCommand);
-                da.Fill(dt);
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    chkPermission.Items.Add(dt.Rows[i]["permissionName"].ToString());
-
-                }
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                chkPermission.DataSource = ds.Tables[0];
+                chkPermission.DisplayMember = "permissionName";
+                chkPermission.ValueMember = "permissionId";
             }
+        }
+
+        private void txtLastName_Leave(object sender, EventArgs e)
+        {
+            List<object> s = new List<object>();
+            string fName = null, lName = null;
+            s.Add(txtFirstName);
+            s.Add(txtLastName);
+            bool result = valCal2.inputTextValidation(s);
+            if (result == true){
+                fName= txtFirstName.Text.ToString();
+                lName = txtLastName.Text.ToString();
+                lName.ToLower();
+                string a = ValidationClass.validChar;
+            }
+           
         }
     }
 }

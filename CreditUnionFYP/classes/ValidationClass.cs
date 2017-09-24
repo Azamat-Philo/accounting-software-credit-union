@@ -7,19 +7,20 @@ namespace CreditUnionFYP.classes
 {
     public class ValidationClass
     {
+        public static string validChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         public Boolean dateValidation(DateTime dt) {
             return true;
         }
 
         public Boolean inputTextValidation(List<object> ts){
             bool result=true;
+            int i = 0;
             try
             {
                 int count = ts.Count;
                 bool[] valid = new bool[count];
-                int i=0;
-                foreach (object t in ts)
-                {
+               
+                foreach (object t in ts){
                     if (string.IsNullOrWhiteSpace(t.ToString()) || string.IsNullOrEmpty(t.ToString())){
                         valid[i] = false;
                     }
@@ -28,7 +29,7 @@ namespace CreditUnionFYP.classes
                     }
                     i++;
                 }
-                if (valid.Contains(true)) {
+                if (valid.Contains(true)){
                     result= true;
                 }
             }

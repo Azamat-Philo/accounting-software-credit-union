@@ -146,6 +146,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(151, 20);
             this.txtLastName.TabIndex = 10;
+            this.txtLastName.Leave += new System.EventHandler(this.txtLastName_Leave);
             // 
             // dataGridView1
             // 
@@ -206,7 +207,7 @@
             this.cbFormName.Name = "cbFormName";
             this.cbFormName.Size = new System.Drawing.Size(130, 21);
             this.cbFormName.TabIndex = 4;
-            this.cbFormName.SelectedIndexChanged += new System.EventHandler(this.cbFormName_SelectedIndexChanged);
+            this.cbFormName.SelectedValueChanged += new System.EventHandler(this.cbFormName_SelectedValueChanged);
             // 
             // button1
             // 
