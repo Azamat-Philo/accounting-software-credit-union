@@ -59,7 +59,7 @@ namespace CreditUnionFYP
             }
             catch (Exception ex)
             {
-
+                LogFile.LogData("Login connection error", ex.ToString(), 0);
             }
         }
     }

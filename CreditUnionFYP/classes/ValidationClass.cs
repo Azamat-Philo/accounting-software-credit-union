@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace CreditUnionFYP.classes
 {
@@ -34,11 +35,29 @@ namespace CreditUnionFYP.classes
                 }
             }
             catch (Exception ex) {
-                ex.ToString();
+                LogFile.LogData("inputTextValidation Error", ex.ToString(), 0); 
                 result=false;
             }
             return result;
           
+        }
+        public Boolean checkBoxListValidation(CheckedListBox chk) {
+            bool result = true;
+            try
+            {
+                if (chk.CheckedIndices.Count > 0){
+                    result = true;
+                }
+                else {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex) {
+                LogFile.LogData("checkBoxListValidation Error", ex.ToString(), 0);
+                result = false;
+            }
+            return result;
         }
     }
 }

@@ -73,16 +73,41 @@ namespace CreditUnionFYP
         {
             List<object> s = new List<object>();
             string fName = null, lName = null;
-            s.Add(txtFirstName);
-            s.Add(txtLastName);
-            bool result = valCal2.inputTextValidation(s);
-            if (result == true){
-                fName= txtFirstName.Text.ToString();
-                lName = txtLastName.Text.ToString();
-                lName.ToLower();
-                string a = ValidationClass.validChar;
+            try
+            {
+                s.Add(txtFirstName);
+                s.Add(txtLastName);
+                bool result = valCal2.inputTextValidation(s);
+                if (result == true)
+                {
+                    fName = txtFirstName.Text.ToString();
+                    lName = txtLastName.Text.ToString();
+                    lName=lName.ToLower();
+                    fName = fName.ToLower();
+                    string[] lname = lName.Split(' ');
+                    string[] fname = fName.Split(' ');
+                    txtLogin.Text= fname[0].Substring(0,1)+ lname[0];
+                    string a = ValidationClass.validChar;
+                }
+            }
+            catch (Exception ex) {
+                LogFile.LogData("Generate login for user", ex.ToString(), 0);
             }
            
+        }
+
+        private void btnAddPermission_Click(object sender, EventArgs e)
+        {
+            bool result = valCal2.checkBoxListValidation(chkPermission);
+            if (result == true) {
+                this.AddPermissionToGridView();
+            }
+            else {
+                MessageBox.Show("Please add a permission");
+            }
+        }
+        public void AddPermissionToGridView() {
+
         }
     }
 }

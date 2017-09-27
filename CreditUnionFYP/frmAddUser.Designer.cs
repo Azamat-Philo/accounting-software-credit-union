@@ -46,7 +46,7 @@
             this.chkPermission = new System.Windows.Forms.CheckedListBox();
             this.lbForm = new System.Windows.Forms.Label();
             this.cbFormName = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddPermission = new System.Windows.Forms.Button();
             this.lbPermissionList = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gbAddPermission.SuspendLayout();
@@ -165,7 +165,7 @@
             this.gbAddPermission.Controls.Add(this.chkPermission);
             this.gbAddPermission.Controls.Add(this.lbForm);
             this.gbAddPermission.Controls.Add(this.cbFormName);
-            this.gbAddPermission.Controls.Add(this.button1);
+            this.gbAddPermission.Controls.Add(this.btnAddPermission);
             this.gbAddPermission.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAddPermission.Location = new System.Drawing.Point(296, 46);
             this.gbAddPermission.Name = "gbAddPermission";
@@ -209,14 +209,15 @@
             this.cbFormName.TabIndex = 4;
             this.cbFormName.SelectedValueChanged += new System.EventHandler(this.cbFormName_SelectedValueChanged);
             // 
-            // button1
+            // btnAddPermission
             // 
-            this.button1.Location = new System.Drawing.Point(40, 138);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Add Form Permission";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddPermission.Location = new System.Drawing.Point(40, 138);
+            this.btnAddPermission.Name = "btnAddPermission";
+            this.btnAddPermission.Size = new System.Drawing.Size(170, 23);
+            this.btnAddPermission.TabIndex = 0;
+            this.btnAddPermission.Text = "Add Form Permission";
+            this.btnAddPermission.UseVisualStyleBackColor = true;
+            this.btnAddPermission.Click += new System.EventHandler(this.btnAddPermission_Click);
             // 
             // lbPermissionList
             // 
@@ -279,7 +280,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox gbAddPermission;
         private System.Windows.Forms.ComboBox cbFormName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddPermission;
         private System.Windows.Forms.Label lbPermissionList;
         private System.Windows.Forms.Label lbPermission;
         private System.Windows.Forms.CheckedListBox chkPermission;
