@@ -16,7 +16,7 @@ namespace CreditUnionFYP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAddUser());
+            Application.Run(new Log());
         }
     }
 }

@@ -44,15 +44,13 @@ namespace CreditUnionFYP
             drCommand = new SqlCommand("SELECT * FROM tblForm where active=1", DBClass.connection);
             da.SelectCommand = drCommand;
             da.Fill(ds);
-
+            this.AddColumns();
             cbFormName.DataSource = ds;
             cbFormName.ValueMember = "formId";
             cbFormName.DisplayMember = "formName";
             this.cbFormName.SelectedValueChanged += new System.EventHandler(this.cbFormName_SelectedValueChanged);
 
         }
-
-       
 
         private void cbFormName_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -106,8 +104,46 @@ namespace CreditUnionFYP
                 MessageBox.Show("Please add a permission");
             }
         }
-        public void AddPermissionToGridView() {
+        private void AddColumns()
+        {
+            DataGridViewTextBoxColumn idColumn =
+                new DataGridViewTextBoxColumn();
+            idColumn.Name = "formId";
+            idColumn.DataPropertyName = "Id";
+            idColumn.ReadOnly = true;
 
+            DataGridViewTextBoxColumn assignedToColumn =
+              new DataGridViewTextBoxColumn();
+            assignedToColumn.Name = "Permission";
+            assignedToColumn.DataPropertyName = "permissionName";
+            assignedToColumn.ReadOnly = true;
+
+            // Add a button column. 
+            DataGridViewButtonColumn buttonColumn =
+                new DataGridViewButtonColumn();
+            buttonColumn.HeaderText = "";
+            buttonColumn.Name = "btnMove";
+            buttonColumn.Text = "Remove";
+            buttonColumn.UseColumnTextForButtonValue = true;
+
+            dataGridView1.Columns.Add(idColumn);
+            dataGridView1.Columns.Add(assignedToColumn);
+            dataGridView1.Columns.Add(buttonColumn);
+
+            // Add a CellClick handler to handle clicks in the button column.
+            dataGridView1.CellClick +=
+                new DataGridViewCellEventHandler(dataGridView1_CellClick);
+        }
+        private void AddPermissionToGridView() {
+           
+            string[] row0 = {"29","Revolution 9"};
+            dataGridView1.Rows.Add(row0);
+           
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(e.ToString());
         }
     }
 }
