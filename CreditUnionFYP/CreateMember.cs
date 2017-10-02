@@ -91,6 +91,14 @@ namespace CreditUnionFYP
             btnGenerateAccount.Enabled = false;
             cbMaritalStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             rbMale.Checked = true;
+            txtMaidenName.Visible = false;lbMaiden.Visible = false;
+            lbMaritalStatus.Location = new Point(27,0);
+            cbMaritalStatus.Location = new Point(27, 0);
+            lbDateOfBirth.Location = new Point(27, 0);
+            dpBod.Location = new Point(27, 0);
+            lbNic.Location = new Point(27, 0);
+            txtNic.Location = new Point(27, 0);
+            grpDetails.Height = 218;
         }
 
         private void txtFirstName_MouseLeave(object sender, EventArgs e)
@@ -106,6 +114,31 @@ namespace CreditUnionFYP
         private void dpBod_MouseLeave(object sender, EventArgs e)
         {
             EnableGenerateAcc();
+        }
+
+        private void cbMaritalStatus_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if ((rbFemale.Checked) || cbMaritalStatus.SelectedText.Contains("Married"))
+            {
+                txtMaidenName.Visible = true; lbMaiden.Visible = true;
+                lbMaritalStatus.Location = new Point(27, 0);
+                cbMaritalStatus.Location = new Point(27, 0);
+                lbDateOfBirth.Location = new Point(27, 0);
+                dpBod.Location = new Point(27, 0);
+                lbNic.Location = new Point(27, 0);
+                txtNic.Location = new Point(27, 0);
+                grpDetails.Height = 249;
+            }
+            else {
+                txtMaidenName.Visible = false; lbMaiden.Visible = false;
+                lbMaritalStatus.Location = new Point(27, 0);
+                cbMaritalStatus.Location = new Point(27, 0);
+                lbDateOfBirth.Location = new Point(27, 0);
+                dpBod.Location = new Point(27, 0);
+                lbNic.Location = new Point(27, 0);
+                txtNic.Location = new Point(27, 0);
+                grpDetails.Height = 218;
+            }
         }
     }
 }

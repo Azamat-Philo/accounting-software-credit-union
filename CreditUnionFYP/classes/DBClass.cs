@@ -28,6 +28,19 @@ namespace CreditUnionFYP.classes
             }
         }
 
+        public static void DBClose()
+        {
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                LogFile.LogData("Database connection error", e.ToString(), 0);
+                connection.Close();
+            }
+        }
+
         public void updateSt(string strQuery)
         {
             SqlCommand drCommand = new SqlCommand(strQuery);
@@ -39,6 +52,7 @@ namespace CreditUnionFYP.classes
             SqlDataReader reader=null;
             try
             {
+                DBConnect();
                 drCommand = new SqlCommand(strQuery);
                 reader = drCommand.ExecuteReader();
                 reader.Read();

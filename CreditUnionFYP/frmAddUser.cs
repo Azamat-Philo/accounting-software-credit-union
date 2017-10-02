@@ -135,10 +135,37 @@ namespace CreditUnionFYP
                 new DataGridViewCellEventHandler(dataGridView1_CellClick);
         }
         private void AddPermissionToGridView() {
-           
-            string[] row0 = {"29","Revolution 9"};
-            dataGridView1.Rows.Add(row0);
-           
+            try
+            {
+                SqlCommand drCommand = null;
+                SqlDataReader reader = null;
+               
+                for (int i = 0; i < chkPermission.Items.Count; i++)
+                {
+                    if (chkPermission.GetItemChecked(i))
+                    {
+                        if (chkPermission.Items[i].GetType() == typeof(DataRowView))
+                        {
+                            DBClass.DBConnect();
+                            string permissionId = ((DataRowView)chkPermission.Items[i])["permissionId"].ToString();
+                            drCommand = new SqlCommand("SELECT f.formName, p.permissionName FROM tblPermission p INNER JOIN tblForm f ON p.formId = f.formId WHERE p.permissionId = " + Convert.ToInt32(permissionId), DBClass.connection);
+                            reader = drCommand.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                string[] row = { reader["formName"].ToString(), reader["permissionName"].ToString() };
+                                dataGridView1.Rows.Add(row);
+                            }
+                            DBClass.DBClose();
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex) {
+                LogFile.LogData("AddPermissionToGridView Function error", ex.ToString(), 0);
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
