@@ -29,11 +29,6 @@ namespace CreditUnionFYP
 
         }
 
-        private void txtNic_MouseLeave(object sender, EventArgs e)
-        {
-            EnableGenerateAcc();
-        }
-
         private void EnableGenerateAcc() {
             try
             {
@@ -92,53 +87,66 @@ namespace CreditUnionFYP
             cbMaritalStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             rbMale.Checked = true;
             txtMaidenName.Visible = false;lbMaiden.Visible = false;
-            lbMaritalStatus.Location = new Point(27,0);
-            cbMaritalStatus.Location = new Point(27, 0);
-            lbDateOfBirth.Location = new Point(27, 0);
-            dpBod.Location = new Point(27, 0);
-            lbNic.Location = new Point(27, 0);
-            txtNic.Location = new Point(27, 0);
+            lbMaritalStatus.Location = new Point(21, 122);
+            cbMaritalStatus.Location = new Point(106, 126);
+            lbDateOfBirth.Location = new Point(21, 153);
+            dpBod.Location = new Point(107, 153);
+            lbNic.Location = new Point(21, 186);
+            txtNic.Location = new Point(107, 186);
             grpDetails.Height = 218;
-        }
-
-        private void txtFirstName_MouseLeave(object sender, EventArgs e)
-        {
-            EnableGenerateAcc();
-        }
-
-        private void txtLastName_MouseLeave(object sender, EventArgs e)
-        {
-            EnableGenerateAcc();
-        }
-
-        private void dpBod_MouseLeave(object sender, EventArgs e)
-        {
-            EnableGenerateAcc();
         }
 
         private void cbMaritalStatus_SelectedValueChanged(object sender, EventArgs e)
         {
-            if ((rbFemale.Checked) || cbMaritalStatus.SelectedText.Contains("Married"))
+            if (rbFemale.Checked==true && cbMaritalStatus.SelectedValue.ToString()=="Married")
             {
                 txtMaidenName.Visible = true; lbMaiden.Visible = true;
-                lbMaritalStatus.Location = new Point(27, 0);
-                cbMaritalStatus.Location = new Point(27, 0);
-                lbDateOfBirth.Location = new Point(27, 0);
-                dpBod.Location = new Point(27, 0);
-                lbNic.Location = new Point(27, 0);
-                txtNic.Location = new Point(27, 0);
+                lbMaiden.Location = new Point(21, 126);
+                txtMaidenName.Location = new Point(106,122);
+                
+                lbMaritalStatus.Location = new Point(21, 153);
+                cbMaritalStatus.Location = new Point(107, 153);
+                lbDateOfBirth.Location = new Point(21, 186);
+                dpBod.Location = new Point(107, 186);
+                lbNic.Location = new Point(21, 216);
+                txtNic.Location = new Point(107, 216);
                 grpDetails.Height = 249;
             }
             else {
                 txtMaidenName.Visible = false; lbMaiden.Visible = false;
-                lbMaritalStatus.Location = new Point(27, 0);
-                cbMaritalStatus.Location = new Point(27, 0);
-                lbDateOfBirth.Location = new Point(27, 0);
-                dpBod.Location = new Point(27, 0);
-                lbNic.Location = new Point(27, 0);
-                txtNic.Location = new Point(27, 0);
+                lbMaritalStatus.Location = new Point(21, 122); 
+                cbMaritalStatus.Location = new Point(106, 126); 
+                lbDateOfBirth.Location = new Point(21, 153); 
+                dpBod.Location = new Point(107, 153); 
+                lbNic.Location = new Point(21, 186);
+                txtNic.Location = new Point(107, 186);
                 grpDetails.Height = 218;
             }
+        }
+
+        private void txtFirstName_Leave(object sender, EventArgs e)
+        {
+            EnableGenerateAcc();
+        }
+
+        private void txtLastName_Leave(object sender, EventArgs e)
+        {
+            EnableGenerateAcc();
+        }
+
+        private void txtMaidenName_Leave(object sender, EventArgs e)
+        {
+            EnableGenerateAcc();
+        }
+
+        private void txtNic_Leave(object sender, EventArgs e)
+        {
+            EnableGenerateAcc();
+        }
+
+        private void dpBod_Leave(object sender, EventArgs e)
+        {
+            EnableGenerateAcc();
         }
     }
 }

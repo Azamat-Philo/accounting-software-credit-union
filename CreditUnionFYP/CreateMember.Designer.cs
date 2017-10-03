@@ -31,7 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateMember));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpDetails = new System.Windows.Forms.GroupBox();
+            this.txtMaidenName = new System.Windows.Forms.TextBox();
+            this.lbMaiden = new System.Windows.Forms.Label();
             this.lbAccountType = new System.Windows.Forms.Label();
             this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.txtAccountNumber = new System.Windows.Forms.TextBox();
@@ -57,9 +60,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lbAddress = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbMaiden = new System.Windows.Forms.Label();
-            this.txtMaidenName = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpDetails.SuspendLayout();
@@ -89,6 +89,15 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(-1, 261);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(713, 179);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
             // grpDetails
             // 
             this.grpDetails.Controls.Add(this.txtMaidenName);
@@ -116,6 +125,23 @@
             this.grpDetails.TabIndex = 5;
             this.grpDetails.TabStop = false;
             this.grpDetails.Text = "Personal Details";
+            // 
+            // txtMaidenName
+            // 
+            this.txtMaidenName.Location = new System.Drawing.Point(106, 122);
+            this.txtMaidenName.Name = "txtMaidenName";
+            this.txtMaidenName.Size = new System.Drawing.Size(134, 20);
+            this.txtMaidenName.TabIndex = 20;
+            this.txtMaidenName.Leave += new System.EventHandler(this.txtMaidenName_Leave);
+            // 
+            // lbMaiden
+            // 
+            this.lbMaiden.AutoSize = true;
+            this.lbMaiden.Location = new System.Drawing.Point(21, 126);
+            this.lbMaiden.Name = "lbMaiden";
+            this.lbMaiden.Size = new System.Drawing.Size(73, 13);
+            this.lbMaiden.TabIndex = 19;
+            this.lbMaiden.Text = "Maiden Name";
             // 
             // lbAccountType
             // 
@@ -157,7 +183,7 @@
             this.txtNic.Name = "txtNic";
             this.txtNic.Size = new System.Drawing.Size(154, 20);
             this.txtNic.TabIndex = 14;
-            this.txtNic.MouseLeave += new System.EventHandler(this.txtNic_MouseLeave);
+            this.txtNic.Leave += new System.EventHandler(this.txtNic_Leave);
             // 
             // lbNic
             // 
@@ -197,7 +223,7 @@
             this.dpBod.Name = "dpBod";
             this.dpBod.Size = new System.Drawing.Size(94, 20);
             this.dpBod.TabIndex = 11;
-            this.dpBod.MouseLeave += new System.EventHandler(this.dpBod_MouseLeave);
+            this.dpBod.Leave += new System.EventHandler(this.dpBod_Leave);
             // 
             // lbMaritalStatus
             // 
@@ -214,7 +240,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(134, 20);
             this.txtLastName.TabIndex = 6;
-            this.txtLastName.MouseLeave += new System.EventHandler(this.txtLastName_MouseLeave);
+            this.txtLastName.Leave += new System.EventHandler(this.txtLastName_Leave);
             // 
             // txtFirstName
             // 
@@ -222,7 +248,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(134, 20);
             this.txtFirstName.TabIndex = 4;
-            this.txtFirstName.MouseLeave += new System.EventHandler(this.txtFirstName_MouseLeave);
+            this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
             // lbLastName
             // 
@@ -288,7 +314,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(653, 388);
+            this.tabPage2.Size = new System.Drawing.Size(726, 446);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -353,31 +379,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(641, 198);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(7, 261);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(713, 179);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // lbMaiden
-            // 
-            this.lbMaiden.AutoSize = true;
-            this.lbMaiden.Location = new System.Drawing.Point(21, 126);
-            this.lbMaiden.Name = "lbMaiden";
-            this.lbMaiden.Size = new System.Drawing.Size(73, 13);
-            this.lbMaiden.TabIndex = 19;
-            this.lbMaiden.Text = "Maiden Name";
-            // 
-            // txtMaidenName
-            // 
-            this.txtMaidenName.Location = new System.Drawing.Point(106, 122);
-            this.txtMaidenName.Name = "txtMaidenName";
-            this.txtMaidenName.Size = new System.Drawing.Size(134, 20);
-            this.txtMaidenName.TabIndex = 20;
             // 
             // CreateMember
             // 
