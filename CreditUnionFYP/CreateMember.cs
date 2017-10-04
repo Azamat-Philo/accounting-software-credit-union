@@ -74,11 +74,13 @@ namespace CreditUnionFYP
         private void rbMale_Click(object sender, EventArgs e)
         {
             CheckValid(1);
+            cbMaritalStatus_SelectedValueChanged(sender,e);
         }
 
         private void rbFemale_Click(object sender, EventArgs e)
         {
             CheckValid(2);
+            cbMaritalStatus_SelectedValueChanged(sender, e);
         }
 
         private void CreateMember_Load(object sender, EventArgs e)
@@ -88,7 +90,7 @@ namespace CreditUnionFYP
             rbMale.Checked = true;
             txtMaidenName.Visible = false;lbMaiden.Visible = false;
             lbMaritalStatus.Location = new Point(21, 122);
-            cbMaritalStatus.Location = new Point(106, 126);
+            cbMaritalStatus.Location = new Point(106, 122);
             lbDateOfBirth.Location = new Point(21, 153);
             dpBod.Location = new Point(107, 153);
             lbNic.Location = new Point(21, 186);
@@ -98,12 +100,11 @@ namespace CreditUnionFYP
 
         private void cbMaritalStatus_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (rbFemale.Checked==true && cbMaritalStatus.SelectedValue.ToString()=="Married")
+            if (rbFemale.Checked==true && cbMaritalStatus.SelectedItem.ToString()=="Married")
             {
                 txtMaidenName.Visible = true; lbMaiden.Visible = true;
                 lbMaiden.Location = new Point(21, 126);
                 txtMaidenName.Location = new Point(106,122);
-                
                 lbMaritalStatus.Location = new Point(21, 153);
                 cbMaritalStatus.Location = new Point(107, 153);
                 lbDateOfBirth.Location = new Point(21, 186);
@@ -115,7 +116,7 @@ namespace CreditUnionFYP
             else {
                 txtMaidenName.Visible = false; lbMaiden.Visible = false;
                 lbMaritalStatus.Location = new Point(21, 122); 
-                cbMaritalStatus.Location = new Point(106, 126); 
+                cbMaritalStatus.Location = new Point(106, 122); 
                 lbDateOfBirth.Location = new Point(21, 153); 
                 dpBod.Location = new Point(107, 153); 
                 lbNic.Location = new Point(21, 186);

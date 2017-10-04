@@ -196,6 +196,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "DashBoardMDI";
             this.Text = "DashBoardMDI";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

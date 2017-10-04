@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateMember));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpAddress = new System.Windows.Forms.GroupBox();
             this.grpDetails = new System.Windows.Forms.GroupBox();
             this.txtMaidenName = new System.Windows.Forms.TextBox();
             this.lbMaiden = new System.Windows.Forms.Label();
@@ -52,51 +52,59 @@
             this.lbFirstName = new System.Windows.Forms.Label();
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.rbFemale = new System.Windows.Forms.RadioButton();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lbDistrict = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lbPostCode = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lbAddress = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grpEmployer = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rbActive = new System.Windows.Forms.RadioButton();
+            this.rbInactive = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.grpAddress.SuspendLayout();
             this.grpDetails.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grpEmployer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(734, 472);
+            this.tabControl1.Size = new System.Drawing.Size(734, 514);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.grpEmployer);
+            this.tabPage1.Controls.Add(this.grpAddress);
             this.tabPage1.Controls.Add(this.grpDetails);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(726, 446);
+            this.tabPage1.Size = new System.Drawing.Size(726, 488);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // grpAddress
             // 
-            this.groupBox1.Location = new System.Drawing.Point(-1, 261);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(713, 179);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.grpAddress.Controls.Add(this.comboBox1);
+            this.grpAddress.Controls.Add(this.lbDistrict);
+            this.grpAddress.Controls.Add(this.textBox2);
+            this.grpAddress.Controls.Add(this.lbPostCode);
+            this.grpAddress.Controls.Add(this.textBox1);
+            this.grpAddress.Controls.Add(this.lbAddress);
+            this.grpAddress.Location = new System.Drawing.Point(7, 261);
+            this.grpAddress.Name = "grpAddress";
+            this.grpAddress.Size = new System.Drawing.Size(713, 92);
+            this.grpAddress.TabIndex = 6;
+            this.grpAddress.TabStop = false;
+            this.grpAddress.Text = "Address";
             // 
             // grpDetails
             // 
@@ -128,7 +136,7 @@
             // 
             // txtMaidenName
             // 
-            this.txtMaidenName.Location = new System.Drawing.Point(106, 122);
+            this.txtMaidenName.Location = new System.Drawing.Point(107, 122);
             this.txtMaidenName.Name = "txtMaidenName";
             this.txtMaidenName.Size = new System.Drawing.Size(134, 20);
             this.txtMaidenName.TabIndex = 20;
@@ -200,7 +208,7 @@
             this.cbMaritalStatus.Items.AddRange(new object[] {
             "Single",
             "Married"});
-            this.cbMaritalStatus.Location = new System.Drawing.Point(107, 153);
+            this.cbMaritalStatus.Location = new System.Drawing.Point(107, 151);
             this.cbMaritalStatus.Name = "cbMaritalStatus";
             this.cbMaritalStatus.Size = new System.Drawing.Size(79, 21);
             this.cbMaritalStatus.TabIndex = 12;
@@ -302,89 +310,104 @@
             this.rbFemale.UseVisualStyleBackColor = true;
             this.rbFemale.Click += new System.EventHandler(this.rbFemale_Click);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.comboBox1);
-            this.tabPage2.Controls.Add(this.lbDistrict);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.lbPostCode);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.lbAddress);
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(726, 446);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(101, 134);
+            this.comboBox1.Location = new System.Drawing.Point(442, 50);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
+            this.comboBox1.Size = new System.Drawing.Size(188, 21);
+            this.comboBox1.TabIndex = 12;
             // 
             // lbDistrict
             // 
             this.lbDistrict.AutoSize = true;
-            this.lbDistrict.Location = new System.Drawing.Point(24, 134);
+            this.lbDistrict.Location = new System.Drawing.Point(370, 50);
             this.lbDistrict.Name = "lbDistrict";
             this.lbDistrict.Size = new System.Drawing.Size(48, 13);
-            this.lbDistrict.TabIndex = 5;
+            this.lbDistrict.TabIndex = 11;
             this.lbDistrict.Text = "District : ";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(101, 93);
+            this.textBox2.Location = new System.Drawing.Point(442, 19);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBox2.Size = new System.Drawing.Size(188, 20);
+            this.textBox2.TabIndex = 10;
             // 
             // lbPostCode
             // 
             this.lbPostCode.AutoSize = true;
-            this.lbPostCode.Location = new System.Drawing.Point(24, 96);
+            this.lbPostCode.Location = new System.Drawing.Point(370, 22);
             this.lbPostCode.Name = "lbPostCode";
             this.lbPostCode.Size = new System.Drawing.Size(62, 13);
-            this.lbPostCode.TabIndex = 3;
+            this.lbPostCode.TabIndex = 9;
             this.lbPostCode.Text = "Post Code :";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 17);
+            this.textBox1.Location = new System.Drawing.Point(106, 19);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 52);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.Size = new System.Drawing.Size(188, 52);
+            this.textBox1.TabIndex = 8;
             // 
             // lbAddress
             // 
             this.lbAddress.AutoSize = true;
-            this.lbAddress.Location = new System.Drawing.Point(24, 40);
+            this.lbAddress.Location = new System.Drawing.Point(20, 37);
             this.lbAddress.Name = "lbAddress";
             this.lbAddress.Size = new System.Drawing.Size(51, 13);
-            this.lbAddress.TabIndex = 1;
+            this.lbAddress.TabIndex = 7;
             this.lbAddress.Text = "Address :";
             // 
-            // dataGridView1
+            // grpEmployer
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 184);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(641, 198);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.grpEmployer.Controls.Add(this.rbInactive);
+            this.grpEmployer.Controls.Add(this.rbActive);
+            this.grpEmployer.Controls.Add(this.label1);
+            this.grpEmployer.Location = new System.Drawing.Point(7, 360);
+            this.grpEmployer.Name = "grpEmployer";
+            this.grpEmployer.Size = new System.Drawing.Size(713, 122);
+            this.grpEmployer.TabIndex = 7;
+            this.grpEmployer.TabStop = false;
+            this.grpEmployer.Text = "Employment Details";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Status:";
+            // 
+            // rbActive
+            // 
+            this.rbActive.AutoSize = true;
+            this.rbActive.Location = new System.Drawing.Point(100, 27);
+            this.rbActive.Name = "rbActive";
+            this.rbActive.Size = new System.Drawing.Size(55, 17);
+            this.rbActive.TabIndex = 1;
+            this.rbActive.TabStop = true;
+            this.rbActive.Text = "Active";
+            this.rbActive.UseVisualStyleBackColor = true;
+            // 
+            // rbInactive
+            // 
+            this.rbInactive.AutoSize = true;
+            this.rbInactive.Location = new System.Drawing.Point(160, 27);
+            this.rbInactive.Name = "rbInactive";
+            this.rbInactive.Size = new System.Drawing.Size(63, 17);
+            this.rbInactive.TabIndex = 2;
+            this.rbInactive.TabStop = true;
+            this.rbInactive.Text = "Inactive";
+            this.rbInactive.UseVisualStyleBackColor = true;
             // 
             // CreateMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 496);
+            this.ClientSize = new System.Drawing.Size(758, 538);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateMember";
@@ -393,11 +416,12 @@
             this.Load += new System.EventHandler(this.CreateMember_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.grpAddress.ResumeLayout(false);
+            this.grpAddress.PerformLayout();
             this.grpDetails.ResumeLayout(false);
             this.grpDetails.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpEmployer.ResumeLayout(false);
+            this.grpEmployer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -406,11 +430,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label lbPostCode;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lbAddress;
         private System.Windows.Forms.GroupBox grpDetails;
         private System.Windows.Forms.Label lbAccountType;
         private System.Windows.Forms.ComboBox cbAccountType;
@@ -429,11 +448,18 @@
         private System.Windows.Forms.Label lbFirstName;
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.RadioButton rbFemale;
+        private System.Windows.Forms.GroupBox grpAddress;
+        private System.Windows.Forms.TextBox txtMaidenName;
+        private System.Windows.Forms.Label lbMaiden;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lbDistrict;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtMaidenName;
-        private System.Windows.Forms.Label lbMaiden;
+        private System.Windows.Forms.Label lbPostCode;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbAddress;
+        private System.Windows.Forms.GroupBox grpEmployer;
+        private System.Windows.Forms.RadioButton rbInactive;
+        private System.Windows.Forms.RadioButton rbActive;
+        private System.Windows.Forms.Label label1;
     }
 }
