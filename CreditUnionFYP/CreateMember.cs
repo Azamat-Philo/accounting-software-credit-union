@@ -96,11 +96,14 @@ namespace CreditUnionFYP
             lbNic.Location = new Point(21, 186);
             txtNic.Location = new Point(107, 186);
             grpDetails.Height = 218;
+            rbActive.Checked = true;
+
+
         }
 
         private void cbMaritalStatus_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (rbFemale.Checked==true && cbMaritalStatus.SelectedItem.ToString()=="Married")
+            if (rbFemale.Checked==true && cbMaritalStatus.SelectedItem != null && cbMaritalStatus.SelectedItem.ToString() == "Married")
             {
                 txtMaidenName.Visible = true; lbMaiden.Visible = true;
                 lbMaiden.Location = new Point(21, 126);
@@ -148,6 +151,29 @@ namespace CreditUnionFYP
         private void dpBod_Leave(object sender, EventArgs e)
         {
             EnableGenerateAcc();
+        }
+
+        private void rbActive_Click(object sender, EventArgs e)
+        {
+            if (rbActive.Checked)
+            {
+                plActive.Visible = true;
+            }
+            else {
+                plActive.Visible = false;
+            }
+        }
+
+        private void rbInactive_Click(object sender, EventArgs e)
+        {
+            if (!rbActive.Checked)
+            {
+                plActive.Visible = false;
+            }
+            else
+            {
+                plActive.Visible = true;
+            }
         }
     }
 }
