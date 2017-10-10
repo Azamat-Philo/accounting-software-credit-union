@@ -8,8 +8,6 @@ namespace CreditUnionFYP.classes
 {
     class Member
     {
-<<<<<<< HEAD
-=======
         public string fName;
         public string lName;
         public byte gender;
@@ -34,7 +32,5 @@ namespace CreditUnionFYP.classes
             dob = _dob;
             entryDate = _entryDate;
         }
-
->>>>>>> master
     }
 }
