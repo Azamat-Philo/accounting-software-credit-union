@@ -15,7 +15,7 @@ namespace CreditUnionFYP.classes
 
         public Boolean inputTextValidation(List<object> ts){
             bool result=true;
-            int i = 0;
+            byte i = 0;
             try
             {
                 int count = ts.Count;
