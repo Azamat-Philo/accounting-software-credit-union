@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreditUnionFYP.classes
+namespace Member
 {
-    class Member
+    public class Member
     {
         public string fName;
         public string lName;
@@ -21,7 +21,7 @@ namespace CreditUnionFYP.classes
         public byte paidEntry;
 
 
-        public Member(string _fname, string _lname, byte _gender, byte _maritalStatus, string _maidenName, string _nic, DateTime _dob,DateTime _entryDate)
+        public Member(string _fname, string _lname, byte _gender, byte _maritalStatus, string _maidenName, string _nic, DateTime _dob, DateTime _entryDate)
         {
             fName = _fname;
             lName = _lname;

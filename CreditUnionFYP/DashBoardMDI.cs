@@ -111,5 +111,16 @@ namespace CreditUnionFYP
             addUserForm.MdiParent = this;
             addUserForm.Show();
         }
+
+        private void DashBoardMDI_Load(object sender, EventArgs e)
+        {
+            actualdate.Text = DateTime.Now.ToLongDateString();
+            timer1.Tick += timer1_Tick;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
+        }
     }
 }

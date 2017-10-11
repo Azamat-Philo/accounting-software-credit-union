@@ -15,7 +15,6 @@ namespace CreditUnionFYP
     public partial class frmAddUser : Form
     {
         private ValidationClass valCal2 = new ValidationClass();
-        DBClass r = new DBClass();
 
         public frmAddUser()
         {
@@ -37,11 +36,11 @@ namespace CreditUnionFYP
         private void frmAddUser_Load(object sender, EventArgs e)
         {
             this.cbFormName.SelectedValueChanged -= new System.EventHandler(this.cbFormName_SelectedValueChanged);
-            DBClass.DBConnect();
+            DataBase.DBClass.DBConnect();
             SqlCommand drCommand = null;
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable ds = new DataTable();
-            drCommand = new SqlCommand("SELECT * FROM tblForm where active=1", DBClass.connection);
+            drCommand = new SqlCommand("SELECT * FROM tblForm where active=1", DataBase.DBClass.connection);
             da.SelectCommand = drCommand;
             da.Fill(ds);
             this.AddColumns();
@@ -55,9 +54,9 @@ namespace CreditUnionFYP
         private void cbFormName_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbFormName.SelectedIndex != -1) {
-                DBClass.DBConnect();
+                DataBase.DBClass.DBConnect();
                 SqlCommand drCommand = null;
-                drCommand = new SqlCommand("SELECT * FROM tblPermission where formId="+ cbFormName.SelectedValue + " and active=1 and uDelete=0", DBClass.connection);
+                drCommand = new SqlCommand("SELECT * FROM tblPermission where formId="+ cbFormName.SelectedValue + " and active=1 and uDelete=0", DataBase.DBClass.connection);
                 SqlDataAdapter da = new SqlDataAdapter(drCommand);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -89,7 +88,7 @@ namespace CreditUnionFYP
                 }
             }
             catch (Exception ex) {
-                LogFile.LogData("Generate login for user", ex.ToString(), 0);
+                LogManagement.LogFile.LogData("Generate login for user", ex.ToString(), 0);
             }
            
         }
@@ -146,9 +145,9 @@ namespace CreditUnionFYP
                     {
                         if (chkPermission.Items[i].GetType() == typeof(DataRowView))
                         {
-                            DBClass.DBConnect();
+                            DataBase.DBClass.DBConnect();
                             string permissionId = ((DataRowView)chkPermission.Items[i])["permissionId"].ToString();
-                            drCommand = new SqlCommand("SELECT f.formName, p.permissionName FROM tblPermission p INNER JOIN tblForm f ON p.formId = f.formId WHERE p.permissionId = " + Convert.ToInt32(permissionId), DBClass.connection);
+                            drCommand = new SqlCommand("SELECT f.formName, p.permissionName FROM tblPermission p INNER JOIN tblForm f ON p.formId = f.formId WHERE p.permissionId = " + Convert.ToInt32(permissionId), DataBase.DBClass.connection);
                             reader = drCommand.ExecuteReader();
                             if (reader.HasRows)
                             {
@@ -156,7 +155,7 @@ namespace CreditUnionFYP
                                 string[] row = { reader["formName"].ToString(), reader["permissionName"].ToString() };
                                 dataGridView1.Rows.Add(row);
                             }
-                            DBClass.DBClose();
+                           DataBase.DBClass.DBClose();
                         }
 
 
@@ -164,7 +163,7 @@ namespace CreditUnionFYP
                 }
             }
             catch (Exception ex) {
-                LogFile.LogData("AddPermissionToGridView Function error", ex.ToString(), 0);
+                LogManagement.LogFile.LogData("AddPermissionToGridView Function error", ex.ToString(), 0);
             }
         }
 

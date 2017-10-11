@@ -8,7 +8,7 @@ namespace CreditUnionFYP
 {
     public class User
     {
-        private int userId;
+        private byte userId;
         public string userName;
         private string salt;
         private string pwd;

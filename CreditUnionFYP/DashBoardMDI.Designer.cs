@@ -45,11 +45,13 @@
             this.systemAdministratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createUserToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.actualdate = new System.Windows.Forms.ToolStripStatusLabel();
+            this.clock = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
-            this.statusStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -156,31 +158,48 @@
             // createUserToolStripMenuItem
             // 
             this.createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            this.createUserToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.createUserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.createUserToolStripMenuItem.Text = "User List";
             // 
             // createUserToolStripMenuItem1
             // 
             this.createUserToolStripMenuItem1.Name = "createUserToolStripMenuItem1";
-            this.createUserToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.createUserToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.createUserToolStripMenuItem1.Text = "Create User";
             this.createUserToolStripMenuItem1.Click += new System.EventHandler(this.createUserToolStripMenuItem1_Click);
             // 
-            // statusStrip
+            // timer1
             // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 473);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1110, 22);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "StatusStrip";
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // toolStripStatusLabel
+            // statusStrip1
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel.Text = "Status";
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.actualdate,
+            this.clock});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 473);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1110, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // actualdate
+            // 
+            this.actualdate.LinkColor = System.Drawing.Color.Black;
+            this.actualdate.Name = "actualdate";
+            this.actualdate.Size = new System.Drawing.Size(118, 17);
+            this.actualdate.Text = "toolStripStatusLabel1";
+            this.actualdate.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.actualdate.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // clock
+            // 
+            this.clock.LinkColor = System.Drawing.Color.Black;
+            this.clock.Name = "clock";
+            this.clock.Size = new System.Drawing.Size(118, 17);
+            this.clock.Text = "toolStripStatusLabel1";
+            this.clock.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // DashBoardMDI
             // 
@@ -189,7 +208,7 @@
             this.AutoSize = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1110, 495);
-            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -197,10 +216,11 @@
             this.Name = "DashBoardMDI";
             this.Text = "DashBoardMDI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.DashBoardMDI_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,8 +229,6 @@
 
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem membersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listOfMembersToolStripMenuItem;
@@ -226,6 +244,10 @@
         private System.Windows.Forms.ToolStripMenuItem systemAdministratorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createUserToolStripMenuItem1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel actualdate;
+        private System.Windows.Forms.ToolStripStatusLabel clock;
     }
 }
 

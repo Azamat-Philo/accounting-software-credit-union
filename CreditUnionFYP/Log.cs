@@ -48,7 +48,7 @@ namespace CreditUnionFYP
                 {
                     string pwd = txtPwd.Text.Trim().ToString();
                     string userName = txtLogin.Text.Trim().ToString();
-                    DBClass.DBConnect();
+                    DataBase.DBClass.DBConnect();
                     string selectSt = "SELECT TOP 1 WHERE userName=" + userName + " and pwd=";
                     //SqlDataReader drUser = new SqlDataReader();
                     
@@ -59,7 +59,7 @@ namespace CreditUnionFYP
             }
             catch (Exception ex)
             {
-                LogFile.LogData("Login connection error", ex.ToString(), 0);
+                LogManagement.LogFile.LogData("Login connection error", ex.ToString(), 0);
             }
         }
     }

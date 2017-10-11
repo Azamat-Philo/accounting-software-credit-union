@@ -7,23 +7,25 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
 
-namespace CreditUnionFYP.classes
+namespace DataBase
 {
     public class DBClass
     {
         public static SqlConnection connection;
         private static string strConString;
-        public static void DBConnect(){
-            
+        public static void DBConnect()
+        {
+
             strConString = System.Configuration.ConfigurationManager.ConnectionStrings["myConnection"].ToString();
             try
             {
                 connection = new SqlConnection(strConString);
                 connection.Open();
-                Console.Write("Connect"); 
+                Console.Write("Connect");
             }
-            catch (Exception e) {
-                LogFile.LogData("Database connection error", e.ToString(), 0);
+            catch (Exception e)
+            {
+                LogManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
                 connection.Close();
             }
         }
@@ -36,7 +38,7 @@ namespace CreditUnionFYP.classes
             }
             catch (Exception e)
             {
-                LogFile.LogData("Database connection error", e.ToString(), 0);
+                LogManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
                 connection.Close();
             }
         }
@@ -48,8 +50,8 @@ namespace CreditUnionFYP.classes
 
         public SqlDataReader selectOneRow(string strQuery)
         {
-            SqlCommand drCommand=null;
-            SqlDataReader reader=null;
+            SqlCommand drCommand = null;
+            SqlDataReader reader = null;
             try
             {
                 DBConnect();
@@ -59,7 +61,7 @@ namespace CreditUnionFYP.classes
             }
             catch (Exception ex)
             {
-                LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
+                LogManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
             }
             if (reader.HasRows)
                 return reader;
@@ -68,7 +70,8 @@ namespace CreditUnionFYP.classes
 
         }
 
-        public SqlDataReader selectMultipleRow(string strQuery) {
+        public SqlDataReader selectMultipleRow(string strQuery)
+        {
 
 
             SqlCommand drCommand = null;
@@ -81,7 +84,7 @@ namespace CreditUnionFYP.classes
             }
             catch (Exception ex)
             {
-                LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
+                LogManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
             }
             if (reader.HasRows)
                 return reader;
@@ -95,6 +98,5 @@ namespace CreditUnionFYP.classes
         {
             SqlCommand drCommand = new SqlCommand(strQuery);
         }
-
     }
 }

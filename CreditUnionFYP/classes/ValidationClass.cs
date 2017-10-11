@@ -35,7 +35,7 @@ namespace CreditUnionFYP.classes
                 }
             }
             catch (Exception ex) {
-                LogFile.LogData("inputTextValidation Error", ex.ToString(), 0); 
+                LogManagement.LogFile.LogData("inputTextValidation Error", ex.ToString(), 0); 
                 result=false;
             }
             return result;
@@ -54,7 +54,7 @@ namespace CreditUnionFYP.classes
 
             }
             catch (Exception ex) {
-                LogFile.LogData("checkBoxListValidation Error", ex.ToString(), 0);
+                LogManagement.LogFile.LogData("checkBoxListValidation Error", ex.ToString(), 0);
                 result = false;
             }
             return result;

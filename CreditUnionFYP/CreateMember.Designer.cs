@@ -48,6 +48,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lbAddress = new System.Windows.Forms.Label();
             this.grpDetails = new System.Windows.Forms.GroupBox();
+            this.txtShares = new System.Windows.Forms.TextBox();
+            this.lbShare = new System.Windows.Forms.Label();
+            this.chkPayEntryFee = new System.Windows.Forms.CheckBox();
             this.txtMaidenName = new System.Windows.Forms.TextBox();
             this.lbMaiden = new System.Windows.Forms.Label();
             this.lbAccountType = new System.Windows.Forms.Label();
@@ -68,17 +71,23 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.uploadDialog1 = new CreditUnionFYP.usercontrol.UploadDialog();
             this.grbBeneficiary = new System.Windows.Forms.GroupBox();
-            this.txtBenFirstName = new System.Windows.Forms.TextBox();
-            this.lbBenFirstName = new System.Windows.Forms.Label();
-            this.lbBenLastName = new System.Windows.Forms.Label();
-            this.txtBenLastName = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lbBenNic = new System.Windows.Forms.Label();
             this.txtBenNic = new System.Windows.Forms.TextBox();
-            this.chkPayEntryFee = new System.Windows.Forms.CheckBox();
-            this.lbShare = new System.Windows.Forms.Label();
-            this.txtShares = new System.Windows.Forms.TextBox();
+            this.lbBenNic = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtBenLastName = new System.Windows.Forms.TextBox();
+            this.lbBenLastName = new System.Windows.Forms.Label();
+            this.lbBenFirstName = new System.Windows.Forms.Label();
+            this.txtBenFirstName = new System.Windows.Forms.TextBox();
+            this.grpMemberDocument = new System.Windows.Forms.GroupBox();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.txtDocumentCategory = new System.Windows.Forms.TextBox();
+            this.lbCommentBeneficiary = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnAddBeneficiary = new System.Windows.Forms.Button();
+            this.lbDocumentCategory = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEmployer.SuspendLayout();
@@ -88,6 +97,8 @@
             this.tabPage2.SuspendLayout();
             this.grbBeneficiary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grpMemberDocument.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -300,6 +311,32 @@
             this.grpDetails.TabStop = false;
             this.grpDetails.Text = "Personal Details";
             // 
+            // txtShares
+            // 
+            this.txtShares.Location = new System.Drawing.Point(426, 155);
+            this.txtShares.Name = "txtShares";
+            this.txtShares.Size = new System.Drawing.Size(100, 20);
+            this.txtShares.TabIndex = 24;
+            // 
+            // lbShare
+            // 
+            this.lbShare.AutoSize = true;
+            this.lbShare.Location = new System.Drawing.Point(377, 158);
+            this.lbShare.Name = "lbShare";
+            this.lbShare.Size = new System.Drawing.Size(43, 13);
+            this.lbShare.TabIndex = 23;
+            this.lbShare.Text = "Shares:";
+            // 
+            // chkPayEntryFee
+            // 
+            this.chkPayEntryFee.AutoSize = true;
+            this.chkPayEntryFee.Location = new System.Drawing.Point(377, 126);
+            this.chkPayEntryFee.Name = "chkPayEntryFee";
+            this.chkPayEntryFee.Size = new System.Drawing.Size(92, 17);
+            this.chkPayEntryFee.TabIndex = 22;
+            this.chkPayEntryFee.Text = "Pay Entry Fee";
+            this.chkPayEntryFee.UseVisualStyleBackColor = true;
+            // 
             // txtMaidenName
             // 
             this.txtMaidenName.Location = new System.Drawing.Point(107, 122);
@@ -478,6 +515,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.grpMemberDocument);
             this.tabPage2.Controls.Add(this.grbBeneficiary);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -487,37 +525,62 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // uploadDialog1
+            // 
+            this.uploadDialog1.Location = new System.Drawing.Point(287, 92);
+            this.uploadDialog1.Name = "uploadDialog1";
+            this.uploadDialog1.Size = new System.Drawing.Size(355, 54);
+            this.uploadDialog1.TabIndex = 1;
+            // 
             // grbBeneficiary
             // 
+            this.grbBeneficiary.Controls.Add(this.btnAddBeneficiary);
+            this.grbBeneficiary.Controls.Add(this.textBox3);
+            this.grbBeneficiary.Controls.Add(this.lbCommentBeneficiary);
+            this.grbBeneficiary.Controls.Add(this.dataGridView1);
             this.grbBeneficiary.Controls.Add(this.txtBenNic);
             this.grbBeneficiary.Controls.Add(this.lbBenNic);
-            this.grbBeneficiary.Controls.Add(this.dataGridView1);
             this.grbBeneficiary.Controls.Add(this.txtBenLastName);
             this.grbBeneficiary.Controls.Add(this.lbBenLastName);
             this.grbBeneficiary.Controls.Add(this.lbBenFirstName);
             this.grbBeneficiary.Controls.Add(this.txtBenFirstName);
             this.grbBeneficiary.Location = new System.Drawing.Point(6, 6);
             this.grbBeneficiary.Name = "grbBeneficiary";
-            this.grbBeneficiary.Size = new System.Drawing.Size(649, 155);
+            this.grbBeneficiary.Size = new System.Drawing.Size(649, 270);
             this.grbBeneficiary.TabIndex = 0;
             this.grbBeneficiary.TabStop = false;
             this.grbBeneficiary.Text = "Beneficiary Details";
             // 
-            // txtBenFirstName
+            // txtBenNic
             // 
-            this.txtBenFirstName.Location = new System.Drawing.Point(106, 27);
-            this.txtBenFirstName.Name = "txtBenFirstName";
-            this.txtBenFirstName.Size = new System.Drawing.Size(124, 20);
-            this.txtBenFirstName.TabIndex = 0;
+            this.txtBenNic.Location = new System.Drawing.Point(106, 85);
+            this.txtBenNic.Name = "txtBenNic";
+            this.txtBenNic.Size = new System.Drawing.Size(155, 20);
+            this.txtBenNic.TabIndex = 6;
             // 
-            // lbBenFirstName
+            // lbBenNic
             // 
-            this.lbBenFirstName.AutoSize = true;
-            this.lbBenFirstName.Location = new System.Drawing.Point(26, 30);
-            this.lbBenFirstName.Name = "lbBenFirstName";
-            this.lbBenFirstName.Size = new System.Drawing.Size(60, 13);
-            this.lbBenFirstName.TabIndex = 1;
-            this.lbBenFirstName.Text = "First Name:";
+            this.lbBenNic.AutoSize = true;
+            this.lbBenNic.Location = new System.Drawing.Point(25, 88);
+            this.lbBenNic.Name = "lbBenNic";
+            this.lbBenNic.Size = new System.Drawing.Size(28, 13);
+            this.lbBenNic.TabIndex = 5;
+            this.lbBenNic.Text = "NIC:";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(29, 149);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(576, 90);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // txtBenLastName
+            // 
+            this.txtBenLastName.Location = new System.Drawing.Point(106, 57);
+            this.txtBenLastName.Name = "txtBenLastName";
+            this.txtBenLastName.Size = new System.Drawing.Size(155, 20);
+            this.txtBenLastName.TabIndex = 3;
             // 
             // lbBenLastName
             // 
@@ -528,62 +591,94 @@
             this.lbBenLastName.TabIndex = 2;
             this.lbBenLastName.Text = "Last Name:";
             // 
-            // txtBenLastName
+            // lbBenFirstName
             // 
-            this.txtBenLastName.Location = new System.Drawing.Point(106, 57);
-            this.txtBenLastName.Name = "txtBenLastName";
-            this.txtBenLastName.Size = new System.Drawing.Size(124, 20);
-            this.txtBenLastName.TabIndex = 3;
+            this.lbBenFirstName.AutoSize = true;
+            this.lbBenFirstName.Location = new System.Drawing.Point(26, 30);
+            this.lbBenFirstName.Name = "lbBenFirstName";
+            this.lbBenFirstName.Size = new System.Drawing.Size(60, 13);
+            this.lbBenFirstName.TabIndex = 1;
+            this.lbBenFirstName.Text = "First Name:";
             // 
-            // dataGridView1
+            // txtBenFirstName
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(269, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(351, 90);
-            this.dataGridView1.TabIndex = 4;
+            this.txtBenFirstName.Location = new System.Drawing.Point(106, 27);
+            this.txtBenFirstName.Name = "txtBenFirstName";
+            this.txtBenFirstName.Size = new System.Drawing.Size(155, 20);
+            this.txtBenFirstName.TabIndex = 0;
             // 
-            // lbBenNic
+            // grpMemberDocument
             // 
-            this.lbBenNic.AutoSize = true;
-            this.lbBenNic.Location = new System.Drawing.Point(29, 95);
-            this.lbBenNic.Name = "lbBenNic";
-            this.lbBenNic.Size = new System.Drawing.Size(28, 13);
-            this.lbBenNic.TabIndex = 5;
-            this.lbBenNic.Text = "NIC:";
+            this.grpMemberDocument.Controls.Add(this.lbDocumentCategory);
+            this.grpMemberDocument.Controls.Add(this.txtDocumentCategory);
+            this.grpMemberDocument.Controls.Add(this.dataGridView2);
+            this.grpMemberDocument.Controls.Add(this.btnUpload);
+            this.grpMemberDocument.Controls.Add(this.uploadDialog1);
+            this.grpMemberDocument.Location = new System.Drawing.Point(7, 282);
+            this.grpMemberDocument.Name = "grpMemberDocument";
+            this.grpMemberDocument.Size = new System.Drawing.Size(648, 184);
+            this.grpMemberDocument.TabIndex = 2;
+            this.grpMemberDocument.TabStop = false;
+            this.grpMemberDocument.Text = "Member Document";
             // 
-            // txtBenNic
+            // btnUpload
             // 
-            this.txtBenNic.Location = new System.Drawing.Point(106, 92);
-            this.txtBenNic.Name = "txtBenNic";
-            this.txtBenNic.Size = new System.Drawing.Size(124, 20);
-            this.txtBenNic.TabIndex = 6;
+            this.btnUpload.Location = new System.Drawing.Point(219, 42);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(75, 23);
+            this.btnUpload.TabIndex = 2;
+            this.btnUpload.Text = "Add";
+            this.btnUpload.UseVisualStyleBackColor = true;
             // 
-            // chkPayEntryFee
+            // dataGridView2
             // 
-            this.chkPayEntryFee.AutoSize = true;
-            this.chkPayEntryFee.Location = new System.Drawing.Point(377, 126);
-            this.chkPayEntryFee.Name = "chkPayEntryFee";
-            this.chkPayEntryFee.Size = new System.Drawing.Size(92, 17);
-            this.chkPayEntryFee.TabIndex = 22;
-            this.chkPayEntryFee.Text = "Pay Entry Fee";
-            this.chkPayEntryFee.UseVisualStyleBackColor = true;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(31, 80);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(263, 83);
+            this.dataGridView2.TabIndex = 3;
             // 
-            // lbShare
+            // txtDocumentCategory
             // 
-            this.lbShare.AutoSize = true;
-            this.lbShare.Location = new System.Drawing.Point(377, 158);
-            this.lbShare.Name = "lbShare";
-            this.lbShare.Size = new System.Drawing.Size(43, 13);
-            this.lbShare.TabIndex = 23;
-            this.lbShare.Text = "Shares:";
+            this.txtDocumentCategory.Location = new System.Drawing.Point(83, 42);
+            this.txtDocumentCategory.Name = "txtDocumentCategory";
+            this.txtDocumentCategory.Size = new System.Drawing.Size(130, 20);
+            this.txtDocumentCategory.TabIndex = 4;
             // 
-            // txtShares
+            // lbCommentBeneficiary
             // 
-            this.txtShares.Location = new System.Drawing.Point(426, 155);
-            this.txtShares.Name = "txtShares";
-            this.txtShares.Size = new System.Drawing.Size(100, 20);
-            this.txtShares.TabIndex = 24;
+            this.lbCommentBeneficiary.AutoSize = true;
+            this.lbCommentBeneficiary.Location = new System.Drawing.Point(286, 57);
+            this.lbCommentBeneficiary.Name = "lbCommentBeneficiary";
+            this.lbCommentBeneficiary.Size = new System.Drawing.Size(59, 13);
+            this.lbCommentBeneficiary.TabIndex = 7;
+            this.lbCommentBeneficiary.Text = "Comments:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(366, 27);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(239, 78);
+            this.textBox3.TabIndex = 8;
+            // 
+            // btnAddBeneficiary
+            // 
+            this.btnAddBeneficiary.Location = new System.Drawing.Point(32, 116);
+            this.btnAddBeneficiary.Name = "btnAddBeneficiary";
+            this.btnAddBeneficiary.Size = new System.Drawing.Size(75, 23);
+            this.btnAddBeneficiary.TabIndex = 9;
+            this.btnAddBeneficiary.Text = "Add";
+            this.btnAddBeneficiary.UseVisualStyleBackColor = true;
+            // 
+            // lbDocumentCategory
+            // 
+            this.lbDocumentCategory.AutoSize = true;
+            this.lbDocumentCategory.Location = new System.Drawing.Point(28, 47);
+            this.lbDocumentCategory.Name = "lbDocumentCategory";
+            this.lbDocumentCategory.Size = new System.Drawing.Size(35, 13);
+            this.lbDocumentCategory.TabIndex = 5;
+            this.lbDocumentCategory.Text = "label2";
             // 
             // CreateMember
             // 
@@ -610,6 +705,9 @@
             this.grbBeneficiary.ResumeLayout(false);
             this.grbBeneficiary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpMemberDocument.ResumeLayout(false);
+            this.grpMemberDocument.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -666,5 +764,14 @@
         private System.Windows.Forms.TextBox txtShares;
         private System.Windows.Forms.Label lbShare;
         private System.Windows.Forms.CheckBox chkPayEntryFee;
+        private usercontrol.UploadDialog uploadDialog1;
+        private System.Windows.Forms.GroupBox grpMemberDocument;
+        private System.Windows.Forms.TextBox txtDocumentCategory;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.Button btnAddBeneficiary;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lbCommentBeneficiary;
+        private System.Windows.Forms.Label lbDocumentCategory;
     }
 }

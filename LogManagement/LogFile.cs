@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreditUnionFYP.classes
+namespace LogManagement
 {
     public class LogFile
     {
@@ -13,7 +13,7 @@ namespace CreditUnionFYP.classes
         private DateTime? _dateTimeLog { get; set; }
         private int _userId { get; set; }
 
-        public LogFile(string logMsg, string errorMsg,int userId)
+        public LogFile(string logMsg, string errorMsg, int userId)
         {
             _logMsg = logMsg;
             _errorMsg = errorMsg;
@@ -21,11 +21,13 @@ namespace CreditUnionFYP.classes
             _userId = userId;
         }
 
-        public void WriteLog() {
-        
+        public void WriteLog()
+        {
+
         }
 
-        public static void LogData(string logError, string genericMsg, int userId) {
+        public static void LogData(string logError, string genericMsg, int userId)
+        {
             LogFile lg = new LogFile(logError, genericMsg, userId);
             lg.WriteLog();
         }
