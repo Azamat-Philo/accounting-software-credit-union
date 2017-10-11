@@ -61,7 +61,6 @@
     <Compile Include="frmAddUser.Designer.cs">
       <DependentUpon>frmAddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="classes\ValidationClass.cs" />
     <Compile Include="CreateMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,9 +152,9 @@
       <Project>{af4af587-4665-4ed0-9b0c-1cca04c4e233}</Project>
       <Name>DataBase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LogManagement\LogManagement.csproj">
+    <ProjectReference Include="..\LogManagement\LogValidationManagement.csproj">
       <Project>{d4cace0d-8e2c-44dc-b51a-028a5111385d}</Project>
-      <Name>LogManagement</Name>
+      <Name>LogValidationManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\Member\Member.csproj">
       <Project>{71deca60-0c78-488e-a3b8-a3ce9edcdb68}</Project>

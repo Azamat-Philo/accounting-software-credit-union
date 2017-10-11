@@ -25,7 +25,7 @@ namespace DataBase
             }
             catch (Exception e)
             {
-                LogManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
+                LogValidationManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
                 connection.Close();
             }
         }
@@ -38,7 +38,7 @@ namespace DataBase
             }
             catch (Exception e)
             {
-                LogManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
+                LogValidationManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
                 connection.Close();
             }
         }
@@ -61,7 +61,7 @@ namespace DataBase
             }
             catch (Exception ex)
             {
-                LogManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
             }
             if (reader.HasRows)
                 return reader;
@@ -84,7 +84,7 @@ namespace DataBase
             }
             catch (Exception ex)
             {
-                LogManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
             }
             if (reader.HasRows)
                 return reader;

@@ -48,9 +48,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogManagement\LogManagement.csproj">
+    <ProjectReference Include="..\LogManagement\LogValidationManagement.csproj">
       <Project>{d4cace0d-8e2c-44dc-b51a-028a5111385d}</Project>
-      <Name>LogManagement</Name>
+      <Name>LogValidationManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

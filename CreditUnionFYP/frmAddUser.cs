@@ -14,8 +14,7 @@ namespace CreditUnionFYP
 {
     public partial class frmAddUser : Form
     {
-        private ValidationClass valCal2 = new ValidationClass();
-
+      
         public frmAddUser()
         {
             InitializeComponent();
@@ -29,7 +28,7 @@ namespace CreditUnionFYP
             r.Add(txtLastName);
             r.Add(txtLogin);
             r.Add(txtPwd);
-            bool result = valCal2.inputTextValidation(r);
+            bool result = LogValidationManagement.Validation.inputTextValidation(r);
             MessageBox.Show(result.ToString());
         }
 
@@ -74,7 +73,7 @@ namespace CreditUnionFYP
             {
                 s.Add(txtFirstName);
                 s.Add(txtLastName);
-                bool result = valCal2.inputTextValidation(s);
+                bool result = LogValidationManagement.Validation.inputTextValidation(s);
                 if (result == true)
                 {
                     fName = txtFirstName.Text.ToString();
@@ -84,18 +83,18 @@ namespace CreditUnionFYP
                     string[] lname = lName.Split(' ');
                     string[] fname = fName.Split(' ');
                     txtLogin.Text= fname[0].Substring(0,1)+ lname[0];
-                    string a = ValidationClass.validChar;
+                    string a = LogValidationManagement.Validation.validChar;
                 }
             }
             catch (Exception ex) {
-                LogManagement.LogFile.LogData("Generate login for user", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData("Generate login for user", ex.ToString(), 0);
             }
            
         }
 
         private void btnAddPermission_Click(object sender, EventArgs e)
         {
-            bool result = valCal2.checkBoxListValidation(chkPermission);
+            bool result = LogValidationManagement.Validation.checkBoxListValidation(chkPermission);
             if (result == true) {
                 this.AddPermissionToGridView();
             }
@@ -163,7 +162,7 @@ namespace CreditUnionFYP
                 }
             }
             catch (Exception ex) {
-                LogManagement.LogFile.LogData("AddPermissionToGridView Function error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData("AddPermissionToGridView Function error", ex.ToString(), 0);
             }
         }
 

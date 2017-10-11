@@ -7,13 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CreditUnionFYP.classes;
 
 namespace CreditUnionFYP
 {
     public partial class CreateMember : Form
     {
-        private ValidationClass valCal = new ValidationClass();
         public CreateMember()
         {
             InitializeComponent();
@@ -40,7 +38,7 @@ namespace CreditUnionFYP
 
                 if (fName != String.Empty && lName != String.Empty && mStatus != String.Empty && nic != String.Empty)
                 {
-                    if (valCal.dateValidation(dob))
+                    if (LogValidationManagement.Validation.dateValidation(dob))
                     {
                         btnGenerateAccount.Enabled = true;
                     }
@@ -56,7 +54,7 @@ namespace CreditUnionFYP
             }
             catch (Exception ex)
             {
-                LogManagement.LogFile.LogData("", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData("", ex.ToString(), 0);
             }
         }
 
@@ -73,13 +71,13 @@ namespace CreditUnionFYP
 
         private void rbMale_Click(object sender, EventArgs e)
         {
-            CheckValid(1);
+            this.CheckValid(1);
             cbMaritalStatus_SelectedValueChanged(sender,e);
         }
 
         private void rbFemale_Click(object sender, EventArgs e)
         {
-            CheckValid(2);
+            this.CheckValid(2);
             cbMaritalStatus_SelectedValueChanged(sender, e);
         }
 
@@ -98,7 +96,7 @@ namespace CreditUnionFYP
             grpDetails.Height = 218;
             rbActive.Checked = true;
 
-
+            this.AddColumnsBeneficiary();
         }
 
         private void cbMaritalStatus_SelectedValueChanged(object sender, EventArgs e)
@@ -130,27 +128,27 @@ namespace CreditUnionFYP
 
         private void txtFirstName_Leave(object sender, EventArgs e)
         {
-            EnableGenerateAcc();
+            this.EnableGenerateAcc();
         }
 
         private void txtLastName_Leave(object sender, EventArgs e)
         {
-            EnableGenerateAcc();
+            this.EnableGenerateAcc();
         }
 
         private void txtMaidenName_Leave(object sender, EventArgs e)
         {
-            EnableGenerateAcc();
+            this.EnableGenerateAcc();
         }
 
         private void txtNic_Leave(object sender, EventArgs e)
         {
-            EnableGenerateAcc();
+            this.EnableGenerateAcc();
         }
 
         private void dpBod_Leave(object sender, EventArgs e)
         {
-            EnableGenerateAcc();
+            this.EnableGenerateAcc();
         }
 
         private void rbActive_Click(object sender, EventArgs e)
@@ -174,6 +172,70 @@ namespace CreditUnionFYP
             {
                 plActive.Visible = true;
             }
+        }
+
+        private void btnAddBeneficiary_Click(object sender, EventArgs e)
+        {
+            List<object> r = new List<object>();
+
+            r.Add(txtBenFirstName);
+            r.Add(txtBenLastName);
+            r.Add(txtBenNic);
+            r.Add(txtCommentBeneficiary);
+            bool result = LogValidationManagement.Validation.inputTextValidation(r);
+            if (result){ 
+            string[] row = { "1", txtBenFirstName.Text.ToString(), txtBenLastName.Text.ToString(), txtBenNic.Text.ToString(), txtCommentBeneficiary.Text.ToString() };
+            dataGridView1.Rows.Add(row);
+            txtBenFirstName.Text = ""; txtBenLastName.Text = ""; txtBenNic.Text = ""; txtCommentBeneficiary.Text = "";
+            }
+        }
+
+        private void AddColumnsBeneficiary()
+        {
+            DataGridViewTextBoxColumn idColumn =
+                new DataGridViewTextBoxColumn();
+            idColumn.Name = "ID";
+            idColumn.DataPropertyName = "Id";
+            idColumn.ReadOnly = true;
+
+            DataGridViewTextBoxColumn fnameToColumn =
+              new DataGridViewTextBoxColumn();
+            fnameToColumn.Name = "FirstName";
+            fnameToColumn.DataPropertyName = "fname";
+            fnameToColumn.ReadOnly = true;
+
+            DataGridViewTextBoxColumn lnameToColumn =
+             new DataGridViewTextBoxColumn();
+            lnameToColumn.Name = "LastName";
+            lnameToColumn.DataPropertyName = "lname";
+            lnameToColumn.ReadOnly = true;
+
+            DataGridViewTextBoxColumn nicToColumn =
+             new DataGridViewTextBoxColumn();
+            nicToColumn.Name = "NIC";
+            nicToColumn.DataPropertyName = "nic";
+            nicToColumn.ReadOnly = true;
+
+            DataGridViewTextBoxColumn commentToColumn =
+             new DataGridViewTextBoxColumn();
+            commentToColumn.Name = "Comment";
+            commentToColumn.DataPropertyName = "comment";
+            commentToColumn.ReadOnly = true;
+
+            // Add a button column. 
+            DataGridViewButtonColumn buttonColumn =
+                new DataGridViewButtonColumn();
+            buttonColumn.HeaderText = "";
+            buttonColumn.Name = "btnMove";
+            buttonColumn.Text = "Remove";
+            buttonColumn.UseColumnTextForButtonValue = true;
+
+            dataGridView1.Columns.Add(idColumn);
+            dataGridView1.Columns.Add(fnameToColumn);
+            dataGridView1.Columns.Add(lnameToColumn);
+            dataGridView1.Columns.Add(nicToColumn);
+            dataGridView1.Columns.Add(commentToColumn);
+            dataGridView1.Columns.Add(buttonColumn);
         }
     }
 }

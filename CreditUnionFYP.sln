@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Member", "Member\Member.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{AF4AF587-4665-4ED0-9B0C-1CCA04C4E233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogManagement", "LogManagement\LogManagement.csproj", "{D4CACE0D-8E2C-44DC-B51A-028A5111385D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogValidationManagement", "LogManagement\LogValidationManagement.csproj", "{D4CACE0D-8E2C-44DC-B51A-028A5111385D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

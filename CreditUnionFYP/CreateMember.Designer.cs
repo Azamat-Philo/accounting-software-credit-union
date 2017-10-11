@@ -43,9 +43,9 @@
             this.grpAddress = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lbDistrict = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPostCode = new System.Windows.Forms.TextBox();
             this.lbPostCode = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.lbAddress = new System.Windows.Forms.Label();
             this.grpDetails = new System.Windows.Forms.GroupBox();
             this.txtShares = new System.Windows.Forms.TextBox();
@@ -71,23 +71,23 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.uploadDialog1 = new CreditUnionFYP.usercontrol.UploadDialog();
+            this.grpMemberDocument = new System.Windows.Forms.GroupBox();
             this.grbBeneficiary = new System.Windows.Forms.GroupBox();
+            this.btnAddBeneficiary = new System.Windows.Forms.Button();
+            this.txtCommentBeneficiary = new System.Windows.Forms.TextBox();
+            this.lbCommentBeneficiary = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtBenNic = new System.Windows.Forms.TextBox();
             this.lbBenNic = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtBenLastName = new System.Windows.Forms.TextBox();
             this.lbBenLastName = new System.Windows.Forms.Label();
             this.lbBenFirstName = new System.Windows.Forms.Label();
             this.txtBenFirstName = new System.Windows.Forms.TextBox();
-            this.grpMemberDocument = new System.Windows.Forms.GroupBox();
-            this.btnUpload = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.txtDocumentCategory = new System.Windows.Forms.TextBox();
-            this.lbCommentBeneficiary = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.btnAddBeneficiary = new System.Windows.Forms.Button();
             this.lbDocumentCategory = new System.Windows.Forms.Label();
+            this.txtDocumentCategory = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEmployer.SuspendLayout();
@@ -97,7 +97,6 @@
             this.tabPage2.SuspendLayout();
             this.grbBeneficiary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.grpMemberDocument.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -219,9 +218,9 @@
             // 
             this.grpAddress.Controls.Add(this.comboBox1);
             this.grpAddress.Controls.Add(this.lbDistrict);
-            this.grpAddress.Controls.Add(this.textBox2);
+            this.grpAddress.Controls.Add(this.txtPostCode);
             this.grpAddress.Controls.Add(this.lbPostCode);
-            this.grpAddress.Controls.Add(this.textBox1);
+            this.grpAddress.Controls.Add(this.txtAddress);
             this.grpAddress.Controls.Add(this.lbAddress);
             this.grpAddress.Location = new System.Drawing.Point(7, 261);
             this.grpAddress.Name = "grpAddress";
@@ -247,12 +246,12 @@
             this.lbDistrict.TabIndex = 11;
             this.lbDistrict.Text = "District : ";
             // 
-            // textBox2
+            // txtPostCode
             // 
-            this.textBox2.Location = new System.Drawing.Point(442, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(188, 20);
-            this.textBox2.TabIndex = 10;
+            this.txtPostCode.Location = new System.Drawing.Point(442, 19);
+            this.txtPostCode.Name = "txtPostCode";
+            this.txtPostCode.Size = new System.Drawing.Size(188, 20);
+            this.txtPostCode.TabIndex = 10;
             // 
             // lbPostCode
             // 
@@ -263,13 +262,13 @@
             this.lbPostCode.TabIndex = 9;
             this.lbPostCode.Text = "Post Code :";
             // 
-            // textBox1
+            // txtAddress
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 19);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(188, 52);
-            this.textBox1.TabIndex = 8;
+            this.txtAddress.Location = new System.Drawing.Point(106, 19);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(188, 52);
+            this.txtAddress.TabIndex = 8;
             // 
             // lbAddress
             // 
@@ -525,17 +524,19 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // uploadDialog1
+            // grpMemberDocument
             // 
-            this.uploadDialog1.Location = new System.Drawing.Point(287, 92);
-            this.uploadDialog1.Name = "uploadDialog1";
-            this.uploadDialog1.Size = new System.Drawing.Size(355, 54);
-            this.uploadDialog1.TabIndex = 1;
+            this.grpMemberDocument.Location = new System.Drawing.Point(7, 282);
+            this.grpMemberDocument.Name = "grpMemberDocument";
+            this.grpMemberDocument.Size = new System.Drawing.Size(648, 184);
+            this.grpMemberDocument.TabIndex = 2;
+            this.grpMemberDocument.TabStop = false;
+            this.grpMemberDocument.Text = "Member Document";
             // 
             // grbBeneficiary
             // 
             this.grbBeneficiary.Controls.Add(this.btnAddBeneficiary);
-            this.grbBeneficiary.Controls.Add(this.textBox3);
+            this.grbBeneficiary.Controls.Add(this.txtCommentBeneficiary);
             this.grbBeneficiary.Controls.Add(this.lbCommentBeneficiary);
             this.grbBeneficiary.Controls.Add(this.dataGridView1);
             this.grbBeneficiary.Controls.Add(this.txtBenNic);
@@ -550,6 +551,41 @@
             this.grbBeneficiary.TabIndex = 0;
             this.grbBeneficiary.TabStop = false;
             this.grbBeneficiary.Text = "Beneficiary Details";
+            // 
+            // btnAddBeneficiary
+            // 
+            this.btnAddBeneficiary.Location = new System.Drawing.Point(32, 116);
+            this.btnAddBeneficiary.Name = "btnAddBeneficiary";
+            this.btnAddBeneficiary.Size = new System.Drawing.Size(75, 23);
+            this.btnAddBeneficiary.TabIndex = 9;
+            this.btnAddBeneficiary.Text = "Add";
+            this.btnAddBeneficiary.UseVisualStyleBackColor = true;
+            this.btnAddBeneficiary.Click += new System.EventHandler(this.btnAddBeneficiary_Click);
+            // 
+            // txtCommentBeneficiary
+            // 
+            this.txtCommentBeneficiary.Location = new System.Drawing.Point(366, 27);
+            this.txtCommentBeneficiary.Multiline = true;
+            this.txtCommentBeneficiary.Name = "txtCommentBeneficiary";
+            this.txtCommentBeneficiary.Size = new System.Drawing.Size(239, 78);
+            this.txtCommentBeneficiary.TabIndex = 8;
+            // 
+            // lbCommentBeneficiary
+            // 
+            this.lbCommentBeneficiary.AutoSize = true;
+            this.lbCommentBeneficiary.Location = new System.Drawing.Point(286, 57);
+            this.lbCommentBeneficiary.Name = "lbCommentBeneficiary";
+            this.lbCommentBeneficiary.Size = new System.Drawing.Size(59, 13);
+            this.lbCommentBeneficiary.TabIndex = 7;
+            this.lbCommentBeneficiary.Text = "Comments:";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(29, 149);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(576, 90);
+            this.dataGridView1.TabIndex = 4;
             // 
             // txtBenNic
             // 
@@ -566,14 +602,6 @@
             this.lbBenNic.Size = new System.Drawing.Size(28, 13);
             this.lbBenNic.TabIndex = 5;
             this.lbBenNic.Text = "NIC:";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 149);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(576, 90);
-            this.dataGridView1.TabIndex = 4;
             // 
             // txtBenLastName
             // 
@@ -607,19 +635,29 @@
             this.txtBenFirstName.Size = new System.Drawing.Size(155, 20);
             this.txtBenFirstName.TabIndex = 0;
             // 
-            // grpMemberDocument
+            // lbDocumentCategory
             // 
-            this.grpMemberDocument.Controls.Add(this.lbDocumentCategory);
-            this.grpMemberDocument.Controls.Add(this.txtDocumentCategory);
-            this.grpMemberDocument.Controls.Add(this.dataGridView2);
-            this.grpMemberDocument.Controls.Add(this.btnUpload);
-            this.grpMemberDocument.Controls.Add(this.uploadDialog1);
-            this.grpMemberDocument.Location = new System.Drawing.Point(7, 282);
-            this.grpMemberDocument.Name = "grpMemberDocument";
-            this.grpMemberDocument.Size = new System.Drawing.Size(648, 184);
-            this.grpMemberDocument.TabIndex = 2;
-            this.grpMemberDocument.TabStop = false;
-            this.grpMemberDocument.Text = "Member Document";
+            this.lbDocumentCategory.AutoSize = true;
+            this.lbDocumentCategory.Location = new System.Drawing.Point(28, 47);
+            this.lbDocumentCategory.Name = "lbDocumentCategory";
+            this.lbDocumentCategory.Size = new System.Drawing.Size(35, 13);
+            this.lbDocumentCategory.TabIndex = 5;
+            this.lbDocumentCategory.Text = "label2";
+            // 
+            // txtDocumentCategory
+            // 
+            this.txtDocumentCategory.Location = new System.Drawing.Point(83, 42);
+            this.txtDocumentCategory.Name = "txtDocumentCategory";
+            this.txtDocumentCategory.Size = new System.Drawing.Size(130, 20);
+            this.txtDocumentCategory.TabIndex = 4;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(31, 80);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(263, 83);
+            this.dataGridView2.TabIndex = 3;
             // 
             // btnUpload
             // 
@@ -630,55 +668,13 @@
             this.btnUpload.Text = "Add";
             this.btnUpload.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // textBox1
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(31, 80);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(263, 83);
-            this.dataGridView2.TabIndex = 3;
-            // 
-            // txtDocumentCategory
-            // 
-            this.txtDocumentCategory.Location = new System.Drawing.Point(83, 42);
-            this.txtDocumentCategory.Name = "txtDocumentCategory";
-            this.txtDocumentCategory.Size = new System.Drawing.Size(130, 20);
-            this.txtDocumentCategory.TabIndex = 4;
-            // 
-            // lbCommentBeneficiary
-            // 
-            this.lbCommentBeneficiary.AutoSize = true;
-            this.lbCommentBeneficiary.Location = new System.Drawing.Point(286, 57);
-            this.lbCommentBeneficiary.Name = "lbCommentBeneficiary";
-            this.lbCommentBeneficiary.Size = new System.Drawing.Size(59, 13);
-            this.lbCommentBeneficiary.TabIndex = 7;
-            this.lbCommentBeneficiary.Text = "Comments:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(366, 27);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(239, 78);
-            this.textBox3.TabIndex = 8;
-            // 
-            // btnAddBeneficiary
-            // 
-            this.btnAddBeneficiary.Location = new System.Drawing.Point(32, 116);
-            this.btnAddBeneficiary.Name = "btnAddBeneficiary";
-            this.btnAddBeneficiary.Size = new System.Drawing.Size(75, 23);
-            this.btnAddBeneficiary.TabIndex = 9;
-            this.btnAddBeneficiary.Text = "Add";
-            this.btnAddBeneficiary.UseVisualStyleBackColor = true;
-            // 
-            // lbDocumentCategory
-            // 
-            this.lbDocumentCategory.AutoSize = true;
-            this.lbDocumentCategory.Location = new System.Drawing.Point(28, 47);
-            this.lbDocumentCategory.Name = "lbDocumentCategory";
-            this.lbDocumentCategory.Size = new System.Drawing.Size(35, 13);
-            this.lbDocumentCategory.TabIndex = 5;
-            this.lbDocumentCategory.Text = "label2";
+            this.textBox1.Location = new System.Drawing.Point(106, 19);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(188, 52);
+            this.textBox1.TabIndex = 8;
             // 
             // CreateMember
             // 
@@ -705,8 +701,6 @@
             this.grbBeneficiary.ResumeLayout(false);
             this.grbBeneficiary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.grpMemberDocument.ResumeLayout(false);
-            this.grpMemberDocument.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
@@ -739,9 +733,9 @@
         private System.Windows.Forms.Label lbMaiden;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lbDistrict;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPostCode;
         private System.Windows.Forms.Label lbPostCode;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label lbAddress;
         private System.Windows.Forms.GroupBox grpEmployer;
         private System.Windows.Forms.RadioButton rbInactive;
@@ -770,8 +764,9 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Button btnAddBeneficiary;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCommentBeneficiary;
         private System.Windows.Forms.Label lbCommentBeneficiary;
         private System.Windows.Forms.Label lbDocumentCategory;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
