@@ -22,13 +22,14 @@ namespace CreditUnionFYP
 
         private void btnSave_Click(object sender, EventArgs e)
         {  
-            List<object> r = new List<object>();
+            List<Control> r = new List<Control>();
 
             r.Add(txtFirstName);
             r.Add(txtLastName);
             r.Add(txtLogin);
             r.Add(txtPwd);
-            bool result = LogValidationManagement.Validation.inputTextValidation(r);
+            LogValidationManagement.Validation h = new LogValidationManagement.Validation();
+            bool result = h.inputTextValidation(r);
             MessageBox.Show(result.ToString());
         }
 
@@ -67,13 +68,14 @@ namespace CreditUnionFYP
 
         private void txtLastName_Leave(object sender, EventArgs e)
         {
-            List<object> s = new List<object>();
+            List<Control> s = new List<Control>();
             string fName = null, lName = null;
             try
             {
                 s.Add(txtFirstName);
                 s.Add(txtLastName);
-                bool result = LogValidationManagement.Validation.inputTextValidation(s);
+                LogValidationManagement.Validation h = new LogValidationManagement.Validation();
+                bool result = h.inputTextValidation(s);
                 if (result == true)
                 {
                     fName = txtFirstName.Text.ToString();

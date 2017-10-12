@@ -176,13 +176,14 @@ namespace CreditUnionFYP
 
         private void btnAddBeneficiary_Click(object sender, EventArgs e)
         {
-            List<object> r = new List<object>();
+            List<Control> bn = new List<Control>();
 
-            r.Add(txtBenFirstName);
-            r.Add(txtBenLastName);
-            r.Add(txtBenNic);
-            r.Add(txtCommentBeneficiary);
-            bool result = LogValidationManagement.Validation.inputTextValidation(r);
+            bn.Add(txtBenFirstName);
+            bn.Add(txtBenLastName);
+            bn.Add(txtBenNic);
+            bn.Add(txtCommentBeneficiary);
+            LogValidationManagement.Validation h = new LogValidationManagement.Validation();
+            bool result = h.inputTextValidation(bn);
             if (result){ 
             string[] row = { "1", txtBenFirstName.Text.ToString(), txtBenLastName.Text.ToString(), txtBenNic.Text.ToString(), txtCommentBeneficiary.Text.ToString() };
             dataGridView1.Rows.Add(row);

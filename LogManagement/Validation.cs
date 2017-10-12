@@ -15,7 +15,7 @@ namespace LogValidationManagement
             return true;
         }
 
-        public static Boolean inputTextValidation(List<object> ts)
+        public Boolean inputTextValidation(List<Control> ts)
         {
             bool result = true;
             byte i = 0;
@@ -24,21 +24,32 @@ namespace LogValidationManagement
                 int count = ts.Count;
                 bool[] valid = new bool[count];
 
-                foreach (object t in ts)
+                foreach (Control t in ts)
                 {
-                    if (string.IsNullOrWhiteSpace(t.ToString()) || string.IsNullOrEmpty(t.ToString()))
+                    if (t.GetType().Name == "TextBox")
                     {
-                        valid[i] = false;
+                        TextBox tb = (TextBox)t;
+                        if (string.IsNullOrWhiteSpace(tb.Text.ToString()) || string.IsNullOrEmpty(tb.Text.ToString()))
+                        {
+                            valid[i] = false;
+                        }
+                        else if (tb.TextLength == 0)
+                        {
+                            valid[i] = false;
+                        }
+                        else
+                        {
+                            valid[i] = true;
+                        }
                     }
-                    else
-                    {
-                        valid[i] = true;
+                    else {
+                        valid[i] = false;
                     }
                     i++;
                 }
-                if (valid.Contains(true))
+                if (valid.Contains(false))
                 {
-                    result = true;
+                    result = false;
                 }
             }
             catch (Exception ex)
@@ -46,6 +57,7 @@ namespace LogValidationManagement
                 LogValidationManagement.LogFile.LogData("inputTextValidation Error", ex.ToString(), 0);
                 result = false;
             }
+            ts.Clear();
             return result;
 
         }
