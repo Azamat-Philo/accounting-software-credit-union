@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateMember));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -88,6 +89,12 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnUpload = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtMemberDocumentCategory = new System.Windows.Forms.TextBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.btnMemberDocumentAdd = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.uploadDialog2 = new CreditUnionFYP.usercontrol.UploadDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEmployer.SuspendLayout();
@@ -95,9 +102,11 @@
             this.grpAddress.SuspendLayout();
             this.grpDetails.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.grpMemberDocument.SuspendLayout();
             this.grbBeneficiary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -526,9 +535,14 @@
             // 
             // grpMemberDocument
             // 
+            this.grpMemberDocument.Controls.Add(this.btnMemberDocumentAdd);
+            this.grpMemberDocument.Controls.Add(this.dataGridView3);
+            this.grpMemberDocument.Controls.Add(this.txtMemberDocumentCategory);
+            this.grpMemberDocument.Controls.Add(this.label2);
+            this.grpMemberDocument.Controls.Add(this.uploadDialog2);
             this.grpMemberDocument.Location = new System.Drawing.Point(7, 282);
             this.grpMemberDocument.Name = "grpMemberDocument";
-            this.grpMemberDocument.Size = new System.Drawing.Size(648, 184);
+            this.grpMemberDocument.Size = new System.Drawing.Size(648, 200);
             this.grpMemberDocument.TabIndex = 2;
             this.grpMemberDocument.TabStop = false;
             this.grpMemberDocument.Text = "Member Document";
@@ -582,9 +596,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 149);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 149);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(576, 90);
+            this.dataGridView1.Size = new System.Drawing.Size(637, 115);
             this.dataGridView1.TabIndex = 4;
             // 
             // txtBenNic
@@ -676,6 +690,52 @@
             this.textBox1.Size = new System.Drawing.Size(188, 52);
             this.textBox1.TabIndex = 8;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Category Name";
+            // 
+            // txtMemberDocumentCategory
+            // 
+            this.txtMemberDocumentCategory.Location = new System.Drawing.Point(92, 39);
+            this.txtMemberDocumentCategory.Name = "txtMemberDocumentCategory";
+            this.txtMemberDocumentCategory.Size = new System.Drawing.Size(136, 20);
+            this.txtMemberDocumentCategory.TabIndex = 2;
+            this.txtMemberDocumentCategory.TextChanged += new System.EventHandler(this.txtMemberDocumentCategory_TextChanged);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(6, 80);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(637, 114);
+            this.dataGridView3.TabIndex = 3;
+            // 
+            // btnMemberDocumentAdd
+            // 
+            this.btnMemberDocumentAdd.Location = new System.Drawing.Point(234, 37);
+            this.btnMemberDocumentAdd.Name = "btnMemberDocumentAdd";
+            this.btnMemberDocumentAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnMemberDocumentAdd.TabIndex = 4;
+            this.btnMemberDocumentAdd.Text = "Add";
+            this.btnMemberDocumentAdd.UseVisualStyleBackColor = true;
+            this.btnMemberDocumentAdd.Click += new System.EventHandler(this.btnMemberDocumentAdd_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
+            // uploadDialog2
+            // 
+            this.uploadDialog2.Location = new System.Drawing.Point(303, 18);
+            this.uploadDialog2.Name = "uploadDialog2";
+            this.uploadDialog2.Size = new System.Drawing.Size(367, 56);
+            this.uploadDialog2.TabIndex = 0;
+            // 
             // CreateMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -698,10 +758,13 @@
             this.grpDetails.ResumeLayout(false);
             this.grpDetails.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.grpMemberDocument.ResumeLayout(false);
+            this.grpMemberDocument.PerformLayout();
             this.grbBeneficiary.ResumeLayout(false);
             this.grbBeneficiary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -768,5 +831,11 @@
         private System.Windows.Forms.Label lbCommentBeneficiary;
         private System.Windows.Forms.Label lbDocumentCategory;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnMemberDocumentAdd;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.TextBox txtMemberDocumentCategory;
+        private System.Windows.Forms.Label label2;
+        private usercontrol.UploadDialog uploadDialog2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

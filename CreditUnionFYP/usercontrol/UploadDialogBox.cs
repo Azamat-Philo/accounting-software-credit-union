@@ -24,5 +24,13 @@ namespace CreditUnionFYP.usercontrol
                 txtPath.Text = openFileDialog1.FileName;
             }
         }
+
+        public string txtPathValue
+        {
+            get
+            {
+                return txtPath.Text;
+            }
+        }
     }
 }

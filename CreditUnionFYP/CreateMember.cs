@@ -238,5 +238,20 @@ namespace CreditUnionFYP
             dataGridView1.Columns.Add(commentToColumn);
             dataGridView1.Columns.Add(buttonColumn);
         }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+            
+        }
+
+        private void txtMemberDocumentCategory_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void btnMemberDocumentAdd_Click(object sender, EventArgs e)
+        {
+            //uploadDialog2.Region.
+        }
     }
 }

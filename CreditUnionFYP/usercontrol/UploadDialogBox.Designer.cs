@@ -49,6 +49,8 @@
             // 
             // txtPath
             // 
+            this.txtPath.AcceptsReturn = true;
+            this.txtPath.AcceptsTab = true;
             this.txtPath.Location = new System.Drawing.Point(125, 20);
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(209, 20);
