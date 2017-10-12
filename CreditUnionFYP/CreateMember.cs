@@ -251,7 +251,7 @@ namespace CreditUnionFYP
 
         private void btnMemberDocumentAdd_Click(object sender, EventArgs e)
         {
-            //uploadDialog2.Region.
+            string Path = uploadDialog2.txtPathValue.ToString();
         }
     }
 }
