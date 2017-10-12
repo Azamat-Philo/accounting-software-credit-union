@@ -1,6 +1,6 @@
 ﻿namespace CreditUnionFYP
 {
-    partial class CreateMember
+    partial class EditMember
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateMember));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditMember));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpEmployer = new System.Windows.Forms.GroupBox();
@@ -585,6 +585,7 @@
             this.uploadDialog2.Name = "uploadDialog2";
             this.uploadDialog2.Size = new System.Drawing.Size(367, 56);
             this.uploadDialog2.TabIndex = 0;
+            this.uploadDialog2.txtPathValue = "";
             // 
             // grbBeneficiary
             // 
@@ -729,16 +730,16 @@
             this.textBox1.Size = new System.Drawing.Size(188, 52);
             this.textBox1.TabIndex = 8;
             // 
-            // CreateMember
+            // EditMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 538);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CreateMember";
+            this.Name = "EditMember";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create Member";
+            this.Text = "Edit Member";
             this.Load += new System.EventHandler(this.CreateMember_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

@@ -10,31 +10,34 @@ using System.Windows.Forms;
 
 namespace CreditUnionFYP.usercontrol
 {
-    public partial class UploadDialog : UserControl
+    public partial class SearchByDate : UserControl
     {
-        public UploadDialog()
+        public SearchByDate()
         {
             InitializeComponent();
         }
-
-        private void btnBrowserFolder_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.CheckPathExists) {
-                txtPath.Text = openFileDialog1.FileName;
-            }
-        }
-
-        public string txtPathValue
+        public DateTime dpFromValue
         {
             get
             {
-                return txtPath.Text;
+                return dpFrom.Value;
             }
             set
             {
-                txtPath.Text = "";
+                dpFrom.Value = DateTime.Today;
             }
         }
+        public DateTime dpToValue
+        {
+            get
+            {
+                return dpTo.Value;
+            }
+            set
+            {
+                dpTo.Value = DateTime.Today;
+            }
+        }
+
     }
 }

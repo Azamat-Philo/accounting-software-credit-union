@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CreditUnionFYP
 {
-    public partial class CreateMember : Form
+    public partial class EditMember : Form
     {
-        public CreateMember()
+        public EditMember()
         {
             InitializeComponent();
         }

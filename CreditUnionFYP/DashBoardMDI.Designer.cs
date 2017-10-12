@@ -81,6 +81,7 @@
             this.listOfMembersToolStripMenuItem.Name = "listOfMembersToolStripMenuItem";
             this.listOfMembersToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.listOfMembersToolStripMenuItem.Text = "&List of members";
+            this.listOfMembersToolStripMenuItem.Click += new System.EventHandler(this.listOfMembersToolStripMenuItem_Click);
             // 
             // createMemberToolStripMenuItem
             // 
@@ -158,13 +159,13 @@
             // createUserToolStripMenuItem
             // 
             this.createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            this.createUserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createUserToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.createUserToolStripMenuItem.Text = "User List";
             // 
             // createUserToolStripMenuItem1
             // 
             this.createUserToolStripMenuItem1.Name = "createUserToolStripMenuItem1";
-            this.createUserToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.createUserToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.createUserToolStripMenuItem1.Text = "Create User";
             this.createUserToolStripMenuItem1.Click += new System.EventHandler(this.createUserToolStripMenuItem1_Click);
             // 

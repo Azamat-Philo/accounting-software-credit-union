@@ -49,3 +49,7 @@ E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditU
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.csproj.CoreCompileInputs.cache
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.exe
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.pdb
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\Bunifu_UI_v1.5.3.dll
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.MemberList.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.usercontrol.UserSearch.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.usercontrol.SearchByDate.resources

@@ -122,5 +122,13 @@ namespace CreditUnionFYP
         {
             clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
         }
+
+        private void listOfMembersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.IsMdiContainer = true;
+            MemberList MemberlistForm = new MemberList();
+            MemberlistForm.MdiParent = this;
+            MemberlistForm.Show();
+        }
     }
 }

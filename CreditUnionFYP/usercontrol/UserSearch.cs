@@ -10,30 +10,33 @@ using System.Windows.Forms;
 
 namespace CreditUnionFYP.usercontrol
 {
-    public partial class UploadDialog : UserControl
+    public partial class UserSearch : UserControl
     {
-        public UploadDialog()
+        public UserSearch()
         {
             InitializeComponent();
         }
 
-        private void btnBrowserFolder_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.CheckPathExists) {
-                txtPath.Text = openFileDialog1.FileName;
-            }
-        }
-
-        public string txtPathValue
+        public string txtNicSearchValue
         {
             get
             {
-                return txtPath.Text;
+                return txtNicSearch.Text;
             }
             set
             {
-                txtPath.Text = "";
+                txtNicSearch.Text = "";
+            }
+        }
+        public string txtLastNameSearchValue
+        {
+            get
+            {
+                return txtLastNameSearch.Text;
+            }
+            set
+            {
+                txtLastNameSearch.Text = "";
             }
         }
     }
