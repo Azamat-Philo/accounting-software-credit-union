@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CreditUnionFYP.usercontrol
+namespace Common.usercontrol
 {
     public partial class UserSearch : UserControl
     {
@@ -38,6 +38,16 @@ namespace CreditUnionFYP.usercontrol
             {
                 txtLastNameSearch.Text = "";
             }
+        }
+
+        private void txtLastNameSearch_Click(object sender, EventArgs e)
+        {
+            txtLastNameSearch.Text = "";
+        }
+
+        private void txtNicSearch_Click(object sender, EventArgs e)
+        {
+            txtNicSearch.text = "";
         }
     }
 }

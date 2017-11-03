@@ -1,4 +1,4 @@
-﻿namespace CreditUnionFYP
+﻿namespace Common
 {
     partial class AccountType
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CreditUnionFYP.Properties
+namespace Common.Properties
 {
 
 

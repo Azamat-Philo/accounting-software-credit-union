@@ -1,4 +1,4 @@
-﻿namespace CreditUnionFYP.usercontrol
+﻿namespace Common.usercontrol
 {
     partial class SearchByDate
     {

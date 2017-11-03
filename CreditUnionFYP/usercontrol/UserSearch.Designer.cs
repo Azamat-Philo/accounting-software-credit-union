@@ -1,4 +1,4 @@
-﻿namespace CreditUnionFYP.usercontrol
+﻿namespace Common.usercontrol
 {
     partial class UserSearch
     {
@@ -45,6 +45,7 @@
             this.txtLastNameSearch.Size = new System.Drawing.Size(250, 42);
             this.txtLastNameSearch.TabIndex = 2;
             this.txtLastNameSearch.text = "Last Name";
+            this.txtLastNameSearch.Click += new System.EventHandler(this.txtLastNameSearch_Click);
             // 
             // txtNicSearch
             // 
@@ -58,6 +59,7 @@
             this.txtNicSearch.Size = new System.Drawing.Size(250, 42);
             this.txtNicSearch.TabIndex = 3;
             this.txtNicSearch.text = "NIC";
+            this.txtNicSearch.Click += new System.EventHandler(this.txtNicSearch_Click);
             // 
             // UserSearch
             // 

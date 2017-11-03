@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CreditUnionFYP.classes;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace CreditUnionFYP
+namespace Common
 {
     public partial class frmAddUser : Form
     {
-      
+        public class AddUserGrid
+        {
+            public string formName;
+            public string permissionName;
+        }
+        public List<AddUserGrid> gridPermission = new List<AddUserGrid>();
         public frmAddUser()
         {
             InitializeComponent();
         }
+
+        
+
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {  
@@ -30,7 +33,23 @@ namespace CreditUnionFYP
             r.Add(txtPwd);
             LogValidationManagement.Validation h = new LogValidationManagement.Validation();
             bool result = h.inputTextValidation(r);
-            MessageBox.Show(result.ToString());
+
+            if (result == true)
+            {
+                User usr = new User();
+                usr.fName = txtFirstName.Text.Trim().ToString();
+                usr.lName = txtLastName.Text.Trim().ToString();
+                usr.userName = txtLogin.Text.Trim().ToString();
+                string pwd = txtPwd.Text.Trim().ToString();
+
+                byte[][] crypt =Common.CryptographyClass.ComputeHash(pwd, "SHA512", null);
+                usr.pwd = crypt[0];
+                usr.salt = crypt[1];
+
+                
+
+
+            }
         }
 
         private void frmAddUser_Load(object sender, EventArgs e)
@@ -98,6 +117,7 @@ namespace CreditUnionFYP
         {
             bool result = LogValidationManagement.Validation.checkBoxListValidation(chkPermission);
             if (result == true) {
+              
                 this.AddPermissionToGridView();
             }
             else {
@@ -108,8 +128,8 @@ namespace CreditUnionFYP
         {
             DataGridViewTextBoxColumn idColumn =
                 new DataGridViewTextBoxColumn();
-            idColumn.Name = "formId";
-            idColumn.DataPropertyName = "Id";
+            idColumn.Name = "formName";
+            idColumn.DataPropertyName = "formname";
             idColumn.ReadOnly = true;
 
             DataGridViewTextBoxColumn assignedToColumn =
@@ -122,7 +142,7 @@ namespace CreditUnionFYP
             DataGridViewButtonColumn buttonColumn =
                 new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "";
-            buttonColumn.Name = "btnMove";
+            buttonColumn.Name = "btnRemove";
             buttonColumn.Text = "Remove";
             buttonColumn.UseColumnTextForButtonValue = true;
 
@@ -139,7 +159,7 @@ namespace CreditUnionFYP
             {
                 SqlCommand drCommand = null;
                 SqlDataReader reader = null;
-               
+                
                 for (int i = 0; i < chkPermission.Items.Count; i++)
                 {
                     if (chkPermission.GetItemChecked(i))
@@ -153,8 +173,19 @@ namespace CreditUnionFYP
                             if (reader.HasRows)
                             {
                                 reader.Read();
-                                string[] row = { reader["formName"].ToString(), reader["permissionName"].ToString() };
-                                dataGridView1.Rows.Add(row);
+                                bool res = gridPermission.Exists(item => item.formName == reader["formName"].ToString() && item.permissionName == reader["permissionName"].ToString());
+                                if (res == false)
+                                {
+                                    string[] row = { reader["formName"].ToString(), reader["permissionName"].ToString() };
+                                    dataGridView1.Rows.Add(row);
+                                    AddUserGrid val = new AddUserGrid();
+                                    val.formName = reader["formName"].ToString();
+                                    val.permissionName = reader["permissionName"].ToString();
+                                    gridPermission.Add(val);
+                                }
+                                else {
+                                    MessageBox.Show("Already added permission");
+                                }
                             }
                            DataBase.DBClass.DBClose();
                         }
@@ -170,7 +201,10 @@ namespace CreditUnionFYP
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(e.ToString());
+            MessageBox.Show(dataGridView1.SelectedCells[0].Value.ToString());
         }
+
+
+        
     }
 }

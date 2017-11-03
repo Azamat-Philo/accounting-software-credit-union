@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CreditUnionFYP.usercontrol
+namespace Common.usercontrol
 {
     public partial class UploadDialog : UserControl
     {

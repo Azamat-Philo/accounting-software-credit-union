@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreditUnionFYP
+namespace Common
 {
     public class User
     {
         private byte userId;
         public string userName;
-        private string salt;
-        private string pwd;
+        public byte[] salt;
+        public byte[] pwd;
         public string fName;
         public string lName;
         public string designation;
@@ -33,6 +33,11 @@ namespace CreditUnionFYP
            uDelete = false;
            dateCreated =  DateTime.Today;
            dateModified = DateTime.Today;
+        }
+
+        public bool CreateUser() {
+
+            return true;
         }
     }
 }

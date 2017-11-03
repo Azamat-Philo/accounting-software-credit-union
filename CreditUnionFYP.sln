@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogValidationManagement", "LogManagement\LogValidationManagement.csproj", "{D4CACE0D-8E2C-44DC-B51A-028A5111385D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{14538272-F074-4740-9710-C8990D200868}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D4CACE0D-8E2C-44DC-B51A-028A5111385D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4CACE0D-8E2C-44DC-B51A-028A5111385D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4CACE0D-8E2C-44DC-B51A-028A5111385D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14538272-F074-4740-9710-C8990D200868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14538272-F074-4740-9710-C8990D200868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14538272-F074-4740-9710-C8990D200868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14538272-F074-4740-9710-C8990D200868}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

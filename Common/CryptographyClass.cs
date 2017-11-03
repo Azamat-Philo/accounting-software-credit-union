@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace CreditUnionFYP.classes
+namespace Common
 {
-    class CryptographyClass
+    public class CryptographyClass
     {
         /// <summary>
         /// Generates a hash for the given plain text value and returns a
@@ -32,7 +32,7 @@ namespace CreditUnionFYP.classes
         /// <returns>
         /// Hash value formatted as a base64-encoded string.
         /// </returns>
-        public static string ComputeHash(string plainText,
+        public static byte[][] ComputeHash(string plainText,
                                          string hashAlgorithm,
                                          byte[] saltBytes)
         {
@@ -120,11 +120,17 @@ namespace CreditUnionFYP.classes
             for (int i = 0; i < saltBytes.Length; i++)
                 hashWithSaltBytes[hashBytes.Length + i] = saltBytes[i];
 
-            // Convert result into a base64-encoded string.
-            string hashValue = Convert.ToBase64String(hashWithSaltBytes);
 
+
+            byte[][] crypt = new byte[2][];
+
+            // Convert result into a base64-encoded string.
+            crypt[0] = hashWithSaltBytes;
+            crypt[1] = saltBytes;
+            
+            
             // Return the result.
-            return hashValue;
+            return crypt;
         }
 
         /// <summary>
@@ -203,12 +209,12 @@ namespace CreditUnionFYP.classes
                 saltBytes[i] = hashWithSaltBytes[hashSizeInBytes + i];
 
             // Compute a new hash string.
-            string expectedHashString =
+            byte[][] expectedHashString =
                         ComputeHash(plainText, hashAlgorithm, saltBytes);
 
             // If the computed hash matches the specified hash,
             // the plain text value must be correct.
-            return (hashValue == expectedHashString);
+            return (hashValue == Convert.ToBase64String(expectedHashString[0]));
         }
     }
 }

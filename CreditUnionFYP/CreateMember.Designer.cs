@@ -1,4 +1,4 @@
-﻿namespace CreditUnionFYP
+﻿namespace Common
 {
     partial class CreateMember
     {
@@ -76,7 +76,7 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.txtMemberDocumentCategory = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.uploadDialog2 = new CreditUnionFYP.usercontrol.UploadDialog();
+            this.uploadDialog2 = new Common.usercontrol.UploadDialog();
             this.grbBeneficiary = new System.Windows.Forms.GroupBox();
             this.btnAddBeneficiary = new System.Windows.Forms.Button();
             this.txtCommentBeneficiary = new System.Windows.Forms.TextBox();

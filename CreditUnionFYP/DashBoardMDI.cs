@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CreditUnionFYP
+namespace Common
 {
     public partial class DashBoardMDI : Form
     {

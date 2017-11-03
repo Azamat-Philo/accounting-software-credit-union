@@ -1,4 +1,4 @@
-﻿namespace CreditUnionFYP
+﻿namespace Common
 {
     partial class frmAddUser
     {
@@ -85,6 +85,7 @@
             // 
             this.txtLogin.Location = new System.Drawing.Point(112, 100);
             this.txtLogin.Name = "txtLogin";
+            this.txtLogin.ReadOnly = true;
             this.txtLogin.Size = new System.Drawing.Size(151, 20);
             this.txtLogin.TabIndex = 3;
             // 
@@ -103,7 +104,6 @@
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(151, 20);
             this.txtPwd.TabIndex = 5;
-            this.txtPwd.UseSystemPasswordChar = true;
             // 
             // chkActive
             // 

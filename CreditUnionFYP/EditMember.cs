@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CreditUnionFYP
+namespace Common
 {
     public partial class EditMember : Form
     {
@@ -27,7 +27,7 @@ namespace CreditUnionFYP
 
         }
 
-        private void EnableGenerateAcc() {
+       /* private void EnableGenerateAcc() {
             try
             {
                 string fName = txtFirstName.Text;
@@ -56,7 +56,7 @@ namespace CreditUnionFYP
             {
                 LogValidationManagement.LogFile.LogData("", ex.ToString(), 0);
             }
-        }
+        }*/
 
         private void CheckValid(int gender) {
             if (gender.Equals(1))
@@ -83,7 +83,7 @@ namespace CreditUnionFYP
 
         private void CreateMember_Load(object sender, EventArgs e)
         {
-            btnGenerateAccount.Enabled = false;
+
             cbMaritalStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             rbMale.Checked = true;
             txtMaidenName.Visible = false;lbMaiden.Visible = false;
@@ -128,31 +128,7 @@ namespace CreditUnionFYP
             }
         }
 
-        private void txtFirstName_Leave(object sender, EventArgs e)
-        {
-            this.EnableGenerateAcc();
-        }
-
-        private void txtLastName_Leave(object sender, EventArgs e)
-        {
-            this.EnableGenerateAcc();
-        }
-
-        private void txtMaidenName_Leave(object sender, EventArgs e)
-        {
-            this.EnableGenerateAcc();
-        }
-
-        private void txtNic_Leave(object sender, EventArgs e)
-        {
-            this.EnableGenerateAcc();
-        }
-
-        private void dpBod_Leave(object sender, EventArgs e)
-        {
-            this.EnableGenerateAcc();
-        }
-
+       
         private void rbActive_Click(object sender, EventArgs e)
         {
             if (rbActive.Checked)
