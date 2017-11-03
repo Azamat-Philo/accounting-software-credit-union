@@ -30,9 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,17 +50,112 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreditUnionDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditUnionDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditUnionDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditUnionDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditUnionDb.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DBClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tblAccount.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAccountType.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBeneficiary.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblComiteeMember.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEmployer.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEmployerAddress.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblForm.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLoan.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLoanDoc.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLoanSurety.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLoanType.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMember.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMemberAddress.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMemberDoc.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMemberEmployer.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPermission.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTransaction.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUserPermission.cs">
+      <DependentUpon>CreditUnionDb.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="CreditUnionDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CreditUnionDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CreditUnionDb.edmx.diagram">
+      <DependentUpon>CreditUnionDb.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogManagement\LogValidationManagement.csproj">
       <Project>{d4cace0d-8e2c-44dc-b51a-028a5111385d}</Project>
       <Name>LogValidationManagement</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CreditUnionDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CreditUnionDb.edmx</DependentUpon>
+      <LastGenOutput>CreditUnionDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CreditUnionDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CreditUnionDb.edmx</DependentUpon>
+      <LastGenOutput>CreditUnionDb.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

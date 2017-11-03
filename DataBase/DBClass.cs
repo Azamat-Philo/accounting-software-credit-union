@@ -94,9 +94,19 @@ namespace DataBase
 
         }
 
-        public void insertQuery(string strQuery)
+        public int insertQuery(string strQuery)
         {
-            SqlCommand drCommand = new SqlCommand(strQuery);
+            int result = 0;
+            try
+            {
+                DBConnect();
+                SqlCommand drCommand = new SqlCommand(strQuery, connection);
+                result = drCommand.ExecuteNonQuery();
+            } catch (SqlException ex) {
+                LogValidationManagement.LogFile.LogData("Insert error", ex.ToString(), 0);
+                DBClose();
+            }
+            return result;
         }
     }
 }

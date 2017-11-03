@@ -19,36 +19,39 @@ namespace Common
             InitializeComponent();
         }
 
-        
-
-
-
         private void btnSave_Click(object sender, EventArgs e)
-        {  
-            List<Control> r = new List<Control>();
-
-            r.Add(txtFirstName);
-            r.Add(txtLastName);
-            r.Add(txtLogin);
-            r.Add(txtPwd);
-            LogValidationManagement.Validation h = new LogValidationManagement.Validation();
-            bool result = h.inputTextValidation(r);
-
-            if (result == true)
+        {
+            try
             {
-                User usr = new User();
-                usr.fName = txtFirstName.Text.Trim().ToString();
-                usr.lName = txtLastName.Text.Trim().ToString();
-                usr.userName = txtLogin.Text.Trim().ToString();
-                string pwd = txtPwd.Text.Trim().ToString();
+                List<Control> r = new List<Control>();
 
-                byte[][] crypt =Common.CryptographyClass.ComputeHash(pwd, "SHA512", null);
-                usr.pwd = crypt[0];
-                usr.salt = crypt[1];
+                r.Add(txtFirstName);
+                r.Add(txtLastName);
+                r.Add(txtLogin);
+                r.Add(txtPwd);
+                LogValidationManagement.Validation h = new LogValidationManagement.Validation();
+                bool result = h.inputTextValidation(r);
 
-                
-
-
+                if (result == true)
+                {
+                    User user = new User();
+                    user.fName = txtFirstName.Text.Trim().ToString();
+                    user.lName = txtLastName.Text.Trim().ToString();
+                    user.userName = txtLogin.Text.Trim().ToString();
+                    user.uDelete = false;
+                    user.active = chkActive.Checked == true ? true : false;
+                    user.pwd = txtPwd.Text.Trim().ToString();
+                    
+                    int i = user.CreateUser(user);
+                    user.AddPermission(dataGridView1, i);
+                    if (!i.Equals(0)) {
+                        MessageBox.Show("The user was created with success");
+                        this.Close();
+                    }
+                }
+            }
+            catch (Exception ex) {
+                LogValidationManagement.LogFile.LogData("Create a User error", ex.ToString(), 0);
             }
         }
 
@@ -126,17 +129,24 @@ namespace Common
         }
         private void AddColumns()
         {
-            DataGridViewTextBoxColumn idColumn =
-                new DataGridViewTextBoxColumn();
-            idColumn.Name = "formName";
-            idColumn.DataPropertyName = "formname";
-            idColumn.ReadOnly = true;
 
-            DataGridViewTextBoxColumn assignedToColumn =
+            DataGridViewTextBoxColumn formName =
+                new DataGridViewTextBoxColumn();
+            formName.Name = "formName";
+            formName.DataPropertyName = "formname";
+            formName.ReadOnly = true;
+
+            DataGridViewTextBoxColumn permissionid =
               new DataGridViewTextBoxColumn();
-            assignedToColumn.Name = "Permission";
-            assignedToColumn.DataPropertyName = "permissionName";
-            assignedToColumn.ReadOnly = true;
+            permissionid.Name = "PermissionId";
+            permissionid.DataPropertyName = "permissionId";
+            permissionid.ReadOnly = true;
+
+            DataGridViewTextBoxColumn permission =
+              new DataGridViewTextBoxColumn();
+            permission.Name = "Permission";
+            permission.DataPropertyName = "permissionName";
+            permission.ReadOnly = true;
 
             // Add a button column. 
             DataGridViewButtonColumn buttonColumn =
@@ -146,8 +156,9 @@ namespace Common
             buttonColumn.Text = "Remove";
             buttonColumn.UseColumnTextForButtonValue = true;
 
-            dataGridView1.Columns.Add(idColumn);
-            dataGridView1.Columns.Add(assignedToColumn);
+            dataGridView1.Columns.Add(formName);
+            dataGridView1.Columns.Add(permissionid);
+            dataGridView1.Columns.Add(permission);
             dataGridView1.Columns.Add(buttonColumn);
 
             // Add a CellClick handler to handle clicks in the button column.
@@ -168,7 +179,7 @@ namespace Common
                         {
                             DataBase.DBClass.DBConnect();
                             string permissionId = ((DataRowView)chkPermission.Items[i])["permissionId"].ToString();
-                            drCommand = new SqlCommand("SELECT f.formName, p.permissionName FROM tblPermission p INNER JOIN tblForm f ON p.formId = f.formId WHERE p.permissionId = " + Convert.ToInt32(permissionId), DataBase.DBClass.connection);
+                            drCommand = new SqlCommand("SELECT f.formName,p.permissionId, p.permissionName FROM tblPermission p INNER JOIN tblForm f ON p.formId = f.formId WHERE p.permissionId = " + Convert.ToInt32(permissionId), DataBase.DBClass.connection);
                             reader = drCommand.ExecuteReader();
                             if (reader.HasRows)
                             {
@@ -176,7 +187,7 @@ namespace Common
                                 bool res = gridPermission.Exists(item => item.formName == reader["formName"].ToString() && item.permissionName == reader["permissionName"].ToString());
                                 if (res == false)
                                 {
-                                    string[] row = { reader["formName"].ToString(), reader["permissionName"].ToString() };
+                                    string[] row = { reader["formName"].ToString(), reader["permissionId"].ToString(), reader["permissionName"].ToString() };
                                     dataGridView1.Rows.Add(row);
                                     AddUserGrid val = new AddUserGrid();
                                     val.formName = reader["formName"].ToString();

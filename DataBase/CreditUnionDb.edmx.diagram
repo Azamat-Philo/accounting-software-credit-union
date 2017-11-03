@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="16fa3fd1cb404937ad824e09f7957a2c" Name="Diagram1">
+        <EntityTypeShape EntityType="IMCCUDBModel.tblAccount" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblAccountType" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblBeneficiary" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblComiteeMember" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblEmployer" Width="1.5" PointX="8.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblEmployerAddress" Width="1.5" PointX="10.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblForm" Width="1.5" PointX="10.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblLoan" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblLoanType" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblMember" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblMemberAddress" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblMemberDoc" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblMemberEmployer" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblPermission" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblTransaction" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblUser" Width="1.5" PointX="13" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblUserPermission" Width="1.5" PointX="15.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblLoanDoc" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMCCUDBModel.tblLoanSurety" Width="1.5" PointX="12.75" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblAccount_tblAccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblTransaction_tblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblEmployerAddress_tblEmployer" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblMemberEmployer_tblEmployer" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblPermission_tblForm" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblLoan_tblLoanType" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblLoan_tblMember" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblLoan_tblMemberEmployer" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblLoanDoc_tblLoan" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblLoanSureties_tblLoan" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblAddress_tblMember" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblLoanSureties_tblMember" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblMemberDoc_tblMember" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblMemberEmployer_tblMember1" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblUserPermission_tblPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.FK_tblUserPermission_tblUser1" ManuallyRouted="false" />
+        <AssociationConnector Association="IMCCUDBModel.tblAccountMember" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

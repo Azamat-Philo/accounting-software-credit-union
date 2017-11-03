@@ -130,5 +130,13 @@ namespace Common
             MemberlistForm.MdiParent = this;
             MemberlistForm.Show();
         }
+
+        private void createUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.IsMdiContainer = true;
+            UserList UserListForm = new UserList();
+            UserListForm.MdiParent = this;
+            UserListForm.Show();
+        }
     }
 }

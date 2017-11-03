@@ -1,0 +1,1462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IMCCUDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="accountId" />
+          </Key>
+          <Property Name="accountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="accountTypeId" Type="int" Nullable="false" />
+          <Property Name="dateAccountOpened" Type="datetime" />
+          <Property Name="dateAccountClosed" Type="datetime" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="closed" Type="bit" Nullable="false" />
+          <Property Name="suspend" Type="bit" Nullable="false" />
+          <Property Name="accountRef" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="relatedToMember" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IMCCUDB.dbo.tblAccountMember' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblAccountMember">
+          <Key>
+            <PropertyRef Name="accountId" />
+            <PropertyRef Name="memberId" />
+          </Key>
+          <Property Name="accountId" Type="int" Nullable="false" />
+          <Property Name="memberId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAccountType">
+          <Key>
+            <PropertyRef Name="accountTypeId" />
+          </Key>
+          <Property Name="accountTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="accountTypeName" Type="varchar" MaxLength="100" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="int" Nullable="false" />
+          <Property Name="description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBeneficiary">
+          <Key>
+            <PropertyRef Name="beneficiaryId" />
+          </Key>
+          <Property Name="beneficiaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nic" Type="varchar" MaxLength="50" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="comments" Type="text" />
+          <Property Name="createdBy" Type="int" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblComiteeMember">
+          <Key>
+            <PropertyRef Name="comiteeMemberId" />
+          </Key>
+          <Property Name="comiteeMemberId" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" />
+          <Property Name="lastName" Type="varchar" MaxLength="100" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="dateComiteeMember" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmployer">
+          <Key>
+            <PropertyRef Name="employerId" />
+          </Key>
+          <Property Name="employerId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employerName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEmployerAddress">
+          <Key>
+            <PropertyRef Name="employerAddressId" />
+          </Key>
+          <Property Name="employerAddressId" Type="tinyint" Nullable="false" />
+          <Property Name="employerId" Type="smallint" Nullable="false" />
+          <Property Name="address" Type="text" />
+          <Property Name="postCode" Type="nchar" MaxLength="15" />
+          <Property Name="district" Type="varchar" MaxLength="30" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="active" Type="bit" />
+          <Property Name="dateDeactivate" Type="nchar" MaxLength="10" />
+          <Property Name="createdBy" Type="smallint" />
+        </EntityType>
+        <EntityType Name="tblForm">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLoan">
+          <Key>
+            <PropertyRef Name="loanId" />
+          </Key>
+          <Property Name="loanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loanTypeId" Type="smallint" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="memberEmployerId" Type="int" />
+          <Property Name="memberId" Type="int" Nullable="false" />
+          <Property Name="loanAmount" Type="int" Nullable="false" />
+          <Property Name="approvedDate" Type="datetime" />
+          <Property Name="refuseDate" Type="datetime" />
+          <Property Name="approved" Type="bit" />
+          <Property Name="basicSalary" Type="int" />
+          <Property Name="refuse" Type="bit" />
+          <Property Name="repaymentBegin" Type="datetime" />
+          <Property Name="repaymentEnd" Type="datetime" />
+          <Property Name="reasonRefused" Type="text" />
+          <Property Name="earlyRepayment" Type="datetime" />
+          <Property Name="paid" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IMCCUDB.dbo.tblLoanDoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblLoanDoc">
+          <Key>
+            <PropertyRef Name="loanId" />
+            <PropertyRef Name="dateUpload" />
+          </Key>
+          <Property Name="loanId" Type="int" Nullable="false" />
+          <Property Name="type" Type="tinyint" />
+          <Property Name="doc" Type="image" />
+          <Property Name="dateUpload" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblLoanSureties">
+          <Key>
+            <PropertyRef Name="loanId" />
+            <PropertyRef Name="memberId" />
+            <PropertyRef Name="uDel" />
+          </Key>
+          <Property Name="loanId" Type="int" Nullable="false" />
+          <Property Name="memberId" Type="int" Nullable="false" />
+          <Property Name="uDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLoanType">
+          <Key>
+            <PropertyRef Name="loanTypeId" />
+          </Key>
+          <Property Name="loanTypeId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loanName" Type="varchar" MaxLength="50" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="interest" Type="tinyint" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="maxPeriod" Type="tinyint" Nullable="false" />
+          <Property Name="minPeriod" Type="tinyint" Nullable="false" />
+          <Property Name="maxAmount" Type="tinyint" Nullable="false" />
+          <Property Name="minAmount" Type="tinyint" Nullable="false" />
+          <Property Name="createdBy" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMember">
+          <Key>
+            <PropertyRef Name="memberId" />
+          </Key>
+          <Property Name="memberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="gender" Type="tinyint" Nullable="false" />
+          <Property Name="maritalStatus" Type="tinyint" Nullable="false" />
+          <Property Name="maidenName" Type="varchar" MaxLength="50" />
+          <Property Name="lastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="entryDate" Type="date" Nullable="false" />
+          <Property Name="nic" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateOfBirth" Type="date" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="memberSince" Type="date" />
+          <Property Name="activePopulation" Type="bit" Nullable="false" />
+          <Property Name="paidEntry" Type="bit" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="closed" Type="bit" Nullable="false" />
+          <Property Name="closedBy" Type="tinyint" />
+          <Property Name="closedDate" Type="datetime" />
+          <Property Name="createdBy" Type="tinyint" Nullable="false" />
+          <Property Name="reasonClosure" Type="text" />
+        </EntityType>
+        <EntityType Name="tblMemberAddress">
+          <Key>
+            <PropertyRef Name="addressId" />
+          </Key>
+          <Property Name="addressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="memberId" Type="int" Nullable="false" />
+          <Property Name="address" Type="text" />
+          <Property Name="postCode" Type="nchar" MaxLength="15" />
+          <Property Name="district" Type="varchar" MaxLength="30" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="dateDeactivate" Type="datetime" />
+          <Property Name="createdBy" Type="smallint" />
+          <Property Name="rent" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblMemberDoc">
+          <Key>
+            <PropertyRef Name="memberDocId" />
+          </Key>
+          <Property Name="memberDocId" Type="int" Nullable="false" />
+          <Property Name="memberId" Type="int" Nullable="false" />
+          <Property Name="documentCategory" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="memberDocument" Type="image" Nullable="false" />
+          <Property Name="addedDate" Type="datetime" Nullable="false" />
+          <Property Name="addedBy" Type="tinyint" Nullable="false" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="deletedBy" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tblMemberEmployer">
+          <Key>
+            <PropertyRef Name="memberEmployerId" />
+          </Key>
+          <Property Name="memberEmployerId" Type="int" Nullable="false" />
+          <Property Name="employerId" Type="smallint" Nullable="false" />
+          <Property Name="memberId" Type="int" />
+          <Property Name="dateEntry" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="dateLeft" Type="datetime" />
+          <Property Name="position" Type="varchar" MaxLength="75" />
+          <Property Name="comment" Type="text" />
+        </EntityType>
+        <EntityType Name="tblPermission">
+          <Key>
+            <PropertyRef Name="permissionId" />
+          </Key>
+          <Property Name="permissionId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="permissionName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="formId" Type="smallint" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="uDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="transactionId" />
+          </Key>
+          <Property Name="transactionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="action" Type="bit" Nullable="false" />
+          <Property Name="accountId" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="dateTransaction" Type="date" Nullable="false" />
+          <Property Name="timeTransaction" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="transactionDoneBy" Type="int" Nullable="false" />
+          <Property Name="comment" Type="text" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="salt" Type="varbinary(max)" />
+          <Property Name="pwd" Type="varbinary(max)" />
+          <Property Name="fname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="50" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="uDelete" Type="bit" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="dateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUserPermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="smallint" Nullable="false" />
+          <Property Name="permissionId" Type="smallint" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="uDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblAccount_tblAccountType">
+          <End Role="tblAccountType" Type="Self.tblAccountType" Multiplicity="1" />
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccountType">
+              <PropertyRef Name="accountTypeId" />
+            </Principal>
+            <Dependent Role="tblAccount">
+              <PropertyRef Name="accountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccountMember_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="1" />
+          <End Role="tblAccountMember" Type="Self.tblAccountMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="accountId" />
+            </Principal>
+            <Dependent Role="tblAccountMember">
+              <PropertyRef Name="accountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccountMember_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblAccountMember" Type="Self.tblAccountMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblAccountMember">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAddress_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblMemberAddress" Type="Self.tblMemberAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblMemberAddress">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployerAddress_tblEmployer">
+          <End Role="tblEmployer" Type="Self.tblEmployer" Multiplicity="1" />
+          <End Role="tblEmployerAddress" Type="Self.tblEmployerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmployer">
+              <PropertyRef Name="employerId" />
+            </Principal>
+            <Dependent Role="tblEmployerAddress">
+              <PropertyRef Name="employerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoan_tblLoanType">
+          <End Role="tblLoanType" Type="Self.tblLoanType" Multiplicity="1" />
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoanType">
+              <PropertyRef Name="loanTypeId" />
+            </Principal>
+            <Dependent Role="tblLoan">
+              <PropertyRef Name="loanTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoan_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblLoan">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoan_tblMemberEmployer">
+          <End Role="tblMemberEmployer" Type="Self.tblMemberEmployer" Multiplicity="0..1" />
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberEmployer">
+              <PropertyRef Name="memberEmployerId" />
+            </Principal>
+            <Dependent Role="tblLoan">
+              <PropertyRef Name="memberEmployerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoanDoc_tblLoan">
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="1" />
+          <End Role="tblLoanDoc" Type="Self.tblLoanDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoan">
+              <PropertyRef Name="loanId" />
+            </Principal>
+            <Dependent Role="tblLoanDoc">
+              <PropertyRef Name="loanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoanSureties_tblLoan">
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="1" />
+          <End Role="tblLoanSureties" Type="Self.tblLoanSureties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoan">
+              <PropertyRef Name="loanId" />
+            </Principal>
+            <Dependent Role="tblLoanSureties">
+              <PropertyRef Name="loanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoanSureties_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblLoanSureties" Type="Self.tblLoanSureties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblLoanSureties">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberDoc_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblMemberDoc" Type="Self.tblMemberDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblMemberDoc">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberEmployer_tblEmployer">
+          <End Role="tblEmployer" Type="Self.tblEmployer" Multiplicity="1" />
+          <End Role="tblMemberEmployer" Type="Self.tblMemberEmployer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmployer">
+              <PropertyRef Name="employerId" />
+            </Principal>
+            <Dependent Role="tblMemberEmployer">
+              <PropertyRef Name="employerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberEmployer_tblMember1">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="0..1" />
+          <End Role="tblMemberEmployer" Type="Self.tblMemberEmployer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblMemberEmployer">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPermission_tblForm">
+          <End Role="tblForm" Type="Self.tblForm" Multiplicity="1" />
+          <End Role="tblPermission" Type="Self.tblPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblForm">
+              <PropertyRef Name="formId" />
+            </Principal>
+            <Dependent Role="tblPermission">
+              <PropertyRef Name="formId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTransaction_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="1" />
+          <End Role="tblTransaction" Type="Self.tblTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="accountId" />
+            </Principal>
+            <Dependent Role="tblTransaction">
+              <PropertyRef Name="accountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserPermission_tblPermission">
+          <End Role="tblPermission" Type="Self.tblPermission" Multiplicity="1" />
+          <End Role="tblUserPermission" Type="Self.tblUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPermission">
+              <PropertyRef Name="permissionId" />
+            </Principal>
+            <Dependent Role="tblUserPermission">
+              <PropertyRef Name="permissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserPermission_tblUser1">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserPermission" Type="Self.tblUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tblUserPermission">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IMCCUDBModelStoreContainer">
+          <EntitySet Name="tblAccount" EntityType="Self.tblAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccountType" EntityType="Self.tblAccountType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBeneficiary" EntityType="Self.tblBeneficiary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblComiteeMember" EntityType="Self.tblComiteeMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmployer" EntityType="Self.tblEmployer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmployerAddress" EntityType="Self.tblEmployerAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblForm" EntityType="Self.tblForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLoan" EntityType="Self.tblLoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLoanType" EntityType="Self.tblLoanType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMember" EntityType="Self.tblMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMemberAddress" EntityType="Self.tblMemberAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMemberDoc" EntityType="Self.tblMemberDoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMemberEmployer" EntityType="Self.tblMemberEmployer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPermission" EntityType="Self.tblPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserPermission" EntityType="Self.tblUserPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccountMember" EntityType="Self.tblAccountMember" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblAccountMember].[accountId] AS [accountId], 
+    [tblAccountMember].[memberId] AS [memberId]
+    FROM [dbo].[tblAccountMember] AS [tblAccountMember]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblLoanDoc" EntityType="Self.tblLoanDoc" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblLoanDoc].[loanId] AS [loanId], 
+    [tblLoanDoc].[type] AS [type], 
+    [tblLoanDoc].[doc] AS [doc], 
+    [tblLoanDoc].[dateUpload] AS [dateUpload]
+    FROM [dbo].[tblLoanDoc] AS [tblLoanDoc]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblLoanSureties" EntityType="Self.tblLoanSureties" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblLoanSureties].[loanId] AS [loanId], 
+    [tblLoanSureties].[memberId] AS [memberId], 
+    [tblLoanSureties].[uDel] AS [uDel]
+    FROM [dbo].[tblLoanSureties] AS [tblLoanSureties]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblAccount_tblAccountType" Association="Self.FK_tblAccount_tblAccountType">
+            <End Role="tblAccountType" EntitySet="tblAccountType" />
+            <End Role="tblAccount" EntitySet="tblAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccountMember_tblAccount" Association="Self.FK_tblAccountMember_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblAccountMember" EntitySet="tblAccountMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccountMember_tblMember" Association="Self.FK_tblAccountMember_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblAccountMember" EntitySet="tblAccountMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAddress_tblMember" Association="Self.FK_tblAddress_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblMemberAddress" EntitySet="tblMemberAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployerAddress_tblEmployer" Association="Self.FK_tblEmployerAddress_tblEmployer">
+            <End Role="tblEmployer" EntitySet="tblEmployer" />
+            <End Role="tblEmployerAddress" EntitySet="tblEmployerAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoan_tblLoanType" Association="Self.FK_tblLoan_tblLoanType">
+            <End Role="tblLoanType" EntitySet="tblLoanType" />
+            <End Role="tblLoan" EntitySet="tblLoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoan_tblMember" Association="Self.FK_tblLoan_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblLoan" EntitySet="tblLoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoan_tblMemberEmployer" Association="Self.FK_tblLoan_tblMemberEmployer">
+            <End Role="tblMemberEmployer" EntitySet="tblMemberEmployer" />
+            <End Role="tblLoan" EntitySet="tblLoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoanDoc_tblLoan" Association="Self.FK_tblLoanDoc_tblLoan">
+            <End Role="tblLoan" EntitySet="tblLoan" />
+            <End Role="tblLoanDoc" EntitySet="tblLoanDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoanSureties_tblLoan" Association="Self.FK_tblLoanSureties_tblLoan">
+            <End Role="tblLoan" EntitySet="tblLoan" />
+            <End Role="tblLoanSureties" EntitySet="tblLoanSureties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoanSureties_tblMember" Association="Self.FK_tblLoanSureties_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblLoanSureties" EntitySet="tblLoanSureties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberDoc_tblMember" Association="Self.FK_tblMemberDoc_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblMemberDoc" EntitySet="tblMemberDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberEmployer_tblEmployer" Association="Self.FK_tblMemberEmployer_tblEmployer">
+            <End Role="tblEmployer" EntitySet="tblEmployer" />
+            <End Role="tblMemberEmployer" EntitySet="tblMemberEmployer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberEmployer_tblMember1" Association="Self.FK_tblMemberEmployer_tblMember1">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblMemberEmployer" EntitySet="tblMemberEmployer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPermission_tblForm" Association="Self.FK_tblPermission_tblForm">
+            <End Role="tblForm" EntitySet="tblForm" />
+            <End Role="tblPermission" EntitySet="tblPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTransaction_tblAccount" Association="Self.FK_tblTransaction_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblTransaction" EntitySet="tblTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblPermission" Association="Self.FK_tblUserPermission_tblPermission">
+            <End Role="tblPermission" EntitySet="tblPermission" />
+            <End Role="tblUserPermission" EntitySet="tblUserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblUser1" Association="Self.FK_tblUserPermission_tblUser1">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserPermission" EntitySet="tblUserPermission" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IMCCUDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="accountId" />
+          </Key>
+          <Property Name="accountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="dateAccountOpened" Type="DateTime" Precision="3" />
+          <Property Name="dateAccountClosed" Type="DateTime" Precision="3" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="closed" Type="Boolean" Nullable="false" />
+          <Property Name="suspend" Type="Boolean" Nullable="false" />
+          <Property Name="accountRef" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="relatedToMember" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblAccountType" Relationship="Self.FK_tblAccount_tblAccountType" FromRole="tblAccount" ToRole="tblAccountType" />
+          <NavigationProperty Name="tblTransactions" Relationship="Self.FK_tblTransaction_tblAccount" FromRole="tblAccount" ToRole="tblTransaction" />
+          <NavigationProperty Name="tblMembers" Relationship="Self.tblAccountMember" FromRole="tblAccount" ToRole="tblMember" />
+        </EntityType>
+        <EntityType Name="tblAccountType">
+          <Key>
+            <PropertyRef Name="accountTypeId" />
+          </Key>
+          <Property Name="accountTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAccounts" Relationship="Self.FK_tblAccount_tblAccountType" FromRole="tblAccountType" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="tblBeneficiary">
+          <Key>
+            <PropertyRef Name="beneficiaryId" />
+          </Key>
+          <Property Name="beneficiaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="createdBy" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblComiteeMember">
+          <Key>
+            <PropertyRef Name="comiteeMemberId" />
+          </Key>
+          <Property Name="comiteeMemberId" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="dateComiteeMember" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblEmployer">
+          <Key>
+            <PropertyRef Name="employerId" />
+          </Key>
+          <Property Name="employerId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEmployerAddresses" Relationship="Self.FK_tblEmployerAddress_tblEmployer" FromRole="tblEmployer" ToRole="tblEmployerAddress" />
+          <NavigationProperty Name="tblMemberEmployers" Relationship="Self.FK_tblMemberEmployer_tblEmployer" FromRole="tblEmployer" ToRole="tblMemberEmployer" />
+        </EntityType>
+        <EntityType Name="tblEmployerAddress">
+          <Key>
+            <PropertyRef Name="employerAddressId" />
+          </Key>
+          <Property Name="employerAddressId" Type="Byte" Nullable="false" />
+          <Property Name="employerId" Type="Int16" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="postCode" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="dateDeactivate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="createdBy" Type="Int16" />
+          <NavigationProperty Name="tblEmployer" Relationship="Self.FK_tblEmployerAddress_tblEmployer" FromRole="tblEmployerAddress" ToRole="tblEmployer" />
+        </EntityType>
+        <EntityType Name="tblForm">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblPermissions" Relationship="Self.FK_tblPermission_tblForm" FromRole="tblForm" ToRole="tblPermission" />
+        </EntityType>
+        <EntityType Name="tblLoan">
+          <Key>
+            <PropertyRef Name="loanId" />
+          </Key>
+          <Property Name="loanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loanTypeId" Type="Int16" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="memberEmployerId" Type="Int32" />
+          <Property Name="memberId" Type="Int32" Nullable="false" />
+          <Property Name="loanAmount" Type="Int32" Nullable="false" />
+          <Property Name="approvedDate" Type="DateTime" Precision="3" />
+          <Property Name="refuseDate" Type="DateTime" Precision="3" />
+          <Property Name="approved" Type="Boolean" />
+          <Property Name="basicSalary" Type="Int32" />
+          <Property Name="refuse" Type="Boolean" />
+          <Property Name="repaymentBegin" Type="DateTime" Precision="3" />
+          <Property Name="repaymentEnd" Type="DateTime" Precision="3" />
+          <Property Name="reasonRefused" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="earlyRepayment" Type="DateTime" Precision="3" />
+          <Property Name="paid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblLoanType" Relationship="Self.FK_tblLoan_tblLoanType" FromRole="tblLoan" ToRole="tblLoanType" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblLoan_tblMember" FromRole="tblLoan" ToRole="tblMember" />
+          <NavigationProperty Name="tblMemberEmployer" Relationship="Self.FK_tblLoan_tblMemberEmployer" FromRole="tblLoan" ToRole="tblMemberEmployer" />
+          <NavigationProperty Name="tblLoanDocs" Relationship="Self.FK_tblLoanDoc_tblLoan" FromRole="tblLoan" ToRole="tblLoanDoc" />
+          <NavigationProperty Name="tblLoanSureties" Relationship="Self.FK_tblLoanSureties_tblLoan" FromRole="tblLoan" ToRole="tblLoanSureties" />
+        </EntityType>
+        <EntityType Name="tblLoanType">
+          <Key>
+            <PropertyRef Name="loanTypeId" />
+          </Key>
+          <Property Name="loanTypeId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loanName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="interest" Type="Byte" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="maxPeriod" Type="Byte" Nullable="false" />
+          <Property Name="minPeriod" Type="Byte" Nullable="false" />
+          <Property Name="maxAmount" Type="Byte" Nullable="false" />
+          <Property Name="minAmount" Type="Byte" Nullable="false" />
+          <Property Name="createdBy" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="tblLoans" Relationship="Self.FK_tblLoan_tblLoanType" FromRole="tblLoanType" ToRole="tblLoan" />
+        </EntityType>
+        <EntityType Name="tblMember">
+          <Key>
+            <PropertyRef Name="memberId" />
+          </Key>
+          <Property Name="memberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="Byte" Nullable="false" />
+          <Property Name="maritalStatus" Type="Byte" Nullable="false" />
+          <Property Name="maidenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="memberSince" Type="DateTime" Precision="0" />
+          <Property Name="activePopulation" Type="Boolean" Nullable="false" />
+          <Property Name="paidEntry" Type="Boolean" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="closed" Type="Boolean" Nullable="false" />
+          <Property Name="closedBy" Type="Byte" />
+          <Property Name="closedDate" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="Byte" Nullable="false" />
+          <Property Name="reasonClosure" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblLoans" Relationship="Self.FK_tblLoan_tblMember" FromRole="tblMember" ToRole="tblLoan" />
+          <NavigationProperty Name="tblMemberAddresses" Relationship="Self.FK_tblAddress_tblMember" FromRole="tblMember" ToRole="tblMemberAddress" />
+          <NavigationProperty Name="tblLoanSureties" Relationship="Self.FK_tblLoanSureties_tblMember" FromRole="tblMember" ToRole="tblLoanSureties" />
+          <NavigationProperty Name="tblMemberDocs" Relationship="Self.FK_tblMemberDoc_tblMember" FromRole="tblMember" ToRole="tblMemberDoc" />
+          <NavigationProperty Name="tblMemberEmployers" Relationship="Self.FK_tblMemberEmployer_tblMember1" FromRole="tblMember" ToRole="tblMemberEmployer" />
+          <NavigationProperty Name="tblAccounts" Relationship="Self.tblAccountMember" FromRole="tblMember" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="tblMemberAddress">
+          <Key>
+            <PropertyRef Name="addressId" />
+          </Key>
+          <Property Name="addressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="memberId" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="postCode" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="dateDeactivate" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="Int16" />
+          <Property Name="rent" Type="Boolean" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblAddress_tblMember" FromRole="tblMemberAddress" ToRole="tblMember" />
+        </EntityType>
+        <EntityType Name="tblMemberDoc">
+          <Key>
+            <PropertyRef Name="memberDocId" />
+          </Key>
+          <Property Name="memberDocId" Type="Int32" Nullable="false" />
+          <Property Name="memberId" Type="Int32" Nullable="false" />
+          <Property Name="documentCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="memberDocument" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="addedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="addedBy" Type="Byte" Nullable="false" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="deletedBy" Type="Byte" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblMemberDoc_tblMember" FromRole="tblMemberDoc" ToRole="tblMember" />
+        </EntityType>
+        <EntityType Name="tblMemberEmployer">
+          <Key>
+            <PropertyRef Name="memberEmployerId" />
+          </Key>
+          <Property Name="memberEmployerId" Type="Int32" Nullable="false" />
+          <Property Name="employerId" Type="Int16" Nullable="false" />
+          <Property Name="memberId" Type="Int32" />
+          <Property Name="dateEntry" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="dateLeft" Type="DateTime" Precision="3" />
+          <Property Name="position" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblEmployer" Relationship="Self.FK_tblMemberEmployer_tblEmployer" FromRole="tblMemberEmployer" ToRole="tblEmployer" />
+          <NavigationProperty Name="tblLoans" Relationship="Self.FK_tblLoan_tblMemberEmployer" FromRole="tblMemberEmployer" ToRole="tblLoan" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblMemberEmployer_tblMember1" FromRole="tblMemberEmployer" ToRole="tblMember" />
+        </EntityType>
+        <EntityType Name="tblPermission">
+          <Key>
+            <PropertyRef Name="permissionId" />
+          </Key>
+          <Property Name="permissionId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="permissionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="formId" Type="Int16" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="uDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblForm" Relationship="Self.FK_tblPermission_tblForm" FromRole="tblPermission" ToRole="tblForm" />
+          <NavigationProperty Name="tblUserPermissions" Relationship="Self.FK_tblUserPermission_tblPermission" FromRole="tblPermission" ToRole="tblUserPermission" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="transactionId" />
+          </Key>
+          <Property Name="transactionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="action" Type="Boolean" Nullable="false" />
+          <Property Name="accountId" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="dateTransaction" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="timeTransaction" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="transactionDoneBy" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblTransaction_tblAccount" FromRole="tblTransaction" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="salt" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="pwd" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="uDelete" Type="Boolean" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="dateModified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUserPermissions" Relationship="Self.FK_tblUserPermission_tblUser1" FromRole="tblUser" ToRole="tblUserPermission" />
+        </EntityType>
+        <EntityType Name="tblUserPermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int16" Nullable="false" />
+          <Property Name="permissionId" Type="Int16" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="uDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblPermission" Relationship="Self.FK_tblUserPermission_tblPermission" FromRole="tblUserPermission" ToRole="tblPermission" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserPermission_tblUser1" FromRole="tblUserPermission" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblLoanDoc">
+          <Key>
+            <PropertyRef Name="loanId" />
+            <PropertyRef Name="dateUpload" />
+          </Key>
+          <Property Name="loanId" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Byte" />
+          <Property Name="doc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="dateUpload" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblLoan" Relationship="Self.FK_tblLoanDoc_tblLoan" FromRole="tblLoanDoc" ToRole="tblLoan" />
+        </EntityType>
+        <EntityType Name="tblLoanSurety">
+          <Key>
+            <PropertyRef Name="loanId" />
+            <PropertyRef Name="memberId" />
+            <PropertyRef Name="uDel" />
+          </Key>
+          <Property Name="loanId" Type="Int32" Nullable="false" />
+          <Property Name="memberId" Type="Int32" Nullable="false" />
+          <Property Name="uDel" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblLoan" Relationship="Self.FK_tblLoanSureties_tblLoan" FromRole="tblLoanSureties" ToRole="tblLoan" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblLoanSureties_tblMember" FromRole="tblLoanSureties" ToRole="tblMember" />
+        </EntityType>
+        <Association Name="FK_tblAccount_tblAccountType">
+          <End Role="tblAccountType" Type="Self.tblAccountType" Multiplicity="1" />
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccountType">
+              <PropertyRef Name="accountTypeId" />
+            </Principal>
+            <Dependent Role="tblAccount">
+              <PropertyRef Name="accountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTransaction_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="1" />
+          <End Role="tblTransaction" Type="Self.tblTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="accountId" />
+            </Principal>
+            <Dependent Role="tblTransaction">
+              <PropertyRef Name="accountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployerAddress_tblEmployer">
+          <End Role="tblEmployer" Type="Self.tblEmployer" Multiplicity="1" />
+          <End Role="tblEmployerAddress" Type="Self.tblEmployerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmployer">
+              <PropertyRef Name="employerId" />
+            </Principal>
+            <Dependent Role="tblEmployerAddress">
+              <PropertyRef Name="employerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberEmployer_tblEmployer">
+          <End Role="tblEmployer" Type="Self.tblEmployer" Multiplicity="1" />
+          <End Role="tblMemberEmployer" Type="Self.tblMemberEmployer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmployer">
+              <PropertyRef Name="employerId" />
+            </Principal>
+            <Dependent Role="tblMemberEmployer">
+              <PropertyRef Name="employerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPermission_tblForm">
+          <End Role="tblForm" Type="Self.tblForm" Multiplicity="1" />
+          <End Role="tblPermission" Type="Self.tblPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblForm">
+              <PropertyRef Name="formId" />
+            </Principal>
+            <Dependent Role="tblPermission">
+              <PropertyRef Name="formId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoan_tblLoanType">
+          <End Role="tblLoanType" Type="Self.tblLoanType" Multiplicity="1" />
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoanType">
+              <PropertyRef Name="loanTypeId" />
+            </Principal>
+            <Dependent Role="tblLoan">
+              <PropertyRef Name="loanTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoan_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblLoan">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoan_tblMemberEmployer">
+          <End Role="tblMemberEmployer" Type="Self.tblMemberEmployer" Multiplicity="0..1" />
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberEmployer">
+              <PropertyRef Name="memberEmployerId" />
+            </Principal>
+            <Dependent Role="tblLoan">
+              <PropertyRef Name="memberEmployerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoanDoc_tblLoan">
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="1" />
+          <End Role="tblLoanDoc" Type="Self.tblLoanDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoan">
+              <PropertyRef Name="loanId" />
+            </Principal>
+            <Dependent Role="tblLoanDoc">
+              <PropertyRef Name="loanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoanSureties_tblLoan">
+          <End Role="tblLoan" Type="Self.tblLoan" Multiplicity="1" />
+          <End Role="tblLoanSureties" Type="Self.tblLoanSurety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoan">
+              <PropertyRef Name="loanId" />
+            </Principal>
+            <Dependent Role="tblLoanSureties">
+              <PropertyRef Name="loanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAddress_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblMemberAddress" Type="Self.tblMemberAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblMemberAddress">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoanSureties_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblLoanSureties" Type="Self.tblLoanSurety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblLoanSureties">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberDoc_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblMemberDoc" Type="Self.tblMemberDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblMemberDoc">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberEmployer_tblMember1">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="0..1" />
+          <End Role="tblMemberEmployer" Type="Self.tblMemberEmployer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblMemberEmployer">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserPermission_tblPermission">
+          <End Role="tblPermission" Type="Self.tblPermission" Multiplicity="1" />
+          <End Role="tblUserPermission" Type="Self.tblUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPermission">
+              <PropertyRef Name="permissionId" />
+            </Principal>
+            <Dependent Role="tblUserPermission">
+              <PropertyRef Name="permissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserPermission_tblUser1">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserPermission" Type="Self.tblUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tblUserPermission">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblAccountMember">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="*" />
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="IMCCUDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAccounts" EntityType="Self.tblAccount" />
+          <EntitySet Name="tblAccountTypes" EntityType="Self.tblAccountType" />
+          <EntitySet Name="tblBeneficiaries" EntityType="Self.tblBeneficiary" />
+          <EntitySet Name="tblComiteeMembers" EntityType="Self.tblComiteeMember" />
+          <EntitySet Name="tblEmployers" EntityType="Self.tblEmployer" />
+          <EntitySet Name="tblEmployerAddresses" EntityType="Self.tblEmployerAddress" />
+          <EntitySet Name="tblForms" EntityType="Self.tblForm" />
+          <EntitySet Name="tblLoans" EntityType="Self.tblLoan" />
+          <EntitySet Name="tblLoanTypes" EntityType="Self.tblLoanType" />
+          <EntitySet Name="tblMembers" EntityType="Self.tblMember" />
+          <EntitySet Name="tblMemberAddresses" EntityType="Self.tblMemberAddress" />
+          <EntitySet Name="tblMemberDocs" EntityType="Self.tblMemberDoc" />
+          <EntitySet Name="tblMemberEmployers" EntityType="Self.tblMemberEmployer" />
+          <EntitySet Name="tblPermissions" EntityType="Self.tblPermission" />
+          <EntitySet Name="tblTransactions" EntityType="Self.tblTransaction" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserPermissions" EntityType="Self.tblUserPermission" />
+          <EntitySet Name="tblLoanDocs" EntityType="Self.tblLoanDoc" />
+          <EntitySet Name="tblLoanSureties" EntityType="Self.tblLoanSurety" />
+          <AssociationSet Name="FK_tblAccount_tblAccountType" Association="Self.FK_tblAccount_tblAccountType">
+            <End Role="tblAccountType" EntitySet="tblAccountTypes" />
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTransaction_tblAccount" Association="Self.FK_tblTransaction_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblTransaction" EntitySet="tblTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployerAddress_tblEmployer" Association="Self.FK_tblEmployerAddress_tblEmployer">
+            <End Role="tblEmployer" EntitySet="tblEmployers" />
+            <End Role="tblEmployerAddress" EntitySet="tblEmployerAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberEmployer_tblEmployer" Association="Self.FK_tblMemberEmployer_tblEmployer">
+            <End Role="tblEmployer" EntitySet="tblEmployers" />
+            <End Role="tblMemberEmployer" EntitySet="tblMemberEmployers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPermission_tblForm" Association="Self.FK_tblPermission_tblForm">
+            <End Role="tblForm" EntitySet="tblForms" />
+            <End Role="tblPermission" EntitySet="tblPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoan_tblLoanType" Association="Self.FK_tblLoan_tblLoanType">
+            <End Role="tblLoanType" EntitySet="tblLoanTypes" />
+            <End Role="tblLoan" EntitySet="tblLoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoan_tblMember" Association="Self.FK_tblLoan_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblLoan" EntitySet="tblLoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoan_tblMemberEmployer" Association="Self.FK_tblLoan_tblMemberEmployer">
+            <End Role="tblMemberEmployer" EntitySet="tblMemberEmployers" />
+            <End Role="tblLoan" EntitySet="tblLoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoanDoc_tblLoan" Association="Self.FK_tblLoanDoc_tblLoan">
+            <End Role="tblLoan" EntitySet="tblLoans" />
+            <End Role="tblLoanDoc" EntitySet="tblLoanDocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoanSureties_tblLoan" Association="Self.FK_tblLoanSureties_tblLoan">
+            <End Role="tblLoan" EntitySet="tblLoans" />
+            <End Role="tblLoanSureties" EntitySet="tblLoanSureties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAddress_tblMember" Association="Self.FK_tblAddress_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblMemberAddress" EntitySet="tblMemberAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoanSureties_tblMember" Association="Self.FK_tblLoanSureties_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblLoanSureties" EntitySet="tblLoanSureties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberDoc_tblMember" Association="Self.FK_tblMemberDoc_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblMemberDoc" EntitySet="tblMemberDocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberEmployer_tblMember1" Association="Self.FK_tblMemberEmployer_tblMember1">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblMemberEmployer" EntitySet="tblMemberEmployers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblPermission" Association="Self.FK_tblUserPermission_tblPermission">
+            <End Role="tblPermission" EntitySet="tblPermissions" />
+            <End Role="tblUserPermission" EntitySet="tblUserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblUser1" Association="Self.FK_tblUserPermission_tblUser1">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserPermission" EntitySet="tblUserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="tblAccountMember" Association="Self.tblAccountMember">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblMember" EntitySet="tblMembers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IMCCUDBModelStoreContainer" CdmEntityContainer="IMCCUDBEntities">
+          <EntitySetMapping Name="tblAccounts">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblAccount">
+              <MappingFragment StoreEntitySet="tblAccount">
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="accountTypeId" ColumnName="accountTypeId" />
+                <ScalarProperty Name="dateAccountOpened" ColumnName="dateAccountOpened" />
+                <ScalarProperty Name="dateAccountClosed" ColumnName="dateAccountClosed" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="closed" ColumnName="closed" />
+                <ScalarProperty Name="suspend" ColumnName="suspend" />
+                <ScalarProperty Name="accountRef" ColumnName="accountRef" />
+                <ScalarProperty Name="relatedToMember" ColumnName="relatedToMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccountTypes">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblAccountType">
+              <MappingFragment StoreEntitySet="tblAccountType">
+                <ScalarProperty Name="accountTypeId" ColumnName="accountTypeId" />
+                <ScalarProperty Name="accountTypeName" ColumnName="accountTypeName" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBeneficiaries">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblBeneficiary">
+              <MappingFragment StoreEntitySet="tblBeneficiary">
+                <ScalarProperty Name="beneficiaryId" ColumnName="beneficiaryId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="nic" ColumnName="nic" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblComiteeMembers">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblComiteeMember">
+              <MappingFragment StoreEntitySet="tblComiteeMember">
+                <ScalarProperty Name="comiteeMemberId" ColumnName="comiteeMemberId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="dateComiteeMember" ColumnName="dateComiteeMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmployers">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblEmployer">
+              <MappingFragment StoreEntitySet="tblEmployer">
+                <ScalarProperty Name="employerId" ColumnName="employerId" />
+                <ScalarProperty Name="employerName" ColumnName="employerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmployerAddresses">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblEmployerAddress">
+              <MappingFragment StoreEntitySet="tblEmployerAddress">
+                <ScalarProperty Name="employerAddressId" ColumnName="employerAddressId" />
+                <ScalarProperty Name="employerId" ColumnName="employerId" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postCode" ColumnName="postCode" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="dateDeactivate" ColumnName="dateDeactivate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblForms">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblForm">
+              <MappingFragment StoreEntitySet="tblForm">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoans">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblLoan">
+              <MappingFragment StoreEntitySet="tblLoan">
+                <ScalarProperty Name="loanId" ColumnName="loanId" />
+                <ScalarProperty Name="loanTypeId" ColumnName="loanTypeId" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="memberEmployerId" ColumnName="memberEmployerId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="loanAmount" ColumnName="loanAmount" />
+                <ScalarProperty Name="approvedDate" ColumnName="approvedDate" />
+                <ScalarProperty Name="refuseDate" ColumnName="refuseDate" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="basicSalary" ColumnName="basicSalary" />
+                <ScalarProperty Name="refuse" ColumnName="refuse" />
+                <ScalarProperty Name="repaymentBegin" ColumnName="repaymentBegin" />
+                <ScalarProperty Name="repaymentEnd" ColumnName="repaymentEnd" />
+                <ScalarProperty Name="reasonRefused" ColumnName="reasonRefused" />
+                <ScalarProperty Name="earlyRepayment" ColumnName="earlyRepayment" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoanTypes">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblLoanType">
+              <MappingFragment StoreEntitySet="tblLoanType">
+                <ScalarProperty Name="loanTypeId" ColumnName="loanTypeId" />
+                <ScalarProperty Name="loanName" ColumnName="loanName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="interest" ColumnName="interest" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="maxPeriod" ColumnName="maxPeriod" />
+                <ScalarProperty Name="minPeriod" ColumnName="minPeriod" />
+                <ScalarProperty Name="maxAmount" ColumnName="maxAmount" />
+                <ScalarProperty Name="minAmount" ColumnName="minAmount" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMembers">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblMember">
+              <MappingFragment StoreEntitySet="tblMember">
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="maritalStatus" ColumnName="maritalStatus" />
+                <ScalarProperty Name="maidenName" ColumnName="maidenName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+                <ScalarProperty Name="nic" ColumnName="nic" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="memberSince" ColumnName="memberSince" />
+                <ScalarProperty Name="activePopulation" ColumnName="activePopulation" />
+                <ScalarProperty Name="paidEntry" ColumnName="paidEntry" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="closed" ColumnName="closed" />
+                <ScalarProperty Name="closedBy" ColumnName="closedBy" />
+                <ScalarProperty Name="closedDate" ColumnName="closedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="reasonClosure" ColumnName="reasonClosure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberAddresses">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblMemberAddress">
+              <MappingFragment StoreEntitySet="tblMemberAddress">
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postCode" ColumnName="postCode" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="dateDeactivate" ColumnName="dateDeactivate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="rent" ColumnName="rent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberDocs">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblMemberDoc">
+              <MappingFragment StoreEntitySet="tblMemberDoc">
+                <ScalarProperty Name="memberDocId" ColumnName="memberDocId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="documentCategory" ColumnName="documentCategory" />
+                <ScalarProperty Name="memberDocument" ColumnName="memberDocument" />
+                <ScalarProperty Name="addedDate" ColumnName="addedDate" />
+                <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberEmployers">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblMemberEmployer">
+              <MappingFragment StoreEntitySet="tblMemberEmployer">
+                <ScalarProperty Name="memberEmployerId" ColumnName="memberEmployerId" />
+                <ScalarProperty Name="employerId" ColumnName="employerId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="dateEntry" ColumnName="dateEntry" />
+                <ScalarProperty Name="dateLeft" ColumnName="dateLeft" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPermissions">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblPermission">
+              <MappingFragment StoreEntitySet="tblPermission">
+                <ScalarProperty Name="permissionId" ColumnName="permissionId" />
+                <ScalarProperty Name="permissionName" ColumnName="permissionName" />
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="uDelete" ColumnName="uDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransactions">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblTransaction">
+              <MappingFragment StoreEntitySet="tblTransaction">
+                <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="dateTransaction" ColumnName="dateTransaction" />
+                <ScalarProperty Name="timeTransaction" ColumnName="timeTransaction" />
+                <ScalarProperty Name="transactionDoneBy" ColumnName="transactionDoneBy" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="uDelete" ColumnName="uDelete" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateModified" ColumnName="dateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserPermissions">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblUserPermission">
+              <MappingFragment StoreEntitySet="tblUserPermission">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="permissionId" ColumnName="permissionId" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="uDelete" ColumnName="uDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoanDocs">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblLoanDoc">
+              <MappingFragment StoreEntitySet="tblLoanDoc">
+                <ScalarProperty Name="loanId" ColumnName="loanId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="doc" ColumnName="doc" />
+                <ScalarProperty Name="dateUpload" ColumnName="dateUpload" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoanSureties">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblLoanSurety">
+              <MappingFragment StoreEntitySet="tblLoanSureties">
+                <ScalarProperty Name="loanId" ColumnName="loanId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="uDel" ColumnName="uDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tblAccountMember" TypeName="IMCCUDBModel.tblAccountMember" StoreEntitySet="tblAccountMember">
+            <EndProperty Name="tblAccount">
+              <ScalarProperty Name="accountId" ColumnName="accountId" />
+            </EndProperty>
+            <EndProperty Name="tblMember">
+              <ScalarProperty Name="memberId" ColumnName="memberId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
