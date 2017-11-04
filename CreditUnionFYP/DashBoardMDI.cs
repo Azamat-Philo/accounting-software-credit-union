@@ -107,7 +107,7 @@ namespace Common
         private void createUserToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
-            frmAddUser addUserForm= new frmAddUser();
+            frmEditUser addUserForm= new frmEditUser();
             addUserForm.MdiParent = this;
             addUserForm.Show();
         }

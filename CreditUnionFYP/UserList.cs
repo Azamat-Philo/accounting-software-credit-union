@@ -1,11 +1,14 @@
 ﻿using System;
 using DataBase;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Common
 {
     public partial class UserList : Form
     {
+        public IMCCUDBEntities db = new IMCCUDBEntities();
+      
         public UserList()
         {
             InitializeComponent();
@@ -13,19 +16,14 @@ namespace Common
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-
+            frmEditUser f = new frmEditUser();
+            f.Show();
+            this.Hide();
         }
 
         private void UserList_Load(object sender, EventArgs e)
-        {
-            IMCCUDBEntities db = new IMCCUDBEntities();
-
-            BindingSource da = new BindingSource();
-            da.DataSource = (from em in db.tblUsers
-                             select new { em.Title, em.EmployeeID }).ToList();
-            dgUserList.DataSource = da;
-            dgUserList.Refresh();
-
+        { 
+            dgUserList.DataSource = db.tblUsers.ToList();
         }
     }
 }

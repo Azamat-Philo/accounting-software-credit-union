@@ -26,6 +26,21 @@ F:\Visual Studio 2013\Projects\CreditUnionFYP\CreditUnionFYP\obj\Debug\CreditUni
 F:\Visual Studio 2013\Projects\CreditUnionFYP\CreditUnionFYP\obj\Debug\CreditUnionFYP.Properties.Resources.resources
 F:\Visual Studio 2013\Projects\CreditUnionFYP\CreditUnionFYP\obj\Debug\CreditUnionFYP.UserList.resources
 F:\Visual Studio 2013\Projects\CreditUnionFYP\CreditUnionFYP\obj\Debug\CreditUnionFYP.csproj.GenerateResource.Cache
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.csprojResolveAssemblyReference.cache
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.AccountType.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.EditMember.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.frmAddUser.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.CreateMember.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.DashBoardMDI.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.Log.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.MemberList.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.Properties.Resources.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.usercontrol.SearchByDate.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.usercontrol.UploadDialog.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.usercontrol.UserSearch.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.UserList.resources
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.csproj.GenerateResource.Cache
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.csproj.CoreCompileInputs.cache
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\CreditUnionFYP.exe.config
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\CreditUnionFYP.exe
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\CreditUnionFYP.pdb
@@ -44,20 +59,5 @@ E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\LogMana
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\Member.pdb
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\EntityFramework.xml
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\EntityFramework.SqlServer.xml
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.csprojResolveAssemblyReference.cache
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.AccountType.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.EditMember.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.frmAddUser.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.CreateMember.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.DashBoardMDI.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.Log.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.MemberList.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.Properties.Resources.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.usercontrol.SearchByDate.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.usercontrol.UploadDialog.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.usercontrol.UserSearch.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.UserList.resources
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.csproj.GenerateResource.Cache
-E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.csproj.CoreCompileInputs.cache
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.exe
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.pdb

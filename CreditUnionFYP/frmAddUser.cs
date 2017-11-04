@@ -46,6 +46,8 @@ namespace Common
                     user.AddPermission(dataGridView1, i);
                     if (!i.Equals(0)) {
                         MessageBox.Show("The user was created with success");
+                        UserList ur = new UserList();
+                        ur.Show();
                         this.Close();
                     }
                 }

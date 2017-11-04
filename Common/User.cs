@@ -10,7 +10,7 @@ namespace Common
 {
     public class User
     {
-        private byte userId;
+        public int userId;
         public string userName;
         public byte[] salt;
         public string pwd;
