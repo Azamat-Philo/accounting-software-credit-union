@@ -109,5 +109,23 @@ namespace Common
             return 1;
 
         }
+        public int EditPermission(DataGridView dataGridView1, int userId)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                IMCCUDBEntities db = new IMCCUDBEntities();
+                int id = Convert.ToInt16(row.Cells["PermissionId"].Value);
+                var permission = db.tblPermissions.Where(s => s.permissionId == id).FirstOrDefault<tblPermission>();
+                tblUserPermission usrPermission = new tblUserPermission();
+                usrPermission.userId = Convert.ToInt16(userId);
+                usrPermission.permissionId = permission.permissionId;
+                usrPermission.dateCreated = DateTime.Now;
+                usrPermission.uDelete = false;
+                db.tblUserPermissions.Add(usrPermission);
+                db.SaveChanges();
+            }
+            return 1;
+
+        }
     }
 }

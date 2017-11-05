@@ -38,6 +38,7 @@ namespace Common
                 if (result == true)
                 {
                     User user = new User();
+                    user.userId = User.userIdEdit;
                     user.fName = txtFirstName.Text.Trim().ToString();
                     user.lName = txtLastName.Text.Trim().ToString();
                     user.userName = txtLogin.Text.Trim().ToString();
@@ -45,8 +46,8 @@ namespace Common
                     user.active = chkActive.Checked == true ? true : false;
                     user.pwd = txtPwd.Text.Trim().ToString();
                     
-                    int i = user.CreateUser(user);
-                    user.AddPermission(dataGridView1, i);
+                    int i = user.EditUser(user);
+                    user.EditPermission(dataGridView1, i);
                     if (!i.Equals(0)) {
                         MessageBox.Show("The user was created with success");
                         UserList ur = new UserList();
@@ -260,8 +261,10 @@ namespace Common
         private void btnCancel_Click(object sender, EventArgs e)
         {
             UserList frmUserlist = new UserList();
+            User.userIdEdit = 0;
             frmUserlist.Show();
             this.Close();
+            
         }
     }
 }
