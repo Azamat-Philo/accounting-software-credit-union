@@ -93,14 +93,14 @@
             this.MemberSince});
             this.dataGridView1.Location = new System.Drawing.Point(13, 147);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(813, 318);
+            this.dataGridView1.Size = new System.Drawing.Size(889, 372);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.UseWaitCursor = true;
             // 
             // searchByDate1
             // 
-            this.searchByDate1.dpFromValue = new System.DateTime(2017, 10, 13, 0, 0, 0, 0);
-            this.searchByDate1.dpToValue = new System.DateTime(2017, 10, 13, 0, 0, 0, 0);
+            this.searchByDate1.dpFromValue = new System.DateTime(2017, 11, 5, 0, 0, 0, 0);
+            this.searchByDate1.dpToValue = new System.DateTime(2017, 11, 5, 0, 0, 0, 0);
             this.searchByDate1.Location = new System.Drawing.Point(310, 23);
             this.searchByDate1.Name = "searchByDate1";
             this.searchByDate1.Size = new System.Drawing.Size(507, 46);
@@ -123,7 +123,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(838, 477);
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ClientSize = new System.Drawing.Size(961, 531);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.searchByDate1);
             this.Controls.Add(this.userSearch1);

@@ -136,6 +136,7 @@
             this.grpEmployer.Controls.Add(this.rbInactive);
             this.grpEmployer.Controls.Add(this.rbActive);
             this.grpEmployer.Controls.Add(this.label1);
+            this.grpEmployer.Enabled = false;
             this.grpEmployer.Location = new System.Drawing.Point(7, 360);
             this.grpEmployer.Name = "grpEmployer";
             this.grpEmployer.Size = new System.Drawing.Size(668, 122);
@@ -167,9 +168,9 @@
             this.lbEntryDate.AutoSize = true;
             this.lbEntryDate.Location = new System.Drawing.Point(14, 42);
             this.lbEntryDate.Name = "lbEntryDate";
-            this.lbEntryDate.Size = new System.Drawing.Size(57, 13);
+            this.lbEntryDate.Size = new System.Drawing.Size(60, 13);
             this.lbEntryDate.TabIndex = 2;
-            this.lbEntryDate.Text = "Entry Date";
+            this.lbEntryDate.Text = "Entry Date:";
             // 
             // comboBox2
             // 
@@ -229,6 +230,7 @@
             this.grpAddress.Controls.Add(this.lbPostCode);
             this.grpAddress.Controls.Add(this.txtAddress);
             this.grpAddress.Controls.Add(this.lbAddress);
+            this.grpAddress.Enabled = false;
             this.grpAddress.Location = new System.Drawing.Point(7, 261);
             this.grpAddress.Name = "grpAddress";
             this.grpAddress.Size = new System.Drawing.Size(668, 92);
@@ -538,6 +540,7 @@
             this.grpMemberDocument.Controls.Add(this.txtMemberDocumentCategory);
             this.grpMemberDocument.Controls.Add(this.label2);
             this.grpMemberDocument.Controls.Add(this.uploadDialog2);
+            this.grpMemberDocument.Enabled = false;
             this.grpMemberDocument.Location = new System.Drawing.Point(7, 282);
             this.grpMemberDocument.Name = "grpMemberDocument";
             this.grpMemberDocument.Size = new System.Drawing.Size(648, 200);
@@ -575,9 +578,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Category Name";
+            this.label2.Text = "Category Name:";
             // 
             // uploadDialog2
             // 
@@ -585,6 +588,7 @@
             this.uploadDialog2.Name = "uploadDialog2";
             this.uploadDialog2.Size = new System.Drawing.Size(367, 56);
             this.uploadDialog2.TabIndex = 0;
+            this.uploadDialog2.txtPathValue = "";
             // 
             // grbBeneficiary
             // 
@@ -598,6 +602,7 @@
             this.grbBeneficiary.Controls.Add(this.lbBenLastName);
             this.grbBeneficiary.Controls.Add(this.lbBenFirstName);
             this.grbBeneficiary.Controls.Add(this.txtBenFirstName);
+            this.grbBeneficiary.Enabled = false;
             this.grbBeneficiary.Location = new System.Drawing.Point(6, 6);
             this.grbBeneficiary.Name = "grbBeneficiary";
             this.grbBeneficiary.Size = new System.Drawing.Size(649, 270);

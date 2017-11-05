@@ -39,7 +39,6 @@
             this.lnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.uDeleteDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dateCreatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateModifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgUserList)).BeginInit();
@@ -50,6 +49,7 @@
             // 
             this.dgUserList.AllowUserToAddRows = false;
             this.dgUserList.AllowUserToDeleteRows = false;
+            this.dgUserList.AllowUserToOrderColumns = true;
             this.dgUserList.AutoGenerateColumns = false;
             this.dgUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -59,7 +59,6 @@
             this.lnameDataGridViewTextBoxColumn,
             this.designationDataGridViewTextBoxColumn,
             this.activeDataGridViewCheckBoxColumn,
-            this.uDeleteDataGridViewCheckBoxColumn,
             this.dateCreatedDataGridViewTextBoxColumn,
             this.dateModifiedDataGridViewTextBoxColumn});
             this.dgUserList.DataSource = this.tblUserBindingSource;
@@ -67,8 +66,9 @@
             this.dgUserList.MultiSelect = false;
             this.dgUserList.Name = "dgUserList";
             this.dgUserList.ReadOnly = true;
-            this.dgUserList.Size = new System.Drawing.Size(853, 399);
+            this.dgUserList.Size = new System.Drawing.Size(949, 399);
             this.dgUserList.TabIndex = 0;
+            this.dgUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgUserList_CellClick_1);
             // 
             // tblUserBindingSource
             // 
@@ -76,7 +76,7 @@
             // 
             // btnAddUser
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(790, 29);
+            this.btnAddUser.Location = new System.Drawing.Point(886, 31);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(75, 23);
             this.btnAddUser.TabIndex = 1;
@@ -126,13 +126,6 @@
             this.activeDataGridViewCheckBoxColumn.Name = "activeDataGridViewCheckBoxColumn";
             this.activeDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
-            // uDeleteDataGridViewCheckBoxColumn
-            // 
-            this.uDeleteDataGridViewCheckBoxColumn.DataPropertyName = "uDelete";
-            this.uDeleteDataGridViewCheckBoxColumn.HeaderText = "Delete";
-            this.uDeleteDataGridViewCheckBoxColumn.Name = "uDeleteDataGridViewCheckBoxColumn";
-            this.uDeleteDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
             // dateCreatedDataGridViewTextBoxColumn
             // 
             this.dateCreatedDataGridViewTextBoxColumn.DataPropertyName = "dateCreated";
@@ -151,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 495);
+            this.ClientSize = new System.Drawing.Size(993, 495);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.dgUserList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -176,7 +169,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn designationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activeDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn uDeleteDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateCreatedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateModifiedDataGridViewTextBoxColumn;
     }

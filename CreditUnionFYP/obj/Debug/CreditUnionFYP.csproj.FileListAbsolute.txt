@@ -61,3 +61,4 @@ E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\EntityF
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\bin\Debug\EntityFramework.SqlServer.xml
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.exe
 E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\CreditUnionFYP.pdb
+E:\CreditUnion\accounting-software-credit-union\CreditUnionFYP\obj\Debug\Common.frmEditUser.resources

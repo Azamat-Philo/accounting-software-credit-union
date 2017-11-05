@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq;
+using DataBase;
 
 namespace Common
 {
-    public partial class frmAddUser : Form
+    public partial class frmEditUser : Form
     {
-        public class AddUserGrid
+        public class EditUserGrid
         {
             public string formName;
+            public int permissionId;
             public string permissionName;
         }
-        public List<AddUserGrid> gridPermission = new List<AddUserGrid>();
-        public frmAddUser()
-        {
+        public List<EditUserGrid> gridPermission = new List<EditUserGrid>();
+        public IMCCUDBEntities db = new IMCCUDBEntities();
+        public frmEditUser() { 
             InitializeComponent();
         }
 
@@ -55,24 +58,6 @@ namespace Common
             catch (Exception ex) {
                 LogValidationManagement.LogFile.LogData("Create a User error", ex.ToString(), 0);
             }
-        }
-
-        private void frmAddUser_Load(object sender, EventArgs e)
-        {
-            this.cbFormName.SelectedValueChanged -= new System.EventHandler(this.cbFormName_SelectedValueChanged);
-            DataBase.DBClass.DBConnect();
-            SqlCommand drCommand = null;
-            SqlDataAdapter da = new SqlDataAdapter();
-            DataTable ds = new DataTable();
-            drCommand = new SqlCommand("SELECT * FROM tblForm where active=1", DataBase.DBClass.connection);
-            da.SelectCommand = drCommand;
-            da.Fill(ds);
-            this.AddColumns();
-            cbFormName.DataSource = ds;
-            cbFormName.ValueMember = "formId";
-            cbFormName.DisplayMember = "formName";
-            this.cbFormName.SelectedValueChanged += new System.EventHandler(this.cbFormName_SelectedValueChanged);
-
         }
 
         private void cbFormName_SelectedValueChanged(object sender, EventArgs e)
@@ -191,7 +176,7 @@ namespace Common
                                 {
                                     string[] row = { reader["formName"].ToString(), reader["permissionId"].ToString(), reader["permissionName"].ToString() };
                                     dataGridView1.Rows.Add(row);
-                                    AddUserGrid val = new AddUserGrid();
+                                    EditUserGrid val = new EditUserGrid();
                                     val.formName = reader["formName"].ToString();
                                     val.permissionName = reader["permissionName"].ToString();
                                     gridPermission.Add(val);
@@ -216,7 +201,7 @@ namespace Common
         {
             if (e.ColumnIndex == dataGridView1.Columns["btnRemove"].Index)
             {
-
+                
                 int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
 
                 dataGridView1.Rows.RemoveAt(selectedrowindex);
@@ -224,7 +209,59 @@ namespace Common
             }
         }
 
+        private void frmEditUser_Load(object sender, EventArgs e)
+        {
+            this.AddColumns();
+            var query = (from r in db.tblUsers 
+                         where r.userId==User.userIdEdit
+                         select new User { userId = r.userId, userName= r.userName , fName = r.fname , lName = r.lname , active = r.active}).ToList();
+            txtLogin.Text = query.ElementAt(0).userName.ToString();
+            txtFirstName.Text = query.ElementAt(0).fName.ToString();
+            txtLastName.Text = query.ElementAt(0).lName.ToString();
+            bool chk =  Convert.ToBoolean(query.ElementAt(0).active);
+            chkActive.Checked = chk == true ? true : false;
 
-        
+            var result = (from p in db.tblUserPermissions
+                          join a in db.tblPermissions
+                          on p.permissionId equals a.permissionId
+                          join f in db.tblForms
+                          on a.formId equals f.formId
+                          where p.userId == User.userIdEdit
+                          select new EditUserGrid { formName = f.formName, permissionId = a.permissionId, permissionName = a.permissionName}).ToList();
+            foreach(var c in result)
+             {
+                string[] row = { c.formName, c.permissionId.ToString() , c.permissionName };
+                dataGridView1.Rows.Add(row);
+                EditUserGrid val = new EditUserGrid();
+                val.formName = c.formName;
+                val.permissionName = c.permissionName;
+                gridPermission.Add(val);
+            }
+
+            
+
+
+
+            this.cbFormName.SelectedValueChanged -= new System.EventHandler(this.cbFormName_SelectedValueChanged);
+            DataBase.DBClass.DBConnect();
+            SqlCommand drCommand = null;
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable ds = new DataTable();
+            drCommand = new SqlCommand("SELECT * FROM tblForm where active=1", DataBase.DBClass.connection);
+            da.SelectCommand = drCommand;
+            da.Fill(ds);
+            
+            cbFormName.DataSource = ds;
+            cbFormName.ValueMember = "formId";
+            cbFormName.DisplayMember = "formName";
+            this.cbFormName.SelectedValueChanged += new System.EventHandler(this.cbFormName_SelectedValueChanged);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            UserList frmUserlist = new UserList();
+            frmUserlist.Show();
+            this.Close();
+        }
     }
 }

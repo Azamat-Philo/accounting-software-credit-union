@@ -21,6 +21,10 @@ namespace Common
         public bool uDelete;
         public DateTime? dateCreated;
         public DateTime? dateModified;
+        public static int userIdSession;
+        public static string userNameSession;
+        public static int userIdEdit;
+
 
         public User()
         {
@@ -60,6 +64,31 @@ namespace Common
             catch (Exception e)
             {
                 
+            }
+            return t;
+        }
+
+        public int EditUser(User usr)
+        {
+            int t = 0;
+            try
+            {
+                DataBase.IMCCUDBEntities db = new DataBase.IMCCUDBEntities();
+                DataBase.tblUser user = new DataBase.tblUser();
+                user.userId = Convert.ToInt16(usr.userId);
+                user.fname = usr.fName;
+                user.lname = usr.lName;
+                user.userName = usr.userName;
+                user.uDelete = false;
+                user.active = usr.active;
+                user.dateModified = DateTime.Now;
+                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                t = user.userId;
+            }
+            catch (Exception e)
+            {
+
             }
             return t;
         }
