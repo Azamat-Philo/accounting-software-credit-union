@@ -1,15 +1,13 @@
 ﻿using DataBase;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Common
 {
     public class User
     {
+        IMCCUDBEntities db = new IMCCUDBEntities();
         public int userId;
         public string userName;
         public byte[] salt;
@@ -46,8 +44,8 @@ namespace Common
             int t = 0;
             try
             {
-                DataBase.IMCCUDBEntities db = new DataBase.IMCCUDBEntities();
-                DataBase.tblUser user = new DataBase.tblUser();
+                IMCCUDBEntities db = new IMCCUDBEntities();
+                tblUser user = new tblUser();
                 user.fname = usr.fName;
                 user.lname = usr.lName;
                 user.userName = usr.userName;
@@ -73,8 +71,12 @@ namespace Common
             int t = 0;
             try
             {
-                DataBase.IMCCUDBEntities db = new DataBase.IMCCUDBEntities();
-                DataBase.tblUser user = new DataBase.tblUser();
+                IMCCUDBEntities db = new IMCCUDBEntities();
+                tblUser user = new tblUser();
+                user = (from x in db.tblUsers
+                              where x.userId == usr.userId
+                        select x).First();
+                
                 user.userId = Convert.ToInt16(usr.userId);
                 user.fname = usr.fName;
                 user.lname = usr.lName;
@@ -82,7 +84,6 @@ namespace Common
                 user.uDelete = false;
                 user.active = usr.active;
                 user.dateModified = DateTime.Now;
-                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 t = user.userId;
             }
@@ -95,7 +96,7 @@ namespace Common
 
         public int AddPermission(DataGridView dataGridView1,int userId) {
             foreach (DataGridViewRow row in dataGridView1.Rows){
-                IMCCUDBEntities db = new IMCCUDBEntities();
+              
                 int id = Convert.ToInt16(row.Cells["PermissionId"].Value);
                 var permission = db.tblPermissions.Where(s => s.permissionId == id).FirstOrDefault<tblPermission>();
                 tblUserPermission usrPermission = new tblUserPermission();
@@ -109,22 +110,16 @@ namespace Common
             return 1;
 
         }
-        public int EditPermission(DataGridView dataGridView1, int userId)
+        public int EditPermission(DataGridView dataGridView1, int userIdEdit)
         {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                IMCCUDBEntities db = new IMCCUDBEntities();
-                int id = Convert.ToInt16(row.Cells["PermissionId"].Value);
-                var permission = db.tblPermissions.Where(s => s.permissionId == id).FirstOrDefault<tblPermission>();
-                tblUserPermission usrPermission = new tblUserPermission();
-                usrPermission.userId = Convert.ToInt16(userId);
-                usrPermission.permissionId = permission.permissionId;
-                usrPermission.dateCreated = DateTime.Now;
-                usrPermission.uDelete = false;
-                db.tblUserPermissions.Add(usrPermission);
-                db.SaveChanges();
-            }
-            return 1;
+            (from u in db.tblUserPermissions
+                        where u.userId == userIdEdit
+                        select u).ToList().ForEach(x => x.uDelete = true);
+            /*foreach (var t in stud){
+                t.uDelete = true;
+            }*/
+            int i = this.AddPermission(dataGridView1, userId);
+            return i;
 
         }
     }

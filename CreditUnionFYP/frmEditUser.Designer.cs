@@ -78,7 +78,7 @@
             this.lbUserName.AutoSize = true;
             this.lbUserName.Location = new System.Drawing.Point(26, 103);
             this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(33, 13);
+            this.lbUserName.Size = new System.Drawing.Size(35, 13);
             this.lbUserName.TabIndex = 2;
             this.lbUserName.Text = "Login";
             // 
@@ -87,7 +87,7 @@
             this.txtLogin.Location = new System.Drawing.Point(112, 100);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.ReadOnly = true;
-            this.txtLogin.Size = new System.Drawing.Size(151, 20);
+            this.txtLogin.Size = new System.Drawing.Size(151, 22);
             this.txtLogin.TabIndex = 3;
             // 
             // lbPassword
@@ -95,7 +95,7 @@
             this.lbPassword.AutoSize = true;
             this.lbPassword.Location = new System.Drawing.Point(26, 126);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(53, 13);
+            this.lbPassword.Size = new System.Drawing.Size(55, 13);
             this.lbPassword.TabIndex = 4;
             this.lbPassword.Text = "Password";
             // 
@@ -104,7 +104,7 @@
             this.txtPwd.Location = new System.Drawing.Point(112, 126);
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.ReadOnly = true;
-            this.txtPwd.Size = new System.Drawing.Size(151, 20);
+            this.txtPwd.Size = new System.Drawing.Size(151, 22);
             this.txtPwd.TabIndex = 5;
             this.txtPwd.UseSystemPasswordChar = true;
             // 
@@ -123,7 +123,7 @@
             this.lbFirstName.AutoSize = true;
             this.lbFirstName.Location = new System.Drawing.Point(26, 48);
             this.lbFirstName.Name = "lbFirstName";
-            this.lbFirstName.Size = new System.Drawing.Size(57, 13);
+            this.lbFirstName.Size = new System.Drawing.Size(62, 13);
             this.lbFirstName.TabIndex = 7;
             this.lbFirstName.Text = "First Name";
             // 
@@ -131,7 +131,7 @@
             // 
             this.txtFirstName.Location = new System.Drawing.Point(112, 48);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(151, 20);
+            this.txtFirstName.Size = new System.Drawing.Size(151, 22);
             this.txtFirstName.TabIndex = 8;
             // 
             // lbLastName
@@ -139,7 +139,7 @@
             this.lbLastName.AutoSize = true;
             this.lbLastName.Location = new System.Drawing.Point(26, 74);
             this.lbLastName.Name = "lbLastName";
-            this.lbLastName.Size = new System.Drawing.Size(58, 13);
+            this.lbLastName.Size = new System.Drawing.Size(61, 13);
             this.lbLastName.TabIndex = 9;
             this.lbLastName.Text = "Last Name";
             // 
@@ -147,7 +147,7 @@
             // 
             this.txtLastName.Location = new System.Drawing.Point(112, 74);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(151, 20);
+            this.txtLastName.Size = new System.Drawing.Size(151, 22);
             this.txtLastName.TabIndex = 10;
             this.txtLastName.Leave += new System.EventHandler(this.txtLastName_Leave);
             // 
@@ -170,7 +170,7 @@
             this.gbAddPermission.Controls.Add(this.lbForm);
             this.gbAddPermission.Controls.Add(this.cbFormName);
             this.gbAddPermission.Controls.Add(this.btnAddPermission);
-            this.gbAddPermission.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbAddPermission.Font = new System.Drawing.Font("Malgun Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAddPermission.Location = new System.Drawing.Point(296, 46);
             this.gbAddPermission.Name = "gbAddPermission";
             this.gbAddPermission.Size = new System.Drawing.Size(236, 167);
@@ -183,7 +183,7 @@
             this.lbPermission.AutoSize = true;
             this.lbPermission.Location = new System.Drawing.Point(6, 57);
             this.lbPermission.Name = "lbPermission";
-            this.lbPermission.Size = new System.Drawing.Size(67, 13);
+            this.lbPermission.Size = new System.Drawing.Size(64, 13);
             this.lbPermission.TabIndex = 7;
             this.lbPermission.Text = "Permission";
             // 
@@ -200,7 +200,7 @@
             this.lbForm.AutoSize = true;
             this.lbForm.Location = new System.Drawing.Point(6, 23);
             this.lbForm.Name = "lbForm";
-            this.lbForm.Size = new System.Drawing.Size(70, 13);
+            this.lbForm.Size = new System.Drawing.Size(69, 13);
             this.lbForm.TabIndex = 5;
             this.lbForm.Text = "Form Name";
             // 
@@ -226,10 +226,10 @@
             // lbPermissionList
             // 
             this.lbPermissionList.AutoSize = true;
-            this.lbPermissionList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPermissionList.Font = new System.Drawing.Font("Malgun Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPermissionList.Location = new System.Drawing.Point(12, 224);
             this.lbPermissionList.Name = "lbPermissionList";
-            this.lbPermissionList.Size = new System.Drawing.Size(111, 13);
+            this.lbPermissionList.Size = new System.Drawing.Size(106, 13);
             this.lbPermissionList.TabIndex = 14;
             this.lbPermissionList.Text = "List of permissions";
             // 
@@ -238,6 +238,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.SteelBlue;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(544, 441);
             this.Controls.Add(this.lbPermissionList);
@@ -254,6 +255,7 @@
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
+            this.Font = new System.Drawing.Font("Malgun Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditUser";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

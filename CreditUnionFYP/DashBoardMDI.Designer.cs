@@ -56,6 +56,7 @@
             // 
             // menuStrip
             // 
+            this.menuStrip.Font = new System.Drawing.Font("Malgun Gothic", 8F);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.membersToolStripMenuItem,
             this.loansToolStripMenuItem,
@@ -73,20 +74,20 @@
             this.listOfMembersToolStripMenuItem,
             this.createMemberToolStripMenuItem});
             this.membersToolStripMenuItem.Name = "membersToolStripMenuItem";
-            this.membersToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.membersToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.membersToolStripMenuItem.Text = "&Members";
             // 
             // listOfMembersToolStripMenuItem
             // 
             this.listOfMembersToolStripMenuItem.Name = "listOfMembersToolStripMenuItem";
-            this.listOfMembersToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.listOfMembersToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.listOfMembersToolStripMenuItem.Text = "&List of members";
             this.listOfMembersToolStripMenuItem.Click += new System.EventHandler(this.listOfMembersToolStripMenuItem_Click);
             // 
             // createMemberToolStripMenuItem
             // 
             this.createMemberToolStripMenuItem.Name = "createMemberToolStripMenuItem";
-            this.createMemberToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.createMemberToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.createMemberToolStripMenuItem.Text = "&Create member";
             this.createMemberToolStripMenuItem.Click += new System.EventHandler(this.createMemberToolStripMenuItem_Click);
             // 
@@ -96,19 +97,19 @@
             this.listOfLoansToolStripMenuItem,
             this.typeOfLoansToolStripMenuItem});
             this.loansToolStripMenuItem.Name = "loansToolStripMenuItem";
-            this.loansToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.loansToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.loansToolStripMenuItem.Text = "Loans";
             // 
             // listOfLoansToolStripMenuItem
             // 
             this.listOfLoansToolStripMenuItem.Name = "listOfLoansToolStripMenuItem";
-            this.listOfLoansToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.listOfLoansToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.listOfLoansToolStripMenuItem.Text = "List of loans";
             // 
             // typeOfLoansToolStripMenuItem
             // 
             this.typeOfLoansToolStripMenuItem.Name = "typeOfLoansToolStripMenuItem";
-            this.typeOfLoansToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.typeOfLoansToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.typeOfLoansToolStripMenuItem.Text = "Type of loans";
             // 
             // adminToolStripMenuItem
@@ -117,13 +118,13 @@
             this.addLoanToolStripMenuItem,
             this.configurationToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.adminToolStripMenuItem.Text = "Administration";
             // 
             // addLoanToolStripMenuItem
             // 
             this.addLoanToolStripMenuItem.Name = "addLoanToolStripMenuItem";
-            this.addLoanToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.addLoanToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.addLoanToolStripMenuItem.Text = "List of loan type";
             // 
             // configurationToolStripMenuItem
@@ -132,20 +133,21 @@
             this.shareLimitToolStripMenuItem,
             this.accountTypeToolStripMenuItem});
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // shareLimitToolStripMenuItem
             // 
             this.shareLimitToolStripMenuItem.Name = "shareLimitToolStripMenuItem";
-            this.shareLimitToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.shareLimitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.shareLimitToolStripMenuItem.Text = "Share limit";
             // 
             // accountTypeToolStripMenuItem
             // 
             this.accountTypeToolStripMenuItem.Name = "accountTypeToolStripMenuItem";
-            this.accountTypeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.accountTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.accountTypeToolStripMenuItem.Text = "Account Type";
+            this.accountTypeToolStripMenuItem.Click += new System.EventHandler(this.accountTypeToolStripMenuItem_Click);
             // 
             // systemAdministratorToolStripMenuItem
             // 
@@ -153,7 +155,7 @@
             this.createUserToolStripMenuItem,
             this.createUserToolStripMenuItem1});
             this.systemAdministratorToolStripMenuItem.Name = "systemAdministratorToolStripMenuItem";
-            this.systemAdministratorToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
+            this.systemAdministratorToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
             this.systemAdministratorToolStripMenuItem.Text = "System Administrator";
             // 
             // createUserToolStripMenuItem
@@ -212,6 +214,7 @@
             this.ClientSize = new System.Drawing.Size(1110, 495);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip);
+            this.Font = new System.Drawing.Font("Malgun Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;

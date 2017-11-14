@@ -26,7 +26,7 @@ namespace LogValidationManagement
 
                 foreach (Control t in ts)
                 {
-                    if (t.GetType().Name == "TextBox")
+                   if (t.GetType().Name == "TextBox")
                     {
                         TextBox tb = (TextBox)t;
                         if (string.IsNullOrWhiteSpace(tb.Text.ToString()) || string.IsNullOrEmpty(tb.Text.ToString()))
@@ -34,6 +34,18 @@ namespace LogValidationManagement
                             valid[i] = false;
                         }
                         else if (tb.TextLength == 0)
+                        {
+                            valid[i] = false;
+                        }
+                        else
+                        {
+                            valid[i] = true;
+                        }
+                    }
+                    else if ( t.GetType().Name == "ComboBox")
+                    {
+                        ComboBox tb = (ComboBox)t;
+                        if (string.IsNullOrWhiteSpace(tb.Text.ToString()) || string.IsNullOrEmpty(tb.Text.ToString()))
                         {
                             valid[i] = false;
                         }
@@ -60,6 +72,28 @@ namespace LogValidationManagement
             ts.Clear();
             return result;
 
+        }
+        public static Boolean rbButtonCheck(List<RadioButton> rbs) {
+            bool result = true;
+            int count = rbs.Count;
+            bool[] valid = new bool[count];
+            byte i = 0;
+            foreach (RadioButton rb in rbs)
+            {
+                if (rb.Checked)
+                {
+                    valid[i] = true;
+                }
+                else {
+                    valid[i] = false;
+                }
+                i++;
+            }
+            if (valid.Contains(true))
+            {
+                result = true;
+            }
+            return result;
         }
         public static Boolean checkBoxListValidation(CheckedListBox chk)
         {

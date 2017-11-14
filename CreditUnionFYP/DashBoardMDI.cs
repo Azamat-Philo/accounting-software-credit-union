@@ -107,7 +107,7 @@ namespace Common
         private void createUserToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
-            frmEditUser addUserForm= new frmEditUser();
+            frmAddUser addUserForm= new frmAddUser();
             addUserForm.MdiParent = this;
             addUserForm.Show();
         }
@@ -137,6 +137,11 @@ namespace Common
             UserList UserListForm = new UserList();
             UserListForm.MdiParent = this;
             UserListForm.Show();
+        }
+
+        private void accountTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

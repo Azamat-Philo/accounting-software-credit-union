@@ -21,7 +21,7 @@ namespace Member
         public byte paidEntry;
 
 
-        public Member(string _fname, string _lname, byte _gender, byte _maritalStatus, string _maidenName, string _nic, DateTime _dob, DateTime _entryDate)
+        public Member(string _fname, string _lname, byte _gender, byte _maritalStatus, string _maidenName, string _nic, DateTime _dob, DateTime _entryDate, List<MemberAddress>,)
         {
             fName = _fname;
             lName = _lname;
@@ -33,4 +33,8 @@ namespace Member
             entryDate = _entryDate;
         }
     }
+    public class MemberAddress{
+
+    }
+
 }

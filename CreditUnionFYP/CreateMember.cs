@@ -24,7 +24,8 @@ namespace Common
 
         private void btnGenerateAccount_Click(object sender, EventArgs e)
         {
-
+            Random generator = new Random();
+            txtAccountNumber.Text = "IMCCU-" + generator.Next(0, 1000000).ToString("D6");
         }
 
         private void EnableGenerateAcc() {
@@ -91,6 +92,10 @@ namespace Common
             cbMaritalStatus.Location = new Point(106, 122);
             lbDateOfBirth.Location = new Point(21, 153);
             dpBod.Location = new Point(107, 153);
+            DateTime minDate=DateTime.Today;
+            dpBod.MinDate = minDate.AddYears(-90);
+            dpBod.MaxDate = DateTime.Today;
+            dpoEmployement.MaxDate = DateTime.Today;
             lbNic.Location = new Point(21, 186);
             txtNic.Location = new Point(107, 186);
             grpDetails.Height = 218;
@@ -131,21 +136,26 @@ namespace Common
         private void txtFirstName_Leave(object sender, EventArgs e)
         {
             this.EnableGenerateAcc();
+            this.EnabledPanel1();
         }
 
         private void txtLastName_Leave(object sender, EventArgs e)
         {
             this.EnableGenerateAcc();
+            this.EnabledPanel1();
         }
 
         private void txtMaidenName_Leave(object sender, EventArgs e)
         {
             this.EnableGenerateAcc();
+            this.EnabledPanel1();
         }
 
         private void txtNic_Leave(object sender, EventArgs e)
         {
             this.EnableGenerateAcc();
+            txtNic.Text.ToUpper();
+            this.EnabledPanel1();
         }
 
         private void dpBod_Leave(object sender, EventArgs e)
@@ -187,19 +197,15 @@ namespace Common
             LogValidationManagement.Validation h = new LogValidationManagement.Validation();
             bool result = h.inputTextValidation(bn);
             if (result){ 
-            string[] row = { "1", txtBenFirstName.Text.ToString(), txtBenLastName.Text.ToString(), txtBenNic.Text.ToString(), txtCommentBeneficiary.Text.ToString() };
-            dataGridView1.Rows.Add(row);
+            string[] row = { txtBenFirstName.Text.ToString(), txtBenLastName.Text.ToString(), txtBenNic.Text.ToString(), txtCommentBeneficiary.Text.ToString() };
+                dgBeneficiaryGrid.Rows.Add(row);
             txtBenFirstName.Text = ""; txtBenLastName.Text = ""; txtBenNic.Text = ""; txtCommentBeneficiary.Text = "";
             }
+            this.EnabledPanel4();
         }
 
         private void AddColumnsBeneficiary()
         {
-            DataGridViewTextBoxColumn idColumn =
-                new DataGridViewTextBoxColumn();
-            idColumn.Name = "ID";
-            idColumn.DataPropertyName = "Id";
-            idColumn.ReadOnly = true;
 
             DataGridViewTextBoxColumn fnameToColumn =
               new DataGridViewTextBoxColumn();
@@ -233,40 +239,37 @@ namespace Common
             buttonColumn.Text = "Remove";
             buttonColumn.UseColumnTextForButtonValue = true;
 
-            dataGridView1.Columns.Add(idColumn);
-            dataGridView1.Columns.Add(fnameToColumn);
-            dataGridView1.Columns.Add(lnameToColumn);
-            dataGridView1.Columns.Add(nicToColumn);
-            dataGridView1.Columns.Add(commentToColumn);
-            dataGridView1.Columns.Add(buttonColumn);
+
+            dgBeneficiaryGrid.Columns.Add(lnameToColumn);
+            dgBeneficiaryGrid.Columns.Add(fnameToColumn);
+            dgBeneficiaryGrid.Columns.Add(nicToColumn);
+            dgBeneficiaryGrid.Columns.Add(commentToColumn);
+            dgBeneficiaryGrid.Columns.Add(buttonColumn);
         }
 
         private void btnMemberDocumentAdd_Click(object sender, EventArgs e)
         {
             List<Control> bn = new List<Control>();
             TextBox txtPath=new TextBox();
-            txtPath.Text = uploadDialog2.txtPathValue;
+            txtPath.Text = uploadDialog1.txtPathValue;
 
-            bn.Add(txtMemberDocumentCategory);
+            bn.Add(cbcategoryDoc);
             bn.Add(txtPath);
             LogValidationManagement.Validation h = new LogValidationManagement.Validation();
             bool result = h.inputTextValidation(bn);
             if (result)
             {
-                string[] row = { "1", txtMemberDocumentCategory.Text.ToString(), txtPath.Text.ToString()};
-                dataGridView3.Rows.Add(row);
-                txtMemberDocumentCategory.Text = ""; uploadDialog2.txtPathValue = ""; 
+                string[] row = { cbcategoryDoc.Text.ToString(), txtPath.Text.ToString() };
+                dgMemberDoc.Rows.Add(row);
+                uploadDialog1.txtPathValue = "";
+            }
+            else {
+               
             }
         }
 
         private void AddColumnsMemberDocument()
         {
-            DataGridViewTextBoxColumn idColumn =
-                new DataGridViewTextBoxColumn();
-            idColumn.Name = "ID";
-            idColumn.DataPropertyName = "Id";
-            idColumn.ReadOnly = true;
-
             DataGridViewTextBoxColumn documentNameToColumn =
               new DataGridViewTextBoxColumn();
             documentNameToColumn.Name = "DocumentName";
@@ -289,10 +292,107 @@ namespace Common
             buttonColumn.Text = "Remove";
             buttonColumn.UseColumnTextForButtonValue = true;
 
-            dataGridView3.Columns.Add(idColumn);
-            dataGridView3.Columns.Add(documentNameToColumn);
-            dataGridView3.Columns.Add(pathToColumn);
-            dataGridView3.Columns.Add(buttonColumn);
+            dgMemberDoc.Columns.Add(documentNameToColumn);
+            dgMemberDoc.Columns.Add(pathToColumn);
+            dgMemberDoc.Columns.Add(buttonColumn);
+        }
+        private void EnabledPanel1() {
+            List<Control> r = new List<Control>();
+
+            r.Add(txtFirstName);
+            r.Add(txtLastName);
+            r.Add(txtNic);
+            r.Add(cbMaritalStatus);
+            if (rbFemale.Checked == true) {
+                r.Add(txtMaidenName);
+            }
+            r.Add(txtAccountNumber);
+            r.Add(txtShares);
+            LogValidationManagement.Validation h = new LogValidationManagement.Validation();
+            bool result = h.inputTextValidation(r);
+            grpAddress.Enabled = result==true ? true : false;
+            if(result ==false) SetBorderError(r);
+        }
+
+        public void SetBorderError(List<Control> g) {
+            foreach (Control t in g)
+            {
+                t.ForeColor = Color.LightPink;
+            }
+        }
+
+        private void EnabledPanel2()
+        {
+            List<Control> r = new List<Control>();
+
+            r.Add(txtAddress);
+            r.Add(txtPostCode);
+            r.Add(comboBox1);
+            LogValidationManagement.Validation h = new LogValidationManagement.Validation();
+            bool result = h.inputTextValidation(r);
+            grpEmployer.Enabled = result == true ? true : false;
+        }
+        private void EnabledPanel3()
+        {
+            List<RadioButton> r = new List<RadioButton>();
+
+            r.Add(rbActive);
+            r.Add(rbInactive);
+            bool result = LogValidationManagement.Validation.rbButtonCheck(r);
+            grbBeneficiary.Enabled = result == true ? true : false;
+        }
+
+        private void EnabledPanel4()
+        {
+            DataGridViewRow tr = new DataGridViewRow();
+            if (dgBeneficiaryGrid.Rows.Count > 0)
+            { 
+                grpMemberDocument.Enabled = true;
+            }
+            else {
+                grpMemberDocument.Enabled = false;
+            }
+           
+        }
+
+        private void txtAccountNumber_Leave(object sender, EventArgs e)
+        {
+            this.EnabledPanel1();
+        }
+
+        private void txtShares_Leave(object sender, EventArgs e)
+        {
+            this.EnabledPanel1();
+        }
+
+        private void txtAddress_Leave(object sender, EventArgs e)
+        {
+            this.EnabledPanel2();
+        }
+
+        private void txtPostCode_Leave(object sender, EventArgs e)
+        {
+            this.EnabledPanel2();
+        }
+
+        private void comboBox1_Leave(object sender, EventArgs e)
+        {
+            this.EnabledPanel2();
+        }
+
+        private void rbActive_CheckedChanged(object sender, EventArgs e)
+        {
+            this.EnabledPanel3();
+        }
+
+        private void rbInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            this.EnabledPanel3();
+        }
+
+        private void txtAccountNumber_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

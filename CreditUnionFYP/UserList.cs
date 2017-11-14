@@ -65,9 +65,12 @@ namespace Common
             if (e.ColumnIndex == dgUserList.Columns["Delete"].Index) {
                 int selectedrowindex = dgUserList.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dgUserList.Rows[selectedrowindex];
-                User.userIdEdit = Convert.ToInt32(selectedRow.Cells["userIdDataGridViewTextBoxColumn"].Value);
+                int delVal = Convert.ToInt16(selectedRow.Cells["userIdDataGridViewTextBoxColumn"].Value);
+                (from u in db.tblUsers
+                 where u.userId == delVal
+                 select u).ToList().ForEach(x => x.uDelete = true);
             }
-            this.Hide();
+            this.dgUserList.Refresh();
         }
     }
 }

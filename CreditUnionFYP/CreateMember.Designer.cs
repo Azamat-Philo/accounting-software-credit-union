@@ -33,7 +33,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpEmployer = new System.Windows.Forms.GroupBox();
             this.plActive = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dpoEmployement = new System.Windows.Forms.DateTimePicker();
             this.lbEntryDate = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.lbCompany = new System.Windows.Forms.Label();
@@ -72,16 +72,16 @@
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpMemberDocument = new System.Windows.Forms.GroupBox();
+            this.cbcategoryDoc = new Bunifu.Framework.UI.BunifuDropdown();
+            this.uploadDialog1 = new Common.usercontrol.UploadDialog();
             this.btnMemberDocumentAdd = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.txtMemberDocumentCategory = new System.Windows.Forms.TextBox();
+            this.dgMemberDoc = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.uploadDialog2 = new Common.usercontrol.UploadDialog();
             this.grbBeneficiary = new System.Windows.Forms.GroupBox();
+            this.dgBeneficiaryGrid = new System.Windows.Forms.DataGridView();
             this.btnAddBeneficiary = new System.Windows.Forms.Button();
             this.txtCommentBeneficiary = new System.Windows.Forms.TextBox();
             this.lbCommentBeneficiary = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtBenNic = new System.Windows.Forms.TextBox();
             this.lbBenNic = new System.Windows.Forms.Label();
             this.txtBenLastName = new System.Windows.Forms.TextBox();
@@ -90,9 +90,14 @@
             this.txtBenFirstName = new System.Windows.Forms.TextBox();
             this.lbDocumentCategory = new System.Windows.Forms.Label();
             this.txtDocumentCategory = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnUpload = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnCreateMember = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRemove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEmployer.SuspendLayout();
@@ -101,16 +106,16 @@
             this.grpDetails.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.grpMemberDocument.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMemberDoc)).BeginInit();
             this.grbBeneficiary.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBeneficiaryGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Malgun Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -119,6 +124,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.SteelBlue;
             this.tabPage1.Controls.Add(this.grpEmployer);
             this.tabPage1.Controls.Add(this.grpAddress);
             this.tabPage1.Controls.Add(this.grpDetails);
@@ -127,8 +133,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(680, 488);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Text = "Step 1 ";
             // 
             // grpEmployer
             // 
@@ -147,7 +152,7 @@
             // plActive
             // 
             this.plActive.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
-            this.plActive.Controls.Add(this.dateTimePicker1);
+            this.plActive.Controls.Add(this.dpoEmployement);
             this.plActive.Controls.Add(this.lbEntryDate);
             this.plActive.Controls.Add(this.comboBox2);
             this.plActive.Controls.Add(this.lbCompany);
@@ -156,19 +161,19 @@
             this.plActive.Size = new System.Drawing.Size(423, 97);
             this.plActive.TabIndex = 3;
             // 
-            // dateTimePicker1
+            // dpoEmployement
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 36);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(163, 20);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dpoEmployement.Location = new System.Drawing.Point(115, 36);
+            this.dpoEmployement.Name = "dpoEmployement";
+            this.dpoEmployement.Size = new System.Drawing.Size(163, 22);
+            this.dpoEmployement.TabIndex = 3;
             // 
             // lbEntryDate
             // 
             this.lbEntryDate.AutoSize = true;
             this.lbEntryDate.Location = new System.Drawing.Point(14, 42);
             this.lbEntryDate.Name = "lbEntryDate";
-            this.lbEntryDate.Size = new System.Drawing.Size(60, 13);
+            this.lbEntryDate.Size = new System.Drawing.Size(62, 13);
             this.lbEntryDate.TabIndex = 2;
             this.lbEntryDate.Text = "Entry Date:";
             // 
@@ -185,7 +190,7 @@
             this.lbCompany.AutoSize = true;
             this.lbCompany.Location = new System.Drawing.Point(14, 10);
             this.lbCompany.Name = "lbCompany";
-            this.lbCompany.Size = new System.Drawing.Size(85, 13);
+            this.lbCompany.Size = new System.Drawing.Size(91, 13);
             this.lbCompany.TabIndex = 0;
             this.lbCompany.Text = "Company Name:";
             // 
@@ -199,6 +204,7 @@
             this.rbInactive.TabStop = true;
             this.rbInactive.Text = "Inactive";
             this.rbInactive.UseVisualStyleBackColor = true;
+            this.rbInactive.CheckedChanged += new System.EventHandler(this.rbInactive_CheckedChanged);
             this.rbInactive.Click += new System.EventHandler(this.rbInactive_Click);
             // 
             // rbActive
@@ -211,6 +217,7 @@
             this.rbActive.TabStop = true;
             this.rbActive.Text = "Active";
             this.rbActive.UseVisualStyleBackColor = true;
+            this.rbActive.CheckedChanged += new System.EventHandler(this.rbActive_CheckedChanged);
             this.rbActive.Click += new System.EventHandler(this.rbActive_Click);
             // 
             // label1
@@ -241,17 +248,30 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Agalega",
+            "Black River",
+            "Flacq",
+            "Grand Port",
+            "Moka",
+            "Pamplemousses",
+            "Plaines Wilhems",
+            "Port Louis",
+            "Rivière du Rempart",
+            "Rodrigues",
+            "Savannah"});
             this.comboBox1.Location = new System.Drawing.Point(442, 50);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(188, 21);
             this.comboBox1.TabIndex = 12;
+            this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
             // 
             // lbDistrict
             // 
             this.lbDistrict.AutoSize = true;
             this.lbDistrict.Location = new System.Drawing.Point(370, 50);
             this.lbDistrict.Name = "lbDistrict";
-            this.lbDistrict.Size = new System.Drawing.Size(48, 13);
+            this.lbDistrict.Size = new System.Drawing.Size(53, 13);
             this.lbDistrict.TabIndex = 11;
             this.lbDistrict.Text = "District : ";
             // 
@@ -259,15 +279,16 @@
             // 
             this.txtPostCode.Location = new System.Drawing.Point(442, 19);
             this.txtPostCode.Name = "txtPostCode";
-            this.txtPostCode.Size = new System.Drawing.Size(188, 20);
+            this.txtPostCode.Size = new System.Drawing.Size(188, 22);
             this.txtPostCode.TabIndex = 10;
+            this.txtPostCode.Leave += new System.EventHandler(this.txtPostCode_Leave);
             // 
             // lbPostCode
             // 
             this.lbPostCode.AutoSize = true;
             this.lbPostCode.Location = new System.Drawing.Point(370, 22);
             this.lbPostCode.Name = "lbPostCode";
-            this.lbPostCode.Size = new System.Drawing.Size(62, 13);
+            this.lbPostCode.Size = new System.Drawing.Size(66, 13);
             this.lbPostCode.TabIndex = 9;
             this.lbPostCode.Text = "Post Code :";
             // 
@@ -278,13 +299,14 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(188, 52);
             this.txtAddress.TabIndex = 8;
+            this.txtAddress.Leave += new System.EventHandler(this.txtAddress_Leave);
             // 
             // lbAddress
             // 
             this.lbAddress.AutoSize = true;
             this.lbAddress.Location = new System.Drawing.Point(20, 37);
             this.lbAddress.Name = "lbAddress";
-            this.lbAddress.Size = new System.Drawing.Size(51, 13);
+            this.lbAddress.Size = new System.Drawing.Size(54, 13);
             this.lbAddress.TabIndex = 7;
             this.lbAddress.Text = "Address :";
             // 
@@ -323,15 +345,16 @@
             // 
             this.txtShares.Location = new System.Drawing.Point(426, 155);
             this.txtShares.Name = "txtShares";
-            this.txtShares.Size = new System.Drawing.Size(100, 20);
+            this.txtShares.Size = new System.Drawing.Size(100, 22);
             this.txtShares.TabIndex = 24;
+            this.txtShares.Leave += new System.EventHandler(this.txtShares_Leave);
             // 
             // lbShare
             // 
             this.lbShare.AutoSize = true;
             this.lbShare.Location = new System.Drawing.Point(377, 158);
             this.lbShare.Name = "lbShare";
-            this.lbShare.Size = new System.Drawing.Size(43, 13);
+            this.lbShare.Size = new System.Drawing.Size(42, 13);
             this.lbShare.TabIndex = 23;
             this.lbShare.Text = "Shares:";
             // 
@@ -340,7 +363,7 @@
             this.chkPayEntryFee.AutoSize = true;
             this.chkPayEntryFee.Location = new System.Drawing.Point(377, 126);
             this.chkPayEntryFee.Name = "chkPayEntryFee";
-            this.chkPayEntryFee.Size = new System.Drawing.Size(92, 17);
+            this.chkPayEntryFee.Size = new System.Drawing.Size(93, 17);
             this.chkPayEntryFee.TabIndex = 22;
             this.chkPayEntryFee.Text = "Pay Entry Fee";
             this.chkPayEntryFee.UseVisualStyleBackColor = true;
@@ -349,7 +372,7 @@
             // 
             this.txtMaidenName.Location = new System.Drawing.Point(107, 122);
             this.txtMaidenName.Name = "txtMaidenName";
-            this.txtMaidenName.Size = new System.Drawing.Size(134, 20);
+            this.txtMaidenName.Size = new System.Drawing.Size(134, 22);
             this.txtMaidenName.TabIndex = 20;
             this.txtMaidenName.Leave += new System.EventHandler(this.txtMaidenName_Leave);
             // 
@@ -358,7 +381,7 @@
             this.lbMaiden.AutoSize = true;
             this.lbMaiden.Location = new System.Drawing.Point(21, 126);
             this.lbMaiden.Name = "lbMaiden";
-            this.lbMaiden.Size = new System.Drawing.Size(76, 13);
+            this.lbMaiden.Size = new System.Drawing.Size(81, 13);
             this.lbMaiden.TabIndex = 19;
             this.lbMaiden.Text = "Maiden Name:";
             // 
@@ -383,8 +406,10 @@
             // 
             this.txtAccountNumber.Location = new System.Drawing.Point(374, 57);
             this.txtAccountNumber.Name = "txtAccountNumber";
-            this.txtAccountNumber.Size = new System.Drawing.Size(222, 20);
+            this.txtAccountNumber.Size = new System.Drawing.Size(222, 22);
             this.txtAccountNumber.TabIndex = 16;
+            this.txtAccountNumber.TextChanged += new System.EventHandler(this.txtAccountNumber_TextChanged);
+            this.txtAccountNumber.Leave += new System.EventHandler(this.txtAccountNumber_Leave);
             // 
             // btnGenerateAccount
             // 
@@ -400,7 +425,7 @@
             // 
             this.txtNic.Location = new System.Drawing.Point(107, 216);
             this.txtNic.Name = "txtNic";
-            this.txtNic.Size = new System.Drawing.Size(154, 20);
+            this.txtNic.Size = new System.Drawing.Size(154, 22);
             this.txtNic.TabIndex = 14;
             this.txtNic.Leave += new System.EventHandler(this.txtNic_Leave);
             // 
@@ -409,7 +434,7 @@
             this.lbNic.AutoSize = true;
             this.lbNic.Location = new System.Drawing.Point(21, 216);
             this.lbNic.Name = "lbNic";
-            this.lbNic.Size = new System.Drawing.Size(28, 13);
+            this.lbNic.Size = new System.Drawing.Size(27, 13);
             this.lbNic.TabIndex = 13;
             this.lbNic.Text = "NIC:";
             // 
@@ -430,7 +455,7 @@
             this.lbDateOfBirth.AutoSize = true;
             this.lbDateOfBirth.Location = new System.Drawing.Point(21, 186);
             this.lbDateOfBirth.Name = "lbDateOfBirth";
-            this.lbDateOfBirth.Size = new System.Drawing.Size(68, 13);
+            this.lbDateOfBirth.Size = new System.Drawing.Size(75, 13);
             this.lbDateOfBirth.TabIndex = 10;
             this.lbDateOfBirth.Text = "Date of birth:";
             // 
@@ -440,7 +465,7 @@
             this.dpBod.Location = new System.Drawing.Point(107, 186);
             this.dpBod.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dpBod.Name = "dpBod";
-            this.dpBod.Size = new System.Drawing.Size(94, 20);
+            this.dpBod.Size = new System.Drawing.Size(94, 22);
             this.dpBod.TabIndex = 11;
             this.dpBod.Leave += new System.EventHandler(this.dpBod_Leave);
             // 
@@ -449,7 +474,7 @@
             this.lbMaritalStatus.AutoSize = true;
             this.lbMaritalStatus.Location = new System.Drawing.Point(21, 153);
             this.lbMaritalStatus.Name = "lbMaritalStatus";
-            this.lbMaritalStatus.Size = new System.Drawing.Size(74, 13);
+            this.lbMaritalStatus.Size = new System.Drawing.Size(80, 13);
             this.lbMaritalStatus.TabIndex = 7;
             this.lbMaritalStatus.Text = "Marital Status:";
             // 
@@ -457,7 +482,7 @@
             // 
             this.txtLastName.Location = new System.Drawing.Point(107, 91);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(134, 20);
+            this.txtLastName.Size = new System.Drawing.Size(134, 22);
             this.txtLastName.TabIndex = 6;
             this.txtLastName.Leave += new System.EventHandler(this.txtLastName_Leave);
             // 
@@ -465,7 +490,7 @@
             // 
             this.txtFirstName.Location = new System.Drawing.Point(107, 61);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(134, 20);
+            this.txtFirstName.Size = new System.Drawing.Size(134, 22);
             this.txtFirstName.TabIndex = 4;
             this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
@@ -474,7 +499,7 @@
             this.lbLastName.AutoSize = true;
             this.lbLastName.Location = new System.Drawing.Point(21, 94);
             this.lbLastName.Name = "lbLastName";
-            this.lbLastName.Size = new System.Drawing.Size(61, 13);
+            this.lbLastName.Size = new System.Drawing.Size(63, 13);
             this.lbLastName.TabIndex = 5;
             this.lbLastName.Text = "Last Name:";
             // 
@@ -483,7 +508,7 @@
             this.lbGender.AutoSize = true;
             this.lbGender.Location = new System.Drawing.Point(21, 30);
             this.lbGender.Name = "lbGender";
-            this.lbGender.Size = new System.Drawing.Size(45, 13);
+            this.lbGender.Size = new System.Drawing.Size(46, 13);
             this.lbGender.TabIndex = 0;
             this.lbGender.Text = "Gender:";
             // 
@@ -492,7 +517,7 @@
             this.lbFirstName.AutoSize = true;
             this.lbFirstName.Location = new System.Drawing.Point(21, 64);
             this.lbFirstName.Name = "lbFirstName";
-            this.lbFirstName.Size = new System.Drawing.Size(60, 13);
+            this.lbFirstName.Size = new System.Drawing.Size(64, 13);
             this.lbFirstName.TabIndex = 3;
             this.lbFirstName.Text = "First Name:";
             // 
@@ -501,7 +526,7 @@
             this.rbMale.AutoSize = true;
             this.rbMale.Location = new System.Drawing.Point(107, 28);
             this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(48, 17);
+            this.rbMale.Size = new System.Drawing.Size(50, 17);
             this.rbMale.TabIndex = 1;
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
@@ -514,7 +539,7 @@
             this.rbFemale.AutoSize = true;
             this.rbFemale.Location = new System.Drawing.Point(161, 28);
             this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(59, 17);
+            this.rbFemale.Size = new System.Drawing.Size(61, 17);
             this.rbFemale.TabIndex = 2;
             this.rbFemale.TabStop = true;
             this.rbFemale.Text = "Female";
@@ -523,23 +548,24 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.SteelBlue;
             this.tabPage2.Controls.Add(this.grpMemberDocument);
             this.tabPage2.Controls.Add(this.grbBeneficiary);
+            this.tabPage2.Font = new System.Drawing.Font("Malgun Gothic Semilight", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(680, 488);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Text = "Step 2 ";
             // 
             // grpMemberDocument
             // 
+            this.grpMemberDocument.Controls.Add(this.cbcategoryDoc);
+            this.grpMemberDocument.Controls.Add(this.uploadDialog1);
             this.grpMemberDocument.Controls.Add(this.btnMemberDocumentAdd);
-            this.grpMemberDocument.Controls.Add(this.dataGridView3);
-            this.grpMemberDocument.Controls.Add(this.txtMemberDocumentCategory);
+            this.grpMemberDocument.Controls.Add(this.dgMemberDoc);
             this.grpMemberDocument.Controls.Add(this.label2);
-            this.grpMemberDocument.Controls.Add(this.uploadDialog2);
             this.grpMemberDocument.Enabled = false;
             this.grpMemberDocument.Location = new System.Drawing.Point(7, 282);
             this.grpMemberDocument.Name = "grpMemberDocument";
@@ -548,9 +574,39 @@
             this.grpMemberDocument.TabStop = false;
             this.grpMemberDocument.Text = "Member Document";
             // 
+            // cbcategoryDoc
+            // 
+            this.cbcategoryDoc.BackColor = System.Drawing.Color.Transparent;
+            this.cbcategoryDoc.BorderRadius = 3;
+            this.cbcategoryDoc.DisabledColor = System.Drawing.Color.Gray;
+            this.cbcategoryDoc.ForeColor = System.Drawing.Color.Black;
+            this.cbcategoryDoc.Items = new string[] {
+        "Birth Certificate",
+        "Nic",
+        "Death Certificate",
+        "CEB Bill",
+        "Telecom Bill",
+        "CWA Bill",
+        "Bank Statement"};
+            this.cbcategoryDoc.Location = new System.Drawing.Point(92, 37);
+            this.cbcategoryDoc.Name = "cbcategoryDoc";
+            this.cbcategoryDoc.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cbcategoryDoc.onHoverColor = System.Drawing.Color.LightSteelBlue;
+            this.cbcategoryDoc.selectedIndex = -1;
+            this.cbcategoryDoc.Size = new System.Drawing.Size(136, 23);
+            this.cbcategoryDoc.TabIndex = 6;
+            // 
+            // uploadDialog1
+            // 
+            this.uploadDialog1.Location = new System.Drawing.Point(315, 19);
+            this.uploadDialog1.Name = "uploadDialog1";
+            this.uploadDialog1.Size = new System.Drawing.Size(327, 56);
+            this.uploadDialog1.TabIndex = 5;
+            this.uploadDialog1.txtPathValue = "";
+            // 
             // btnMemberDocumentAdd
             // 
-            this.btnMemberDocumentAdd.Location = new System.Drawing.Point(234, 37);
+            this.btnMemberDocumentAdd.Location = new System.Drawing.Point(245, 37);
             this.btnMemberDocumentAdd.Name = "btnMemberDocumentAdd";
             this.btnMemberDocumentAdd.Size = new System.Drawing.Size(75, 23);
             this.btnMemberDocumentAdd.TabIndex = 4;
@@ -558,44 +614,29 @@
             this.btnMemberDocumentAdd.UseVisualStyleBackColor = true;
             this.btnMemberDocumentAdd.Click += new System.EventHandler(this.btnMemberDocumentAdd_Click);
             // 
-            // dataGridView3
+            // dgMemberDoc
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(6, 80);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(637, 114);
-            this.dataGridView3.TabIndex = 3;
-            // 
-            // txtMemberDocumentCategory
-            // 
-            this.txtMemberDocumentCategory.Location = new System.Drawing.Point(92, 39);
-            this.txtMemberDocumentCategory.Name = "txtMemberDocumentCategory";
-            this.txtMemberDocumentCategory.Size = new System.Drawing.Size(136, 20);
-            this.txtMemberDocumentCategory.TabIndex = 2;
+            this.dgMemberDoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMemberDoc.Location = new System.Drawing.Point(6, 80);
+            this.dgMemberDoc.Name = "dgMemberDoc";
+            this.dgMemberDoc.Size = new System.Drawing.Size(637, 114);
+            this.dgMemberDoc.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Category Name:";
             // 
-            // uploadDialog2
-            // 
-            this.uploadDialog2.Location = new System.Drawing.Point(303, 18);
-            this.uploadDialog2.Name = "uploadDialog2";
-            this.uploadDialog2.Size = new System.Drawing.Size(367, 56);
-            this.uploadDialog2.TabIndex = 0;
-            this.uploadDialog2.txtPathValue = "";
-            // 
             // grbBeneficiary
             // 
+            this.grbBeneficiary.Controls.Add(this.dgBeneficiaryGrid);
             this.grbBeneficiary.Controls.Add(this.btnAddBeneficiary);
             this.grbBeneficiary.Controls.Add(this.txtCommentBeneficiary);
             this.grbBeneficiary.Controls.Add(this.lbCommentBeneficiary);
-            this.grbBeneficiary.Controls.Add(this.dataGridView1);
             this.grbBeneficiary.Controls.Add(this.txtBenNic);
             this.grbBeneficiary.Controls.Add(this.lbBenNic);
             this.grbBeneficiary.Controls.Add(this.txtBenLastName);
@@ -609,6 +650,17 @@
             this.grbBeneficiary.TabIndex = 0;
             this.grbBeneficiary.TabStop = false;
             this.grbBeneficiary.Text = "Beneficiary Details";
+            // 
+            // dgBeneficiaryGrid
+            // 
+            this.dgBeneficiaryGrid.AllowUserToAddRows = false;
+            this.dgBeneficiaryGrid.AllowUserToDeleteRows = false;
+            this.dgBeneficiaryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgBeneficiaryGrid.Location = new System.Drawing.Point(29, 146);
+            this.dgBeneficiaryGrid.Name = "dgBeneficiaryGrid";
+            this.dgBeneficiaryGrid.ReadOnly = true;
+            this.dgBeneficiaryGrid.Size = new System.Drawing.Size(601, 118);
+            this.dgBeneficiaryGrid.TabIndex = 10;
             // 
             // btnAddBeneficiary
             // 
@@ -633,23 +685,15 @@
             this.lbCommentBeneficiary.AutoSize = true;
             this.lbCommentBeneficiary.Location = new System.Drawing.Point(286, 57);
             this.lbCommentBeneficiary.Name = "lbCommentBeneficiary";
-            this.lbCommentBeneficiary.Size = new System.Drawing.Size(59, 13);
+            this.lbCommentBeneficiary.Size = new System.Drawing.Size(61, 13);
             this.lbCommentBeneficiary.TabIndex = 7;
             this.lbCommentBeneficiary.Text = "Comments:";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 149);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(637, 115);
-            this.dataGridView1.TabIndex = 4;
             // 
             // txtBenNic
             // 
             this.txtBenNic.Location = new System.Drawing.Point(106, 85);
             this.txtBenNic.Name = "txtBenNic";
-            this.txtBenNic.Size = new System.Drawing.Size(155, 20);
+            this.txtBenNic.Size = new System.Drawing.Size(155, 22);
             this.txtBenNic.TabIndex = 6;
             // 
             // lbBenNic
@@ -657,7 +701,7 @@
             this.lbBenNic.AutoSize = true;
             this.lbBenNic.Location = new System.Drawing.Point(25, 88);
             this.lbBenNic.Name = "lbBenNic";
-            this.lbBenNic.Size = new System.Drawing.Size(28, 13);
+            this.lbBenNic.Size = new System.Drawing.Size(27, 13);
             this.lbBenNic.TabIndex = 5;
             this.lbBenNic.Text = "NIC:";
             // 
@@ -665,7 +709,7 @@
             // 
             this.txtBenLastName.Location = new System.Drawing.Point(106, 57);
             this.txtBenLastName.Name = "txtBenLastName";
-            this.txtBenLastName.Size = new System.Drawing.Size(155, 20);
+            this.txtBenLastName.Size = new System.Drawing.Size(155, 22);
             this.txtBenLastName.TabIndex = 3;
             // 
             // lbBenLastName
@@ -682,7 +726,7 @@
             this.lbBenFirstName.AutoSize = true;
             this.lbBenFirstName.Location = new System.Drawing.Point(26, 30);
             this.lbBenFirstName.Name = "lbBenFirstName";
-            this.lbBenFirstName.Size = new System.Drawing.Size(60, 13);
+            this.lbBenFirstName.Size = new System.Drawing.Size(61, 13);
             this.lbBenFirstName.TabIndex = 1;
             this.lbBenFirstName.Text = "First Name:";
             // 
@@ -690,7 +734,7 @@
             // 
             this.txtBenFirstName.Location = new System.Drawing.Point(106, 27);
             this.txtBenFirstName.Name = "txtBenFirstName";
-            this.txtBenFirstName.Size = new System.Drawing.Size(155, 20);
+            this.txtBenFirstName.Size = new System.Drawing.Size(155, 22);
             this.txtBenFirstName.TabIndex = 0;
             // 
             // lbDocumentCategory
@@ -709,14 +753,6 @@
             this.txtDocumentCategory.Size = new System.Drawing.Size(130, 20);
             this.txtDocumentCategory.TabIndex = 4;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(31, 80);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(263, 83);
-            this.dataGridView2.TabIndex = 3;
-            // 
             // btnUpload
             // 
             this.btnUpload.Location = new System.Drawing.Point(219, 42);
@@ -734,11 +770,84 @@
             this.textBox1.Size = new System.Drawing.Size(188, 52);
             this.textBox1.TabIndex = 8;
             // 
+            // btnCreateMember
+            // 
+            this.btnCreateMember.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btnCreateMember.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btnCreateMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCreateMember.BorderRadius = 0;
+            this.btnCreateMember.ButtonText = "Create";
+            this.btnCreateMember.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreateMember.DisabledColor = System.Drawing.Color.Gray;
+            this.btnCreateMember.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnCreateMember.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCreateMember.Iconimage")));
+            this.btnCreateMember.Iconimage_right = null;
+            this.btnCreateMember.Iconimage_right_Selected = null;
+            this.btnCreateMember.Iconimage_Selected = null;
+            this.btnCreateMember.IconMarginLeft = 0;
+            this.btnCreateMember.IconMarginRight = 0;
+            this.btnCreateMember.IconRightVisible = true;
+            this.btnCreateMember.IconRightZoom = 0D;
+            this.btnCreateMember.IconVisible = true;
+            this.btnCreateMember.IconZoom = 90D;
+            this.btnCreateMember.IsTab = false;
+            this.btnCreateMember.Location = new System.Drawing.Point(543, 532);
+            this.btnCreateMember.Name = "btnCreateMember";
+            this.btnCreateMember.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btnCreateMember.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.btnCreateMember.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnCreateMember.selected = false;
+            this.btnCreateMember.Size = new System.Drawing.Size(157, 48);
+            this.btnCreateMember.TabIndex = 6;
+            this.btnCreateMember.Text = "Create";
+            this.btnCreateMember.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateMember.Textcolor = System.Drawing.Color.White;
+            this.btnCreateMember.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // FirstName
+            // 
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            this.FirstName.Visible = false;
+            // 
+            // LastName
+            // 
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            this.LastName.Visible = false;
+            // 
+            // Nic
+            // 
+            this.Nic.HeaderText = "Nic";
+            this.Nic.Name = "Nic";
+            this.Nic.ReadOnly = true;
+            this.Nic.Visible = false;
+            // 
+            // Comments
+            // 
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            this.Comments.ReadOnly = true;
+            this.Comments.Visible = false;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.HeaderText = "Action";
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.ReadOnly = true;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.ToolTipText = "Remove";
+            this.btnRemove.Visible = false;
+            // 
             // CreateMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 538);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(711, 585);
+            this.Controls.Add(this.btnCreateMember);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateMember";
@@ -758,11 +867,10 @@
             this.tabPage2.ResumeLayout(false);
             this.grpMemberDocument.ResumeLayout(false);
             this.grpMemberDocument.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMemberDoc)).EndInit();
             this.grbBeneficiary.ResumeLayout(false);
             this.grbBeneficiary.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBeneficiaryGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -803,13 +911,12 @@
         private System.Windows.Forms.RadioButton rbActive;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel plActive;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dpoEmployement;
         private System.Windows.Forms.Label lbEntryDate;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label lbCompany;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox grbBeneficiary;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtBenLastName;
         private System.Windows.Forms.Label lbBenLastName;
         private System.Windows.Forms.Label lbBenFirstName;
@@ -819,10 +926,8 @@
         private System.Windows.Forms.TextBox txtShares;
         private System.Windows.Forms.Label lbShare;
         private System.Windows.Forms.CheckBox chkPayEntryFee;
-        private usercontrol.UploadDialog uploadDialog1;
         private System.Windows.Forms.GroupBox grpMemberDocument;
         private System.Windows.Forms.TextBox txtDocumentCategory;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Button btnAddBeneficiary;
         private System.Windows.Forms.TextBox txtCommentBeneficiary;
@@ -830,9 +935,16 @@
         private System.Windows.Forms.Label lbDocumentCategory;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnMemberDocumentAdd;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.TextBox txtMemberDocumentCategory;
+        private System.Windows.Forms.DataGridView dgMemberDoc;
         private System.Windows.Forms.Label label2;
-        private usercontrol.UploadDialog uploadDialog2;
+        private Bunifu.Framework.UI.BunifuFlatButton btnCreateMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
+        private System.Windows.Forms.DataGridViewButtonColumn btnRemove;
+        private System.Windows.Forms.DataGridView dgBeneficiaryGrid;
+        private usercontrol.UploadDialog uploadDialog1;
+        private Bunifu.Framework.UI.BunifuDropdown cbcategoryDoc;
     }
 }

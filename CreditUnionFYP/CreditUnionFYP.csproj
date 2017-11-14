@@ -98,6 +98,12 @@
     <Compile Include="DashBoardMDI.Designer.cs">
       <DependentUpon>DashBoardMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoanApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoanApplication.Designer.cs">
+      <DependentUpon>LoanApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Log.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,12 @@
     </Compile>
     <Compile Include="usercontrol\SearchByDate.Designer.cs">
       <DependentUpon>SearchByDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\TextBoxColorChange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usercontrol\TextBoxColorChange.Designer.cs">
+      <DependentUpon>TextBoxColorChange.cs</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\UploadDialogBox.cs">
       <SubType>UserControl</SubType>
@@ -154,6 +166,9 @@
     <EmbeddedResource Include="DashBoardMDI.resx">
       <DependentUpon>DashBoardMDI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoanApplication.resx">
+      <DependentUpon>LoanApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Log.resx">
       <DependentUpon>Log.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +197,7 @@
       <DependentUpon>UserList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataBase.tblBeneficiary.datasource" />
     <None Include="Properties\DataSources\DataBase.tblUser.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

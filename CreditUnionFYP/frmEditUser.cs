@@ -31,7 +31,6 @@ namespace Common
                 r.Add(txtFirstName);
                 r.Add(txtLastName);
                 r.Add(txtLogin);
-                r.Add(txtPwd);
                 LogValidationManagement.Validation h = new LogValidationManagement.Validation();
                 bool result = h.inputTextValidation(r);
 
@@ -227,7 +226,7 @@ namespace Common
                           on p.permissionId equals a.permissionId
                           join f in db.tblForms
                           on a.formId equals f.formId
-                          where p.userId == User.userIdEdit
+                          where p.userId == User.userIdEdit && p.uDelete==false                          
                           select new EditUserGrid { formName = f.formName, permissionId = a.permissionId, permissionName = a.permissionName}).ToList();
             foreach(var c in result)
              {
