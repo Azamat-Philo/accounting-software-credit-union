@@ -25,7 +25,7 @@ namespace DataBase
             }
             catch (Exception e)
             {
-                LogValidationManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(System.Reflection.MethodBase.GetCurrentMethod(), e.ToString(), 0);
                 connection.Close();
             }
         }
@@ -38,7 +38,7 @@ namespace DataBase
             }
             catch (Exception e)
             {
-                LogValidationManagement.LogFile.LogData("Database connection error", e.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(System.Reflection.MethodBase.GetCurrentMethod(), e.ToString(), 0);
                 connection.Close();
             }
         }
@@ -61,7 +61,7 @@ namespace DataBase
             }
             catch (Exception ex)
             {
-                LogValidationManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(System.Reflection.MethodBase.GetCurrentMethod(), ex.ToString(), 0);
             }
             if (reader.HasRows)
                 return reader;
@@ -84,7 +84,7 @@ namespace DataBase
             }
             catch (Exception ex)
             {
-                LogValidationManagement.LogFile.LogData("Database selectOneRow error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(System.Reflection.MethodBase.GetCurrentMethod(), ex.ToString(), 0);
             }
             if (reader.HasRows)
                 return reader;
@@ -103,7 +103,7 @@ namespace DataBase
                 SqlCommand drCommand = new SqlCommand(strQuery, connection);
                 result = drCommand.ExecuteNonQuery();
             } catch (SqlException ex) {
-                LogValidationManagement.LogFile.LogData("Insert error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(System.Reflection.MethodBase.GetCurrentMethod(), ex.ToString(), 0);
                 DBClose();
             }
             return result;

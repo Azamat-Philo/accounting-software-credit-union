@@ -49,7 +49,7 @@ namespace Common
             }
             catch (Exception ex)
             {
-                LogValidationManagement.LogFile.LogData("Login connection error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(System.Reflection.MethodBase.GetCurrentMethod(), ex.ToString(), 0);
             }
         }
     }

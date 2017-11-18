@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Linq;
 using DataBase;
+using System.Reflection;
 
 namespace Common
 {
@@ -56,7 +57,7 @@ namespace Common
                 }
             }
             catch (Exception ex) {
-                LogValidationManagement.LogFile.LogData("Create a User error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(MethodBase.GetCurrentMethod(), ex.ToString(), 0);
             }
         }
 
@@ -98,7 +99,7 @@ namespace Common
                 }
             }
             catch (Exception ex) {
-                LogValidationManagement.LogFile.LogData("Generate login for user", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(MethodBase.GetCurrentMethod(), ex.ToString(), 0);
             }
            
         }
@@ -193,7 +194,7 @@ namespace Common
                 }
             }
             catch (Exception ex) {
-                LogValidationManagement.LogFile.LogData("AddPermissionToGridView Function error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(MethodBase.GetCurrentMethod(), ex.ToString(), 0);
             }
         }
 

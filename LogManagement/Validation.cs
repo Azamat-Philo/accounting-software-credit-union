@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
+using Bunifu.Framework.UI;
 
 namespace LogValidationManagement
 {
@@ -33,26 +35,41 @@ namespace LogValidationManagement
                         {
                             valid[i] = false;
                         }
-                        else if (tb.TextLength == 0)
+                        else if (tb.TextLength > 0)
                         {
-                            valid[i] = false;
+                            valid[i] = true;
                         }
                         else
                         {
                             valid[i] = true;
                         }
                     }
-                    else if ( t.GetType().Name == "ComboBox")
+                    else if ( t.GetType().Name == "ComboBox" || t.GetType().Name == "BunifuDropdown")
                     {
-                        ComboBox tb = (ComboBox)t;
-                        if (string.IsNullOrWhiteSpace(tb.Text.ToString()) || string.IsNullOrEmpty(tb.Text.ToString()))
+                        if (t.GetType().Name == "ComboBox")
                         {
-                            valid[i] = false;
+                            ComboBox tr = (ComboBox)t;
+                            if (tr.SelectedIndex==-1)
+                            {
+                                valid[i] = false;
+                            }
+                            else
+                            {
+                                valid[i] = true;
+                            }
                         }
-                        else
-                        {
-                            valid[i] = true;
+                        else {
+                            BunifuDropdown tr = (BunifuDropdown)t;
+                            if(tr.selectedIndex == -1)
+                            {
+                                valid[i] = false;
+                            }
+                            else
+                            {
+                                valid[i] = true;
+                            }
                         }
+                        
                     }
                     else {
                         valid[i] = false;
@@ -66,7 +83,7 @@ namespace LogValidationManagement
             }
             catch (Exception ex)
             {
-                LogValidationManagement.LogFile.LogData("inputTextValidation Error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(MethodBase.GetCurrentMethod(), ex.ToString(), 0);
                 result = false;
             }
             ts.Clear();
@@ -112,7 +129,7 @@ namespace LogValidationManagement
             }
             catch (Exception ex)
             {
-                LogValidationManagement.LogFile.LogData("checkBoxListValidation Error", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(MethodBase.GetCurrentMethod(), ex.ToString(), 0);
                 result = false;
             }
             return result;

@@ -16,7 +16,7 @@ namespace Common
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            frmEditUser f = new frmEditUser();
+            frmAddUser f = new frmAddUser();
             f.Show();
             this.Hide();
         }

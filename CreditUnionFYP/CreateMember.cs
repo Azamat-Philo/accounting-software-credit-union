@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
+using DataBase;
 
 namespace Common
 {
@@ -16,11 +18,20 @@ namespace Common
         {
             InitializeComponent();
         }
+        public IMCCUDBEntities db = new IMCCUDBEntities();
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+        public class Beneficiary
+        {
+            public string fname;
+            public string lname;
+            public string nic;
+        }
+        public List<Beneficiary> gridBeneficiary = new List<Beneficiary>();
 
         private void btnGenerateAccount_Click(object sender, EventArgs e)
         {
@@ -55,7 +66,7 @@ namespace Common
             }
             catch (Exception ex)
             {
-                LogValidationManagement.LogFile.LogData("", ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(MethodBase.GetCurrentMethod(), ex.ToString(), 0);
             }
         }
 
@@ -95,15 +106,19 @@ namespace Common
             DateTime minDate=DateTime.Today;
             dpBod.MinDate = minDate.AddYears(-90);
             dpBod.MaxDate = DateTime.Today;
+            dpoEmployement.MinDate = minDate.AddYears(-90);
             dpoEmployement.MaxDate = DateTime.Today;
             lbNic.Location = new Point(21, 186);
             txtNic.Location = new Point(107, 186);
             grpDetails.Height = 218;
             rbActive.Checked = true;
+            grbBeneficiary.Enabled = false;
 
             this.AddColumnsBeneficiary();
             this.AddColumnsMemberDocument();
-            //bunifuGauge1.Value = 20;
+            cbCompany.DataSource = db.tblEmployers.ToList();
+            cbCompany.ValueMember = "employerId";
+            cbCompany.DisplayMember = "employerName";
         }
 
         private void cbMaritalStatus_SelectedValueChanged(object sender, EventArgs e)
@@ -198,8 +213,21 @@ namespace Common
             bool result = h.inputTextValidation(bn);
             if (result){ 
             string[] row = { txtBenFirstName.Text.ToString(), txtBenLastName.Text.ToString(), txtBenNic.Text.ToString(), txtCommentBeneficiary.Text.ToString() };
-                dgBeneficiaryGrid.Rows.Add(row);
-            txtBenFirstName.Text = ""; txtBenLastName.Text = ""; txtBenNic.Text = ""; txtCommentBeneficiary.Text = "";
+                bool res = gridBeneficiary.Exists(item => item.fname == txtBenFirstName.Text.ToString() && item.lname == txtBenLastName.Text.ToString() && item.nic == txtBenNic.Text.ToString());
+                if (!res)
+                {
+                    dgBeneficiaryGrid.Rows.Add(row);
+                    Beneficiary val = new Beneficiary();
+                    val.fname = txtBenFirstName.Text.ToString();
+                    val.lname = txtBenLastName.Text.ToString();
+                    val.nic = txtBenNic.Text.ToString();
+                    gridBeneficiary.Add(val);
+                    txtBenFirstName.Text = ""; txtBenLastName.Text = ""; txtBenNic.Text = ""; txtCommentBeneficiary.Text = "";
+                }
+                else {
+                    MessageBox.Show("Already added beneficiary");   
+                }
+                
             }
             this.EnabledPanel4();
         }
@@ -235,7 +263,7 @@ namespace Common
             DataGridViewButtonColumn buttonColumn =
                 new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "";
-            buttonColumn.Name = "btnMove";
+            buttonColumn.Name = "btnRemove";
             buttonColumn.Text = "Remove";
             buttonColumn.UseColumnTextForButtonValue = true;
 
@@ -259,7 +287,7 @@ namespace Common
             bool result = h.inputTextValidation(bn);
             if (result)
             {
-                string[] row = { cbcategoryDoc.Text.ToString(), txtPath.Text.ToString() };
+                string[] row = { cbcategoryDoc.selectedValue.ToString(), txtPath.Text.ToString() };
                 dgMemberDoc.Rows.Add(row);
                 uploadDialog1.txtPathValue = "";
             }
@@ -288,7 +316,7 @@ namespace Common
             DataGridViewButtonColumn buttonColumn =
                 new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "";
-            buttonColumn.Name = "btnMove";
+            buttonColumn.Name = "btnRemove";
             buttonColumn.Text = "Remove";
             buttonColumn.UseColumnTextForButtonValue = true;
 
@@ -327,7 +355,7 @@ namespace Common
 
             r.Add(txtAddress);
             r.Add(txtPostCode);
-            r.Add(comboBox1);
+            r.Add(cbDistrict);
             LogValidationManagement.Validation h = new LogValidationManagement.Validation();
             bool result = h.inputTextValidation(r);
             grpEmployer.Enabled = result == true ? true : false;
@@ -392,7 +420,72 @@ namespace Common
 
         private void txtAccountNumber_TextChanged(object sender, EventArgs e)
         {
+            var result = (from p in db.tblAccounts
+                          where p.accountRef == txtAccountNumber.Text.ToString()
+                          select p);
+            if (result.Count() > 0) {
+                MessageBox.Show("Already in use. A new number will generate.");
+                btnGenerateAccount_Click(sender, e);
+            }
+        }
 
+        private void dgBeneficiaryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgBeneficiaryGrid.Columns["btnRemove"].Index)
+            {
+
+                int selectedrowindex = dgBeneficiaryGrid.SelectedCells[0].RowIndex;
+
+                dgBeneficiaryGrid.Rows.RemoveAt(selectedrowindex);
+                gridBeneficiary.RemoveAt(selectedrowindex);
+            }
+        }
+
+        private void btnCreateMember_Click(object sender, EventArgs e)
+        {
+            List<Control> member = new List<Control>();
+
+            member.Add(rbMale);
+            member.Add(rbFemale);
+            member.Add(txtFirstName);
+            member.Add(txtLastName);
+            member.Add(txtMaidenName);
+            member.Add(cbMaritalStatus);
+            member.Add(dpBod);
+            member.Add(txtNic);
+            member.Add(txtAccountNumber);
+            member.Add(cbAccountType);
+            member.Add(chkPayEntryFee);
+            member.Add(txtShares);
+            member.Add(txtAddress);
+            member.Add(txtPostCode);
+            member.Add(cbDistrict);
+            member.Add(rbActive);
+            member.Add(rbInactive);
+            member.Add(cbCompany);
+            member.Add(dpoEmployement);
+            member.Add(dgBeneficiaryGrid);
+            member.Add(dgMemberDoc);
+        }
+
+        private void txtShares_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+            else {
+                txtShares.ForeColor = Color.LightPink;
+            }
+        }
+
+        private void dgMemberDoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgMemberDoc.Columns["btnRemove"].Index)
+            {
+
+                int selectedrowindex = dgMemberDoc.SelectedCells[0].RowIndex;
+
+                dgMemberDoc.Rows.RemoveAt(selectedrowindex);
+            }
         }
     }
 }

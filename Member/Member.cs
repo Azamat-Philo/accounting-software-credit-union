@@ -19,9 +19,10 @@ namespace Member
         public DateTime createdDate;
         public byte createdBy;
         public byte paidEntry;
+        public List<MemberAddress> address;
 
 
-        public Member(string _fname, string _lname, byte _gender, byte _maritalStatus, string _maidenName, string _nic, DateTime _dob, DateTime _entryDate, List<MemberAddress>,)
+        public Member(string _fname, string _lname, byte _gender, byte _maritalStatus, string _maidenName, string _nic, DateTime _dob, DateTime _entryDate, List<MemberAddress> _address)
         {
             fName = _fname;
             lName = _lname;
@@ -31,6 +32,8 @@ namespace Member
             nic = _nic;
             dob = _dob;
             entryDate = _entryDate;
+            address = _address;
+
         }
     }
     public class MemberAddress{

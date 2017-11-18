@@ -35,13 +35,13 @@
             this.plActive = new System.Windows.Forms.Panel();
             this.dpoEmployement = new System.Windows.Forms.DateTimePicker();
             this.lbEntryDate = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbCompany = new System.Windows.Forms.ComboBox();
             this.lbCompany = new System.Windows.Forms.Label();
             this.rbInactive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.grpAddress = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbDistrict = new System.Windows.Forms.ComboBox();
             this.lbDistrict = new System.Windows.Forms.Label();
             this.txtPostCode = new System.Windows.Forms.TextBox();
             this.lbPostCode = new System.Windows.Forms.Label();
@@ -73,7 +73,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpMemberDocument = new System.Windows.Forms.GroupBox();
             this.cbcategoryDoc = new Bunifu.Framework.UI.BunifuDropdown();
-            this.uploadDialog1 = new Common.usercontrol.UploadDialog();
             this.btnMemberDocumentAdd = new System.Windows.Forms.Button();
             this.dgMemberDoc = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -98,6 +97,7 @@
             this.Nic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRemove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.uploadDialog1 = new Common.usercontrol.UploadDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEmployer.SuspendLayout();
@@ -154,7 +154,7 @@
             this.plActive.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.plActive.Controls.Add(this.dpoEmployement);
             this.plActive.Controls.Add(this.lbEntryDate);
-            this.plActive.Controls.Add(this.comboBox2);
+            this.plActive.Controls.Add(this.cbCompany);
             this.plActive.Controls.Add(this.lbCompany);
             this.plActive.Location = new System.Drawing.Point(239, 19);
             this.plActive.Name = "plActive";
@@ -177,13 +177,13 @@
             this.lbEntryDate.TabIndex = 2;
             this.lbEntryDate.Text = "Entry Date:";
             // 
-            // comboBox2
+            // cbCompany
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(115, 8);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(163, 21);
-            this.comboBox2.TabIndex = 1;
+            this.cbCompany.FormattingEnabled = true;
+            this.cbCompany.Location = new System.Drawing.Point(115, 8);
+            this.cbCompany.Name = "cbCompany";
+            this.cbCompany.Size = new System.Drawing.Size(163, 21);
+            this.cbCompany.TabIndex = 1;
             // 
             // lbCompany
             // 
@@ -231,7 +231,7 @@
             // 
             // grpAddress
             // 
-            this.grpAddress.Controls.Add(this.comboBox1);
+            this.grpAddress.Controls.Add(this.cbDistrict);
             this.grpAddress.Controls.Add(this.lbDistrict);
             this.grpAddress.Controls.Add(this.txtPostCode);
             this.grpAddress.Controls.Add(this.lbPostCode);
@@ -245,10 +245,10 @@
             this.grpAddress.TabStop = false;
             this.grpAddress.Text = "Address";
             // 
-            // comboBox1
+            // cbDistrict
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbDistrict.FormattingEnabled = true;
+            this.cbDistrict.Items.AddRange(new object[] {
             "Agalega",
             "Black River",
             "Flacq",
@@ -260,11 +260,11 @@
             "Rivière du Rempart",
             "Rodrigues",
             "Savannah"});
-            this.comboBox1.Location = new System.Drawing.Point(442, 50);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 21);
-            this.comboBox1.TabIndex = 12;
-            this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
+            this.cbDistrict.Location = new System.Drawing.Point(442, 50);
+            this.cbDistrict.Name = "cbDistrict";
+            this.cbDistrict.Size = new System.Drawing.Size(188, 21);
+            this.cbDistrict.TabIndex = 12;
+            this.cbDistrict.Leave += new System.EventHandler(this.comboBox1_Leave);
             // 
             // lbDistrict
             // 
@@ -347,6 +347,8 @@
             this.txtShares.Name = "txtShares";
             this.txtShares.Size = new System.Drawing.Size(100, 22);
             this.txtShares.TabIndex = 24;
+            this.txtShares.Text = "200";
+            this.txtShares.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtShares_KeyPress);
             this.txtShares.Leave += new System.EventHandler(this.txtShares_Leave);
             // 
             // lbShare
@@ -596,14 +598,6 @@
             this.cbcategoryDoc.Size = new System.Drawing.Size(136, 23);
             this.cbcategoryDoc.TabIndex = 6;
             // 
-            // uploadDialog1
-            // 
-            this.uploadDialog1.Location = new System.Drawing.Point(315, 19);
-            this.uploadDialog1.Name = "uploadDialog1";
-            this.uploadDialog1.Size = new System.Drawing.Size(327, 56);
-            this.uploadDialog1.TabIndex = 5;
-            this.uploadDialog1.txtPathValue = "";
-            // 
             // btnMemberDocumentAdd
             // 
             this.btnMemberDocumentAdd.Location = new System.Drawing.Point(245, 37);
@@ -616,11 +610,15 @@
             // 
             // dgMemberDoc
             // 
+            this.dgMemberDoc.AllowUserToAddRows = false;
+            this.dgMemberDoc.AllowUserToDeleteRows = false;
             this.dgMemberDoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMemberDoc.Location = new System.Drawing.Point(6, 80);
             this.dgMemberDoc.Name = "dgMemberDoc";
+            this.dgMemberDoc.ReadOnly = true;
             this.dgMemberDoc.Size = new System.Drawing.Size(637, 114);
             this.dgMemberDoc.TabIndex = 3;
+            this.dgMemberDoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMemberDoc_CellClick);
             // 
             // label2
             // 
@@ -661,6 +659,7 @@
             this.dgBeneficiaryGrid.ReadOnly = true;
             this.dgBeneficiaryGrid.Size = new System.Drawing.Size(601, 118);
             this.dgBeneficiaryGrid.TabIndex = 10;
+            this.dgBeneficiaryGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgBeneficiaryGrid_CellClick);
             // 
             // btnAddBeneficiary
             // 
@@ -803,6 +802,7 @@
             this.btnCreateMember.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateMember.Textcolor = System.Drawing.Color.White;
             this.btnCreateMember.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateMember.Click += new System.EventHandler(this.btnCreateMember_Click);
             // 
             // FirstName
             // 
@@ -840,6 +840,14 @@
             this.btnRemove.Text = "Remove";
             this.btnRemove.ToolTipText = "Remove";
             this.btnRemove.Visible = false;
+            // 
+            // uploadDialog1
+            // 
+            this.uploadDialog1.Location = new System.Drawing.Point(315, 19);
+            this.uploadDialog1.Name = "uploadDialog1";
+            this.uploadDialog1.Size = new System.Drawing.Size(327, 56);
+            this.uploadDialog1.TabIndex = 5;
+            this.uploadDialog1.txtPathValue = "";
             // 
             // CreateMember
             // 
@@ -900,7 +908,7 @@
         private System.Windows.Forms.GroupBox grpAddress;
         private System.Windows.Forms.TextBox txtMaidenName;
         private System.Windows.Forms.Label lbMaiden;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbDistrict;
         private System.Windows.Forms.Label lbDistrict;
         private System.Windows.Forms.TextBox txtPostCode;
         private System.Windows.Forms.Label lbPostCode;
@@ -913,7 +921,7 @@
         private System.Windows.Forms.Panel plActive;
         private System.Windows.Forms.DateTimePicker dpoEmployement;
         private System.Windows.Forms.Label lbEntryDate;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbCompany;
         private System.Windows.Forms.Label lbCompany;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox grbBeneficiary;
