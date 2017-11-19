@@ -27,8 +27,8 @@ namespace DataBase
         public System.DateTime dateCreated { get; set; }
         public byte maxPeriod { get; set; }
         public byte minPeriod { get; set; }
-        public byte maxAmount { get; set; }
-        public byte minAmount { get; set; }
+        public int maxAmount { get; set; }
+        public int minAmount { get; set; }
         public short createdBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,4 +1,4 @@
-﻿namespace Common.usercontrol
+﻿namespace CreditUnionFYP.usercontrol
 {
     partial class UploadDialog
     {

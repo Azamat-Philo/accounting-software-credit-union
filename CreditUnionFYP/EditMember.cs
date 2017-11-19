@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Common
+namespace CreditUnionFYP
 {
     public partial class EditMember : Form
     {
@@ -105,7 +105,7 @@ namespace Common
         {
             if (rbFemale.Checked==true && cbMaritalStatus.SelectedItem != null && cbMaritalStatus.SelectedItem.ToString() == "Married")
             {
-                txtMaidenName.Visible = true; lbMaiden.Visible = true;
+               /* txtMaidenName.Visible = true; lbMaiden.Visible = true;
                 lbMaiden.Location = new Point(21, 126);
                 txtMaidenName.Location = new Point(106,122);
                 lbMaritalStatus.Location = new Point(21, 153);
@@ -114,17 +114,17 @@ namespace Common
                 dpBod.Location = new Point(107, 186);
                 lbNic.Location = new Point(21, 216);
                 txtNic.Location = new Point(107, 216);
-                grpDetails.Height = 249;
+                grpDetails.Height = 249;*/
             }
             else {
-                txtMaidenName.Visible = false; lbMaiden.Visible = false;
+                /*txtMaidenName.Visible = false; lbMaiden.Visible = false;
                 lbMaritalStatus.Location = new Point(21, 122); 
                 cbMaritalStatus.Location = new Point(106, 122); 
                 lbDateOfBirth.Location = new Point(21, 153); 
                 dpBod.Location = new Point(107, 153); 
                 lbNic.Location = new Point(21, 186);
                 txtNic.Location = new Point(107, 186);
-                grpDetails.Height = 218;
+                grpDetails.Height = 218;*/
             }
         }
 

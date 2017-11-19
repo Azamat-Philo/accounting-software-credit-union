@@ -2,12 +2,13 @@
 using DataBase;
 using System.Linq;
 using System.Windows.Forms;
+using Common;
 
-namespace Common
+namespace CreditUnionFYP
 {
     public partial class UserList : Form
     {
-        public IMCCUDBEntities db = new IMCCUDBEntities();
+        public Entities db = new Entities();
       
         public UserList()
         {

@@ -210,7 +210,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="image\cropped-cropped-CreditUnion3-1.png_16x16 - Copy.png" />

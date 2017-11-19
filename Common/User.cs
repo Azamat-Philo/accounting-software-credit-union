@@ -7,7 +7,7 @@ namespace Common
 {
     public class User
     {
-        IMCCUDBEntities db = new IMCCUDBEntities();
+        Entities db = new Entities();
         public int userId;
         public string userName;
         public byte[] salt;
@@ -44,7 +44,7 @@ namespace Common
             int t = 0;
             try
             {
-                IMCCUDBEntities db = new IMCCUDBEntities();
+                Entities db = new Entities();
                 tblUser user = new tblUser();
                 user.fname = usr.fName;
                 user.lname = usr.lName;
@@ -71,7 +71,7 @@ namespace Common
             int t = 0;
             try
             {
-                IMCCUDBEntities db = new IMCCUDBEntities();
+                Entities db = new Entities();
                 tblUser user = new tblUser();
                 user = (from x in db.tblUsers
                               where x.userId == usr.userId

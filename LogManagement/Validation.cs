@@ -83,7 +83,7 @@ namespace LogValidationManagement
             }
             catch (Exception ex)
             {
-                LogValidationManagement.LogFile.LogData(MethodBase.GetCurrentMethod(), ex.ToString(), 0);
+                LogValidationManagement.LogFile.LogData(System.Reflection.MethodBase.GetCurrentMethod(), ex.ToString(), 0);
                 result = false;
             }
             ts.Clear();

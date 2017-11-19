@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Common.usercontrol
+namespace CreditUnionFYP.usercontrol
 {
     public partial class SearchByDate : UserControl
     {

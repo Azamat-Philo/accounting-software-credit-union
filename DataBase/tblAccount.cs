@@ -17,8 +17,8 @@ namespace DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblAccount()
         {
+            this.tblAccountMembers = new HashSet<tblAccountMember>();
             this.tblTransactions = new HashSet<tblTransaction>();
-            this.tblMembers = new HashSet<tblMember>();
         }
     
         public int accountId { get; set; }
@@ -33,8 +33,8 @@ namespace DataBase
     
         public virtual tblAccountType tblAccountType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblTransaction> tblTransactions { get; set; }
+        public virtual ICollection<tblAccountMember> tblAccountMembers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblMember> tblMembers { get; set; }
+        public virtual ICollection<tblTransaction> tblTransactions { get; set; }
     }
 }

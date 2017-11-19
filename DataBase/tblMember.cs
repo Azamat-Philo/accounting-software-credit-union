@@ -17,12 +17,13 @@ namespace DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblMember()
         {
+            this.tblAccountMembers = new HashSet<tblAccountMember>();
+            this.tblBeneficiaries = new HashSet<tblBeneficiary>();
             this.tblLoans = new HashSet<tblLoan>();
             this.tblMemberAddresses = new HashSet<tblMemberAddress>();
             this.tblLoanSureties = new HashSet<tblLoanSurety>();
             this.tblMemberDocs = new HashSet<tblMemberDoc>();
             this.tblMemberEmployers = new HashSet<tblMemberEmployer>();
-            this.tblAccounts = new HashSet<tblAccount>();
         }
     
         public int memberId { get; set; }
@@ -46,6 +47,10 @@ namespace DataBase
         public string reasonClosure { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblAccountMember> tblAccountMembers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBeneficiary> tblBeneficiaries { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLoan> tblLoans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblMemberAddress> tblMemberAddresses { get; set; }
@@ -55,7 +60,5 @@ namespace DataBase
         public virtual ICollection<tblMemberDoc> tblMemberDocs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblMemberEmployer> tblMemberEmployers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAccount> tblAccounts { get; set; }
     }
 }

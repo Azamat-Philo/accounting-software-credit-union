@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace CreditUnionFYP
         public LoanApplication()
         {
             InitializeComponent();
+        }
+
+        private void LoanApplication_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddSureties_Click(object sender, EventArgs e)
+        {
+           string nic = Interaction.InputBox("Add a surety ID", "NIC");
+            /*Interaction.
+            MessageBox.Show("Do you want to exit ?", "Exit ?", MessageBoxButtons.YesNo);*/
         }
     }
 }

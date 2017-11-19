@@ -6,8 +6,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using DataBase;
 using System.Reflection;
+using Common;
 
-namespace Common
+namespace CreditUnionFYP
 {
     public partial class frmEditUser : Form
     {
@@ -18,7 +19,7 @@ namespace Common
             public string permissionName;
         }
         public List<EditUserGrid> gridPermission = new List<EditUserGrid>();
-        public IMCCUDBEntities db = new IMCCUDBEntities();
+        public Entities db = new Entities();
         public frmEditUser() { 
             InitializeComponent();
         }

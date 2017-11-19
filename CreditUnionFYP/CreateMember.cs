@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
 using System.Windows.Forms;
 using DataBase;
+using System.IO;
 
-namespace Common
+namespace CreditUnionFYP
 {
     public partial class CreateMember : Form
     {
+        public Entities db = new Entities();
         public CreateMember()
         {
             InitializeComponent();
         }
-        public IMCCUDBEntities db = new IMCCUDBEntities();
+
+
+        public enum MaritalStatus {
+
+            Single=0,
+            Married=1,
+
+        }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -119,6 +125,12 @@ namespace Common
             cbCompany.DataSource = db.tblEmployers.ToList();
             cbCompany.ValueMember = "employerId";
             cbCompany.DisplayMember = "employerName";
+            cbAccountType.DataSource = db.tblAccountTypes.ToList();
+            cbAccountType.ValueMember = "accountTypeId";
+            cbAccountType.DisplayMember = "accountTypeName";
+            cbMaritalStatus.DataSource = Enum.GetNames(typeof(MaritalStatus));
+
+
         }
 
         private void cbMaritalStatus_SelectedValueChanged(object sender, EventArgs e)
@@ -420,6 +432,7 @@ namespace Common
 
         private void txtAccountNumber_TextChanged(object sender, EventArgs e)
         {
+            Entities db = new Entities();
             var result = (from p in db.tblAccounts
                           where p.accountRef == txtAccountNumber.Text.ToString()
                           select p);
@@ -443,29 +456,141 @@ namespace Common
 
         private void btnCreateMember_Click(object sender, EventArgs e)
         {
-            List<Control> member = new List<Control>();
+            int t = 0;
+            Entities db = new Entities();
+            tblMember m = new tblMember();
+            if (rbFemale.Checked)
+            {
+                m.gender = 1;
+            }
+            else { m.gender = 2; }
+            m.firstName = txtFirstName.Text.ToString();
+            m.lastName = txtLastName.Text.ToString();
+            m.maidenName = txtMaidenName.Text.ToString();
+            m.maritalStatus = Convert.ToByte(cbMaritalStatus.SelectedValue);
+            m.dateOfBirth = Convert.ToDateTime(dpBod.Text);
+            m.nic = txtNic.Text.ToString();
+            m.paidEntry = chkPayEntryFee.Checked ? true : false;
+            m.createdDate = DateTime.Now;
+            m.entryDate = DateTime.Now;
+            if (rbActive.Checked)
+            {m.activePopulation = true;}
+            else { m.activePopulation = false;}
+            db.tblMembers.Add(m);
+            db.SaveChanges();
+            t = m.memberId;
 
-            member.Add(rbMale);
-            member.Add(rbFemale);
-            member.Add(txtFirstName);
-            member.Add(txtLastName);
-            member.Add(txtMaidenName);
-            member.Add(cbMaritalStatus);
-            member.Add(dpBod);
-            member.Add(txtNic);
-            member.Add(txtAccountNumber);
-            member.Add(cbAccountType);
-            member.Add(chkPayEntryFee);
-            member.Add(txtShares);
-            member.Add(txtAddress);
-            member.Add(txtPostCode);
-            member.Add(cbDistrict);
-            member.Add(rbActive);
-            member.Add(rbInactive);
-            member.Add(cbCompany);
-            member.Add(dpoEmployement);
-            member.Add(dgBeneficiaryGrid);
-            member.Add(dgMemberDoc);
+            tblMemberAddress maddress = new tblMemberAddress();
+
+            maddress.memberId = t;
+            maddress.postCode = txtPostCode.Text.ToString();
+            maddress.district = cbDistrict.SelectedText.ToString();
+            maddress.active = true;
+            maddress.dateCreated = DateTime.Now;
+
+            db.tblMemberAddresses.Add(maddress);
+            db.SaveChanges();
+
+            foreach (DataGridViewRow row in dgBeneficiaryGrid.Rows)
+            {
+                string fname = Convert.ToString(row.Cells["FirstName"].Value);
+                string lname = Convert.ToString(row.Cells["LastName"].Value);
+                string nic = Convert.ToString(row.Cells["NIC"].Value);
+                string comment = Convert.ToString(row.Cells["Comment"].Value);
+                tblBeneficiary mBeneficiary = new tblBeneficiary();
+                mBeneficiary.firstName = fname;
+                mBeneficiary.lastName = lname;
+                mBeneficiary.nic = nic;
+                mBeneficiary.comments = comment;
+                mBeneficiary.memberId = t;
+                db.tblBeneficiaries.Add(mBeneficiary);
+                db.SaveChanges();
+            }
+
+            foreach (DataGridViewRow row in dgMemberDoc.Rows)
+            {
+                string docName = Convert.ToString(row.Cells["DocumentName"].Value);
+                string path = Convert.ToString(row.Cells["Path"].Value);
+                tblMemberDoc mDoc = new tblMemberDoc();
+                mDoc.documentCategory = docName;
+                mDoc.memberDocument = StoreFileInDB(path);
+                mDoc.addedDate = DateTime.Now;
+                mDoc.memberId = t;
+                db.tblMemberDocs.Add(mDoc);
+                db.SaveChanges();
+            }
+
+            tblAccount acc = new tblAccount();
+
+            acc.accountRef = txtAccountNumber.Text;
+            acc.amount = Convert.ToInt32(txtShares.Text);
+            acc.accountTypeId = Convert.ToInt32(cbAccountType.SelectedValue);
+            acc.dateAccountOpened = DateTime.Now;
+            db.tblAccounts.Add(acc);
+            db.SaveChanges();
+            int accId = acc.accountId;
+
+            tblAccountMember accmem = new tblAccountMember();
+            accmem.accountId = accId;
+            accmem.memberId = t;
+            db.tblAccountMembers.Add(accmem);
+            db.SaveChanges();
+
+            MessageBox.Show("Member created successfully");
+
+            MemberList frmMember = new MemberList();
+            this.Close();
+            frmMember.Show();
+
+
+
+
+        }
+
+        public Byte[] StoreFileInDB(string path) {
+            // Read the file and convert it to Byte Array
+            string filename = Path.GetFileName(path);
+            string ext = Path.GetExtension(filename);
+            string contenttype = String.Empty;
+            Byte[] bytes=null;
+
+            //Set the contenttype based on File Extension
+            switch (ext)
+            {
+                case ".doc":
+                    contenttype = "application/vnd.ms-word";
+                    break;
+                case ".docx":
+                    contenttype = "application/vnd.ms-word";
+                    break;
+                case ".xls":
+                    contenttype = "application/vnd.ms-excel";
+                    break;
+                case ".xlsx":
+                    contenttype = "application/vnd.ms-excel";
+                    break;
+                case ".jpg":
+                    contenttype = "image/jpg";
+                    break;
+                case ".png":
+                    contenttype = "image/png";
+                    break;
+                case ".gif":
+                    contenttype = "image/gif";
+                    break;
+                case ".pdf":
+                    contenttype = "application/pdf";
+                    break;
+            }
+            if (contenttype != String.Empty)
+            {
+                /*Stream fs = FileUpload1.PostedFile.InputStream;
+                BinaryReader br = new BinaryReader(fs);
+                br.ReadBytes((Int32)fs.Length);*/
+                bytes = File.ReadAllBytes(path);   
+            }
+
+            return bytes;
         }
 
         private void txtShares_KeyPress(object sender, KeyPressEventArgs e)

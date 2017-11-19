@@ -4,8 +4,9 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Reflection;
+using Common;
 
-namespace Common
+namespace CreditUnionFYP
 {
     public partial class frmAddUser : Form
     {

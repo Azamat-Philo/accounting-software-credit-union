@@ -12,18 +12,13 @@ namespace DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class tblBeneficiary
+    public partial class tblAccountMember
     {
-        public int beneficiaryId { get; set; }
+        public int accmemId { get; set; }
+        public int accountId { get; set; }
         public int memberId { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string nic { get; set; }
-        public Nullable<System.DateTime> dateCreated { get; set; }
-        public string comments { get; set; }
-        public int createdBy { get; set; }
-        public bool active { get; set; }
     
+        public virtual tblAccount tblAccount { get; set; }
         public virtual tblMember tblMember { get; set; }
     }
 }

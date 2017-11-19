@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Common
+namespace CreditUnionFYP
 {
     public partial class Log : Form
     {

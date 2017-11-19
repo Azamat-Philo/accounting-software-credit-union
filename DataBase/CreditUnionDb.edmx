@@ -19,13 +19,11 @@
           <Property Name="accountRef" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="relatedToMember" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'IMCCUDB.dbo.tblAccountMember' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAccountMember">
           <Key>
-            <PropertyRef Name="accountId" />
-            <PropertyRef Name="memberId" />
+            <PropertyRef Name="accmemId" />
           </Key>
+          <Property Name="accmemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="accountId" Type="int" Nullable="false" />
           <Property Name="memberId" Type="int" Nullable="false" />
         </EntityType>
@@ -44,6 +42,7 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblAccountMember' does not have a prim
             <PropertyRef Name="beneficiaryId" />
           </Key>
           <Property Name="beneficiaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="memberId" Type="int" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="nic" Type="varchar" MaxLength="50" />
@@ -147,8 +146,8 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <Property Name="dateCreated" Type="datetime" Nullable="false" />
           <Property Name="maxPeriod" Type="tinyint" Nullable="false" />
           <Property Name="minPeriod" Type="tinyint" Nullable="false" />
-          <Property Name="maxAmount" Type="tinyint" Nullable="false" />
-          <Property Name="minAmount" Type="tinyint" Nullable="false" />
+          <Property Name="maxAmount" Type="int" Nullable="false" />
+          <Property Name="minAmount" Type="int" Nullable="false" />
           <Property Name="createdBy" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="tblMember">
@@ -194,7 +193,7 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <Key>
             <PropertyRef Name="memberDocId" />
           </Key>
-          <Property Name="memberDocId" Type="int" Nullable="false" />
+          <Property Name="memberDocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="memberId" Type="int" Nullable="false" />
           <Property Name="documentCategory" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="memberDocument" Type="image" Nullable="false" />
@@ -277,7 +276,9 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblAccountMember_tblAccount">
-          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="1" />
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="tblAccountMember" Type="Self.tblAccountMember" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAccount">
@@ -289,7 +290,9 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblAccountMember_tblMember">
-          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="tblAccountMember" Type="Self.tblAccountMember" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblMember">
@@ -308,6 +311,18 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
               <PropertyRef Name="memberId" />
             </Principal>
             <Dependent Role="tblMemberAddress">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBeneficiary_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblBeneficiary" Type="Self.tblBeneficiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblBeneficiary">
               <PropertyRef Name="memberId" />
             </Dependent>
           </ReferentialConstraint>
@@ -482,6 +497,7 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
         </Association>
         <EntityContainer Name="IMCCUDBModelStoreContainer">
           <EntitySet Name="tblAccount" EntityType="Self.tblAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccountMember" EntityType="Self.tblAccountMember" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAccountType" EntityType="Self.tblAccountType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBeneficiary" EntityType="Self.tblBeneficiary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblComiteeMember" EntityType="Self.tblComiteeMember" Schema="dbo" store:Type="Tables" />
@@ -498,12 +514,6 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUserPermission" EntityType="Self.tblUserPermission" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblAccountMember" EntityType="Self.tblAccountMember" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblAccountMember].[accountId] AS [accountId], 
-    [tblAccountMember].[memberId] AS [memberId]
-    FROM [dbo].[tblAccountMember] AS [tblAccountMember]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblLoanDoc" EntityType="Self.tblLoanDoc" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblLoanDoc].[loanId] AS [loanId], 
@@ -534,6 +544,10 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <AssociationSet Name="FK_tblAddress_tblMember" Association="Self.FK_tblAddress_tblMember">
             <End Role="tblMember" EntitySet="tblMember" />
             <End Role="tblMemberAddress" EntitySet="tblMemberAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBeneficiary_tblMember" Association="Self.FK_tblBeneficiary_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblBeneficiary" EntitySet="tblBeneficiary" />
           </AssociationSet>
           <AssociationSet Name="FK_tblEmployerAddress_tblEmployer" Association="Self.FK_tblEmployerAddress_tblEmployer">
             <End Role="tblEmployer" EntitySet="tblEmployer" />
@@ -611,8 +625,18 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <Property Name="accountRef" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="relatedToMember" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblAccountType" Relationship="Self.FK_tblAccount_tblAccountType" FromRole="tblAccount" ToRole="tblAccountType" />
+          <NavigationProperty Name="tblAccountMembers" Relationship="Self.FK_tblAccountMember_tblAccount" FromRole="tblAccount" ToRole="tblAccountMember" />
           <NavigationProperty Name="tblTransactions" Relationship="Self.FK_tblTransaction_tblAccount" FromRole="tblAccount" ToRole="tblTransaction" />
-          <NavigationProperty Name="tblMembers" Relationship="Self.tblAccountMember" FromRole="tblAccount" ToRole="tblMember" />
+        </EntityType>
+        <EntityType Name="tblAccountMember">
+          <Key>
+            <PropertyRef Name="accmemId" />
+          </Key>
+          <Property Name="accmemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountId" Type="Int32" Nullable="false" />
+          <Property Name="memberId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblAccountMember_tblAccount" FromRole="tblAccountMember" ToRole="tblAccount" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblAccountMember_tblMember" FromRole="tblAccountMember" ToRole="tblMember" />
         </EntityType>
         <EntityType Name="tblAccountType">
           <Key>
@@ -630,6 +654,7 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
             <PropertyRef Name="beneficiaryId" />
           </Key>
           <Property Name="beneficiaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="memberId" Type="Int32" Nullable="false" />
           <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -637,6 +662,7 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="createdBy" Type="Int32" Nullable="false" />
           <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblBeneficiary_tblMember" FromRole="tblBeneficiary" ToRole="tblMember" />
         </EntityType>
         <EntityType Name="tblComiteeMember">
           <Key>
@@ -718,8 +744,8 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="maxPeriod" Type="Byte" Nullable="false" />
           <Property Name="minPeriod" Type="Byte" Nullable="false" />
-          <Property Name="maxAmount" Type="Byte" Nullable="false" />
-          <Property Name="minAmount" Type="Byte" Nullable="false" />
+          <Property Name="maxAmount" Type="Int32" Nullable="false" />
+          <Property Name="minAmount" Type="Int32" Nullable="false" />
           <Property Name="createdBy" Type="Int16" Nullable="false" />
           <NavigationProperty Name="tblLoans" Relationship="Self.FK_tblLoan_tblLoanType" FromRole="tblLoanType" ToRole="tblLoan" />
         </EntityType>
@@ -746,12 +772,13 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <Property Name="closedDate" Type="DateTime" Precision="3" />
           <Property Name="createdBy" Type="Byte" Nullable="false" />
           <Property Name="reasonClosure" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAccountMembers" Relationship="Self.FK_tblAccountMember_tblMember" FromRole="tblMember" ToRole="tblAccountMember" />
+          <NavigationProperty Name="tblBeneficiaries" Relationship="Self.FK_tblBeneficiary_tblMember" FromRole="tblMember" ToRole="tblBeneficiary" />
           <NavigationProperty Name="tblLoans" Relationship="Self.FK_tblLoan_tblMember" FromRole="tblMember" ToRole="tblLoan" />
           <NavigationProperty Name="tblMemberAddresses" Relationship="Self.FK_tblAddress_tblMember" FromRole="tblMember" ToRole="tblMemberAddress" />
           <NavigationProperty Name="tblLoanSureties" Relationship="Self.FK_tblLoanSureties_tblMember" FromRole="tblMember" ToRole="tblLoanSureties" />
           <NavigationProperty Name="tblMemberDocs" Relationship="Self.FK_tblMemberDoc_tblMember" FromRole="tblMember" ToRole="tblMemberDoc" />
           <NavigationProperty Name="tblMemberEmployers" Relationship="Self.FK_tblMemberEmployer_tblMember1" FromRole="tblMember" ToRole="tblMemberEmployer" />
-          <NavigationProperty Name="tblAccounts" Relationship="Self.tblAccountMember" FromRole="tblMember" ToRole="tblAccount" />
         </EntityType>
         <EntityType Name="tblMemberAddress">
           <Key>
@@ -773,7 +800,7 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
           <Key>
             <PropertyRef Name="memberDocId" />
           </Key>
-          <Property Name="memberDocId" Type="Int32" Nullable="false" />
+          <Property Name="memberDocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="memberId" Type="Int32" Nullable="false" />
           <Property Name="documentCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="memberDocument" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
@@ -888,6 +915,20 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblAccountMember_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAccountMember" Type="Self.tblAccountMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="accountId" />
+            </Principal>
+            <Dependent Role="tblAccountMember">
+              <PropertyRef Name="accountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblTransaction_tblAccount">
           <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="1" />
           <End Role="tblTransaction" Type="Self.tblTransaction" Multiplicity="*" />
@@ -897,6 +938,32 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
             </Principal>
             <Dependent Role="tblTransaction">
               <PropertyRef Name="accountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccountMember_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAccountMember" Type="Self.tblAccountMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblAccountMember">
+              <PropertyRef Name="memberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBeneficiary_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblBeneficiary" Type="Self.tblBeneficiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="memberId" />
+            </Principal>
+            <Dependent Role="tblBeneficiary">
+              <PropertyRef Name="memberId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1068,12 +1135,9 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="tblAccountMember">
-          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="*" />
-          <End Role="tblMember" Type="Self.tblMember" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="IMCCUDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblAccounts" EntityType="Self.tblAccount" />
+          <EntitySet Name="tblAccountMembers" EntityType="Self.tblAccountMember" />
           <EntitySet Name="tblAccountTypes" EntityType="Self.tblAccountType" />
           <EntitySet Name="tblBeneficiaries" EntityType="Self.tblBeneficiary" />
           <EntitySet Name="tblComiteeMembers" EntityType="Self.tblComiteeMember" />
@@ -1096,9 +1160,21 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
             <End Role="tblAccountType" EntitySet="tblAccountTypes" />
             <End Role="tblAccount" EntitySet="tblAccounts" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblAccountMember_tblAccount" Association="Self.FK_tblAccountMember_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblAccountMember" EntitySet="tblAccountMembers" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblTransaction_tblAccount" Association="Self.FK_tblTransaction_tblAccount">
             <End Role="tblAccount" EntitySet="tblAccounts" />
             <End Role="tblTransaction" EntitySet="tblTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccountMember_tblMember" Association="Self.FK_tblAccountMember_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblAccountMember" EntitySet="tblAccountMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBeneficiary_tblMember" Association="Self.FK_tblBeneficiary_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblBeneficiary" EntitySet="tblBeneficiaries" />
           </AssociationSet>
           <AssociationSet Name="FK_tblEmployerAddress_tblEmployer" Association="Self.FK_tblEmployerAddress_tblEmployer">
             <End Role="tblEmployer" EntitySet="tblEmployers" />
@@ -1156,17 +1232,13 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
             <End Role="tblUser" EntitySet="tblUsers" />
             <End Role="tblUserPermission" EntitySet="tblUserPermissions" />
           </AssociationSet>
-          <AssociationSet Name="tblAccountMember" Association="Self.tblAccountMember">
-            <End Role="tblAccount" EntitySet="tblAccounts" />
-            <End Role="tblMember" EntitySet="tblMembers" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="IMCCUDBModelStoreContainer" CdmEntityContainer="IMCCUDBEntities">
+        <EntityContainerMapping StorageEntityContainer="IMCCUDBModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="tblAccounts">
             <EntityTypeMapping TypeName="IMCCUDBModel.tblAccount">
               <MappingFragment StoreEntitySet="tblAccount">
@@ -1179,6 +1251,15 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
                 <ScalarProperty Name="suspend" ColumnName="suspend" />
                 <ScalarProperty Name="accountRef" ColumnName="accountRef" />
                 <ScalarProperty Name="relatedToMember" ColumnName="relatedToMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccountMembers">
+            <EntityTypeMapping TypeName="IMCCUDBModel.tblAccountMember">
+              <MappingFragment StoreEntitySet="tblAccountMember">
+                <ScalarProperty Name="accmemId" ColumnName="accmemId" />
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1197,6 +1278,7 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
             <EntityTypeMapping TypeName="IMCCUDBModel.tblBeneficiary">
               <MappingFragment StoreEntitySet="tblBeneficiary">
                 <ScalarProperty Name="beneficiaryId" ColumnName="beneficiaryId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="nic" ColumnName="nic" />
@@ -1428,14 +1510,6 @@ warning 6002: The table/view 'IMCCUDB.dbo.tblLoanSureties' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="tblAccountMember" TypeName="IMCCUDBModel.tblAccountMember" StoreEntitySet="tblAccountMember">
-            <EndProperty Name="tblAccount">
-              <ScalarProperty Name="accountId" ColumnName="accountId" />
-            </EndProperty>
-            <EndProperty Name="tblMember">
-              <ScalarProperty Name="memberId" ColumnName="memberId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

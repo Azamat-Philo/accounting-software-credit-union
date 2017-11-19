@@ -13,10 +13,10 @@ namespace DataBase
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class IMCCUDBEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public IMCCUDBEntities()
-            : base("name=IMCCUDBEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -26,6 +26,7 @@ namespace DataBase
         }
     
         public virtual DbSet<tblAccount> tblAccounts { get; set; }
+        public virtual DbSet<tblAccountMember> tblAccountMembers { get; set; }
         public virtual DbSet<tblAccountType> tblAccountTypes { get; set; }
         public virtual DbSet<tblBeneficiary> tblBeneficiaries { get; set; }
         public virtual DbSet<tblComiteeMember> tblComiteeMembers { get; set; }

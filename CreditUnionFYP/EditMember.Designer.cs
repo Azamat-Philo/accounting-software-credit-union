@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace CreditUnionFYP
 {
     partial class EditMember
     {
@@ -31,8 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditMember));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtSaveMemberEmployment = new Bunifu.Framework.UI.BunifuFlatButton();
             this.grpEmployer = new System.Windows.Forms.GroupBox();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.plActive = new System.Windows.Forms.Panel();
+            this.txtPosition = new System.Windows.Forms.TextBox();
+            this.lbPosition = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.lbResign = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lbEntryDate = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -43,6 +49,10 @@
             this.grpAddress = new System.Windows.Forms.GroupBox();
             this.btnSaveAddress = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.District = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.PostCode = new System.Windows.Forms.DataGridViewLinkColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lbDistrict = new System.Windows.Forms.Label();
             this.txtPostCode = new System.Windows.Forms.TextBox();
@@ -71,7 +81,7 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.txtMemberDocumentCategory = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.uploadDialog2 = new Common.usercontrol.UploadDialog();
+            this.uploadDialog2 = new CreditUnionFYP.usercontrol.UploadDialog();
             this.grbBeneficiary = new System.Windows.Forms.GroupBox();
             this.btnAddBeneficiary = new System.Windows.Forms.Button();
             this.txtCommentBeneficiary = new System.Windows.Forms.TextBox();
@@ -96,19 +106,12 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnUpload = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.lbResign = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.txtSaveMemberEmployment = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.lbPosition = new System.Windows.Forms.Label();
-            this.txtPosition = new System.Windows.Forms.TextBox();
-            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.District = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.PostCode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEmployer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.plActive.SuspendLayout();
             this.grpAddress.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -120,7 +123,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -148,6 +152,40 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txtSaveMemberEmployment
+            // 
+            this.txtSaveMemberEmployment.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.txtSaveMemberEmployment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.txtSaveMemberEmployment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.txtSaveMemberEmployment.BorderRadius = 0;
+            this.txtSaveMemberEmployment.ButtonText = "Save";
+            this.txtSaveMemberEmployment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtSaveMemberEmployment.DisabledColor = System.Drawing.Color.Gray;
+            this.txtSaveMemberEmployment.Iconcolor = System.Drawing.Color.Transparent;
+            this.txtSaveMemberEmployment.Iconimage = ((System.Drawing.Image)(resources.GetObject("txtSaveMemberEmployment.Iconimage")));
+            this.txtSaveMemberEmployment.Iconimage_right = null;
+            this.txtSaveMemberEmployment.Iconimage_right_Selected = null;
+            this.txtSaveMemberEmployment.Iconimage_Selected = null;
+            this.txtSaveMemberEmployment.IconMarginLeft = 0;
+            this.txtSaveMemberEmployment.IconMarginRight = 0;
+            this.txtSaveMemberEmployment.IconRightVisible = false;
+            this.txtSaveMemberEmployment.IconRightZoom = 0D;
+            this.txtSaveMemberEmployment.IconVisible = false;
+            this.txtSaveMemberEmployment.IconZoom = 90D;
+            this.txtSaveMemberEmployment.IsTab = false;
+            this.txtSaveMemberEmployment.Location = new System.Drawing.Point(573, 652);
+            this.txtSaveMemberEmployment.Name = "txtSaveMemberEmployment";
+            this.txtSaveMemberEmployment.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.txtSaveMemberEmployment.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.txtSaveMemberEmployment.OnHoverTextColor = System.Drawing.Color.White;
+            this.txtSaveMemberEmployment.selected = false;
+            this.txtSaveMemberEmployment.Size = new System.Drawing.Size(96, 35);
+            this.txtSaveMemberEmployment.TabIndex = 15;
+            this.txtSaveMemberEmployment.Text = "Save";
+            this.txtSaveMemberEmployment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtSaveMemberEmployment.Textcolor = System.Drawing.Color.White;
+            this.txtSaveMemberEmployment.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
             // grpEmployer
             // 
             this.grpEmployer.Controls.Add(this.dataGridView5);
@@ -161,6 +199,14 @@
             this.grpEmployer.TabIndex = 7;
             this.grpEmployer.TabStop = false;
             this.grpEmployer.Text = "Employment Details";
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(7, 122);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(643, 114);
+            this.dataGridView5.TabIndex = 4;
             // 
             // plActive
             // 
@@ -177,6 +223,38 @@
             this.plActive.Name = "plActive";
             this.plActive.Size = new System.Drawing.Size(462, 97);
             this.plActive.TabIndex = 3;
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(103, 54);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(103, 20);
+            this.txtPosition.TabIndex = 7;
+            // 
+            // lbPosition
+            // 
+            this.lbPosition.AutoSize = true;
+            this.lbPosition.Location = new System.Drawing.Point(12, 57);
+            this.lbPosition.Name = "lbPosition";
+            this.lbPosition.Size = new System.Drawing.Size(47, 13);
+            this.lbPosition.TabIndex = 6;
+            this.lbPosition.Text = "Position:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(329, 54);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(123, 20);
+            this.dateTimePicker2.TabIndex = 5;
+            // 
+            // lbResign
+            // 
+            this.lbResign.AutoSize = true;
+            this.lbResign.Location = new System.Drawing.Point(228, 57);
+            this.lbResign.Name = "lbResign";
+            this.lbResign.Size = new System.Drawing.Size(69, 13);
+            this.lbResign.TabIndex = 4;
+            this.lbResign.Text = "Resign Date:";
             // 
             // dateTimePicker1
             // 
@@ -308,6 +386,33 @@
             this.dataGridView4.Size = new System.Drawing.Size(655, 90);
             this.dataGridView4.TabIndex = 13;
             // 
+            // Active
+            // 
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Address
+            // 
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            this.Address.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // District
+            // 
+            this.District.HeaderText = "District";
+            this.District.Name = "District";
+            this.District.ReadOnly = true;
+            this.District.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // PostCode
+            // 
+            this.PostCode.HeaderText = "Post Code";
+            this.PostCode.Name = "PostCode";
+            this.PostCode.ReadOnly = true;
+            this.PostCode.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -384,7 +489,7 @@
             // 
             // txtMaidenName
             // 
-            this.txtMaidenName.Location = new System.Drawing.Point(406, 58);
+            this.txtMaidenName.Location = new System.Drawing.Point(419, 54);
             this.txtMaidenName.Name = "txtMaidenName";
             this.txtMaidenName.Size = new System.Drawing.Size(134, 20);
             this.txtMaidenName.TabIndex = 20;
@@ -392,7 +497,7 @@
             // lbMaiden
             // 
             this.lbMaiden.AutoSize = true;
-            this.lbMaiden.Location = new System.Drawing.Point(320, 61);
+            this.lbMaiden.Location = new System.Drawing.Point(333, 57);
             this.lbMaiden.Name = "lbMaiden";
             this.lbMaiden.Size = new System.Drawing.Size(76, 13);
             this.lbMaiden.TabIndex = 19;
@@ -400,7 +505,7 @@
             // 
             // txtNic
             // 
-            this.txtNic.Location = new System.Drawing.Point(406, 121);
+            this.txtNic.Location = new System.Drawing.Point(419, 117);
             this.txtNic.Name = "txtNic";
             this.txtNic.Size = new System.Drawing.Size(154, 20);
             this.txtNic.TabIndex = 14;
@@ -408,7 +513,7 @@
             // lbNic
             // 
             this.lbNic.AutoSize = true;
-            this.lbNic.Location = new System.Drawing.Point(320, 121);
+            this.lbNic.Location = new System.Drawing.Point(333, 117);
             this.lbNic.Name = "lbNic";
             this.lbNic.Size = new System.Drawing.Size(28, 13);
             this.lbNic.TabIndex = 13;
@@ -429,7 +534,7 @@
             // lbDateOfBirth
             // 
             this.lbDateOfBirth.AutoSize = true;
-            this.lbDateOfBirth.Location = new System.Drawing.Point(320, 91);
+            this.lbDateOfBirth.Location = new System.Drawing.Point(333, 87);
             this.lbDateOfBirth.Name = "lbDateOfBirth";
             this.lbDateOfBirth.Size = new System.Drawing.Size(68, 13);
             this.lbDateOfBirth.TabIndex = 10;
@@ -438,7 +543,7 @@
             // dpBod
             // 
             this.dpBod.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpBod.Location = new System.Drawing.Point(406, 91);
+            this.dpBod.Location = new System.Drawing.Point(419, 87);
             this.dpBod.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dpBod.Name = "dpBod";
             this.dpBod.Size = new System.Drawing.Size(94, 20);
@@ -691,6 +796,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.txtShares);
             this.tabPage3.Controls.Add(this.lbShare);
@@ -709,7 +815,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(196, 266);
+            this.label3.Location = new System.Drawing.Point(22, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 32;
@@ -717,7 +823,7 @@
             // 
             // txtShares
             // 
-            this.txtShares.Location = new System.Drawing.Point(248, 361);
+            this.txtShares.Location = new System.Drawing.Point(74, 119);
             this.txtShares.Name = "txtShares";
             this.txtShares.Size = new System.Drawing.Size(100, 20);
             this.txtShares.TabIndex = 31;
@@ -725,7 +831,7 @@
             // lbShare
             // 
             this.lbShare.AutoSize = true;
-            this.lbShare.Location = new System.Drawing.Point(199, 364);
+            this.lbShare.Location = new System.Drawing.Point(25, 122);
             this.lbShare.Name = "lbShare";
             this.lbShare.Size = new System.Drawing.Size(43, 13);
             this.lbShare.TabIndex = 30;
@@ -734,7 +840,7 @@
             // chkPayEntryFee
             // 
             this.chkPayEntryFee.AutoSize = true;
-            this.chkPayEntryFee.Location = new System.Drawing.Point(199, 332);
+            this.chkPayEntryFee.Location = new System.Drawing.Point(25, 90);
             this.chkPayEntryFee.Name = "chkPayEntryFee";
             this.chkPayEntryFee.Size = new System.Drawing.Size(92, 17);
             this.chkPayEntryFee.TabIndex = 29;
@@ -744,7 +850,7 @@
             // lbAccountType
             // 
             this.lbAccountType.AutoSize = true;
-            this.lbAccountType.Location = new System.Drawing.Point(196, 299);
+            this.lbAccountType.Location = new System.Drawing.Point(22, 57);
             this.lbAccountType.Name = "lbAccountType";
             this.lbAccountType.Size = new System.Drawing.Size(77, 13);
             this.lbAccountType.TabIndex = 28;
@@ -753,14 +859,14 @@
             // cbAccountType
             // 
             this.cbAccountType.FormattingEnabled = true;
-            this.cbAccountType.Location = new System.Drawing.Point(297, 296);
+            this.cbAccountType.Location = new System.Drawing.Point(123, 54);
             this.cbAccountType.Name = "cbAccountType";
             this.cbAccountType.Size = new System.Drawing.Size(121, 21);
             this.cbAccountType.TabIndex = 27;
             // 
             // txtAccountNumber
             // 
-            this.txtAccountNumber.Location = new System.Drawing.Point(297, 263);
+            this.txtAccountNumber.Location = new System.Drawing.Point(123, 21);
             this.txtAccountNumber.Name = "txtAccountNumber";
             this.txtAccountNumber.Size = new System.Drawing.Size(187, 20);
             this.txtAccountNumber.TabIndex = 26;
@@ -806,106 +912,23 @@
             this.textBox1.Size = new System.Drawing.Size(188, 52);
             this.textBox1.TabIndex = 8;
             // 
-            // dataGridView5
+            // groupBox1
             // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(7, 122);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(643, 114);
-            this.dataGridView5.TabIndex = 4;
+            this.groupBox1.Controls.Add(this.dataGridView6);
+            this.groupBox1.Location = new System.Drawing.Point(7, 177);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(667, 190);
+            this.groupBox1.TabIndex = 33;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Loans";
             // 
-            // lbResign
+            // dataGridView6
             // 
-            this.lbResign.AutoSize = true;
-            this.lbResign.Location = new System.Drawing.Point(228, 57);
-            this.lbResign.Name = "lbResign";
-            this.lbResign.Size = new System.Drawing.Size(69, 13);
-            this.lbResign.TabIndex = 4;
-            this.lbResign.Text = "Resign Date:";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(329, 54);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(123, 20);
-            this.dateTimePicker2.TabIndex = 5;
-            // 
-            // txtSaveMemberEmployment
-            // 
-            this.txtSaveMemberEmployment.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.txtSaveMemberEmployment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.txtSaveMemberEmployment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.txtSaveMemberEmployment.BorderRadius = 0;
-            this.txtSaveMemberEmployment.ButtonText = "Save";
-            this.txtSaveMemberEmployment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtSaveMemberEmployment.DisabledColor = System.Drawing.Color.Gray;
-            this.txtSaveMemberEmployment.Iconcolor = System.Drawing.Color.Transparent;
-            this.txtSaveMemberEmployment.Iconimage = ((System.Drawing.Image)(resources.GetObject("txtSaveMemberEmployment.Iconimage")));
-            this.txtSaveMemberEmployment.Iconimage_right = null;
-            this.txtSaveMemberEmployment.Iconimage_right_Selected = null;
-            this.txtSaveMemberEmployment.Iconimage_Selected = null;
-            this.txtSaveMemberEmployment.IconMarginLeft = 0;
-            this.txtSaveMemberEmployment.IconMarginRight = 0;
-            this.txtSaveMemberEmployment.IconRightVisible = false;
-            this.txtSaveMemberEmployment.IconRightZoom = 0D;
-            this.txtSaveMemberEmployment.IconVisible = false;
-            this.txtSaveMemberEmployment.IconZoom = 90D;
-            this.txtSaveMemberEmployment.IsTab = false;
-            this.txtSaveMemberEmployment.Location = new System.Drawing.Point(573, 652);
-            this.txtSaveMemberEmployment.Name = "txtSaveMemberEmployment";
-            this.txtSaveMemberEmployment.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.txtSaveMemberEmployment.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.txtSaveMemberEmployment.OnHoverTextColor = System.Drawing.Color.White;
-            this.txtSaveMemberEmployment.selected = false;
-            this.txtSaveMemberEmployment.Size = new System.Drawing.Size(96, 35);
-            this.txtSaveMemberEmployment.TabIndex = 15;
-            this.txtSaveMemberEmployment.Text = "Save";
-            this.txtSaveMemberEmployment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtSaveMemberEmployment.Textcolor = System.Drawing.Color.White;
-            this.txtSaveMemberEmployment.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // lbPosition
-            // 
-            this.lbPosition.AutoSize = true;
-            this.lbPosition.Location = new System.Drawing.Point(12, 57);
-            this.lbPosition.Name = "lbPosition";
-            this.lbPosition.Size = new System.Drawing.Size(47, 13);
-            this.lbPosition.TabIndex = 6;
-            this.lbPosition.Text = "Position:";
-            // 
-            // txtPosition
-            // 
-            this.txtPosition.Location = new System.Drawing.Point(103, 54);
-            this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(103, 20);
-            this.txtPosition.TabIndex = 7;
-            // 
-            // Active
-            // 
-            this.Active.HeaderText = "Active";
-            this.Active.Name = "Active";
-            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Address
-            // 
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            this.Address.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // District
-            // 
-            this.District.HeaderText = "District";
-            this.District.Name = "District";
-            this.District.ReadOnly = true;
-            this.District.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PostCode
-            // 
-            this.PostCode.HeaderText = "Post Code";
-            this.PostCode.Name = "PostCode";
-            this.PostCode.ReadOnly = true;
-            this.PostCode.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(655, 155);
+            this.dataGridView6.TabIndex = 0;
             // 
             // EditMember
             // 
@@ -922,6 +945,7 @@
             this.tabPage1.ResumeLayout(false);
             this.grpEmployer.ResumeLayout(false);
             this.grpEmployer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.plActive.ResumeLayout(false);
             this.plActive.PerformLayout();
             this.grpAddress.ResumeLayout(false);
@@ -939,7 +963,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1024,5 +1049,7 @@
         private System.Windows.Forms.DataGridViewLinkColumn Address;
         private System.Windows.Forms.DataGridViewLinkColumn District;
         private System.Windows.Forms.DataGridViewLinkColumn PostCode;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dataGridView6;
     }
 }

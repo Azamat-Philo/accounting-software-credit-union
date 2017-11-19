@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace CreditUnionFYP
 {
     partial class CreateMember
     {
@@ -73,6 +73,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpMemberDocument = new System.Windows.Forms.GroupBox();
             this.cbcategoryDoc = new Bunifu.Framework.UI.BunifuDropdown();
+            this.uploadDialog1 = new CreditUnionFYP.usercontrol.UploadDialog();
             this.btnMemberDocumentAdd = new System.Windows.Forms.Button();
             this.dgMemberDoc = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -97,7 +98,6 @@
             this.Nic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRemove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.uploadDialog1 = new Common.usercontrol.UploadDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEmployer.SuspendLayout();
@@ -598,6 +598,14 @@
             this.cbcategoryDoc.Size = new System.Drawing.Size(136, 23);
             this.cbcategoryDoc.TabIndex = 6;
             // 
+            // uploadDialog1
+            // 
+            this.uploadDialog1.Location = new System.Drawing.Point(315, 19);
+            this.uploadDialog1.Name = "uploadDialog1";
+            this.uploadDialog1.Size = new System.Drawing.Size(327, 56);
+            this.uploadDialog1.TabIndex = 5;
+            this.uploadDialog1.txtPathValue = "";
+            // 
             // btnMemberDocumentAdd
             // 
             this.btnMemberDocumentAdd.Location = new System.Drawing.Point(245, 37);
@@ -840,14 +848,6 @@
             this.btnRemove.Text = "Remove";
             this.btnRemove.ToolTipText = "Remove";
             this.btnRemove.Visible = false;
-            // 
-            // uploadDialog1
-            // 
-            this.uploadDialog1.Location = new System.Drawing.Point(315, 19);
-            this.uploadDialog1.Name = "uploadDialog1";
-            this.uploadDialog1.Size = new System.Drawing.Size(327, 56);
-            this.uploadDialog1.TabIndex = 5;
-            this.uploadDialog1.txtPathValue = "";
             // 
             // CreateMember
             // 
